@@ -4,42 +4,44 @@
     "biome": "Any",
     "season": "Any",
     "tags": ["border", "no_leader", "other_clan"],
-    "intro_text": "While walking along the border, your patrol notices a o_c_n patrol renewing their scent marks up ahead.",
-    "decline_text": "Your patrol decides to avoid the other Clan cats.",
-    "chance_of_success": 50,
+    "intro_text": "While walking along the border, your patrol notices a o_c_n patrol up ahead.",
+    "decline_text": "Your patrol decides to avoid the other bots.",
+    "chance_of_success": 60,
     "exp": 10,
     "success_text": [
-    "When the two patrols get closer to each other the patrol leaders share a quick nod of acknowledgement. The patrols refocus on their tasks without stopping for a conversation, but a feeling of mutual respect has been fostered.",
-    "p_l approaches the other Clan patrol, striking up a conversation about the weather. After talking for a short time, the two patrols part ways. p_l remarks on the o_c_n cats' kindness to the leader once the patrol has returned to camp.",
-    "Once the patrols cross paths, s_c is quick to break the awkward atmosphere with a friendly greeting and easy conversation. The two patrols eventually return to their tasks feeling confident in their good relations with the opposite Clan.",
-    "Once the patrols cross paths, s_c is quick to break the awkward atmosphere with a friendly greeting and easy conversation. The two patrols eventually return to their tasks feeling confident in their good relations with the opposite Clan."
+    "When the two patrols get closer to each other the patrol leaders share a quick nod of acknowledgment. The patrols refocus on their tasks without stopping for a conversation, but a feeling of mutual respect has been fostered.",
+    "p_l approaches the other patrol, striking up a conversation about the weather. After talking for a short time, the two patrols part ways. p_l remarks on the o_c_n bots' kindness to the leader once the patrol has returned to camp.",
+    "Once the patrols cross paths, s_c is quick to break the awkward atmosphere with a friendly greeting and easy conversation. The two patrols eventually return to their tasks feeling confident in their good relations with the other bots.",
+    "Once the patrols cross paths, s_c is quick to break the awkward atmosphere with a friendly greeting and easy conversation. The two patrols eventually return to their tasks feeling confident in their good relations with the other team."
     ],
     "fail_text": [
     "The patrols eventually cross paths and an awkward tension fills the air. No one is quite sure what to say to break the silence and eventually everyone involved slowly shuffles away to continue their respective patrols.",
-    "s_c bounds ahead to the other patrol, not bothering to greet them or exchange pleasantries before remarking on the funny smell of the other Clan cats. Offended, the other patrol stalks away, their tails whipping and ears pinned."
+    "s_c bounds ahead to the other patrol, not bothering to greet them or exchange pleasantries before remarking on the tacky paintjobs of the other bots. Offended, the other patrol stalks away, whispering among each other with glares towards your patrol."
     ],
+    "other_clan": null,
     "win_skills": ["good speaker", "great speaker", "excellent speaker"],
     "win_trait": ["altruistic", "calm", "charismatic", "confident", "wise"],
     "fail_trait": ["troublesome", "strange", "playful", "daring", "childish"],
     "min_cats": 2,
     "max_cats": 6,
-    "antagonize_text": "Your patrol stands tall and approaches the o_c_n cats with insults and threats. They need to be sure that o_c_n knows how strong c_n cats are. r_c spits and hisses until the other patrol leaves the area, intimidated by how your patrol is acting.",
-    "antagonize_fail_text": "Your patrol stands tall and approaches the o_c_n cats with insults and threats. They need to be sure that o_c_n knows how strong c_n cats are. r_c spits and hisses until the other patrol leaves the area, annoyed and unimpressed by your patrol's posturing."
-    
+    "antagonize_text": "Your patrol stands tall and approaches the o_c_n bots with insults and threats. They need to be sure that o_c_n knows how strong c_n soldiers are. r_c snarls and yells until the other patrol leaves the area, intimidated by how your patrol is acting.",
+    "antagonize_fail_text": "Your patrol stands tall and approaches the o_c_n bots with insults and threats. They need to be sure that o_c_n knows how strong c_n soldiers are. r_c yells and threatens until the other patrol leaves the area, annoyed and unimpressed by your patrol's posturing.",
+    "history_text": [
+    ]
 },
 {
     "patrol_id": "gen_bord_otherclan2",
     "biome": "Any",
     "season": "Any",
     "tags": ["border", "no_leader", "other_clan"],
-    "intro_text": "While walking along the border, your patrol notices a o_c_n patrol renewing their scent marks up ahead.",
-    "decline_text": "Your patrol decides to avoid the other Clan cats.",
-    "chance_of_success": 50,
+    "intro_text": "While walking along the border, your patrol notices a o_c_n patrol talking to each other before they spot your bots.",
+    "decline_text": "Your patrol decides to avoid the other bots.",
+    "chance_of_success": 60,
     "exp": 10,
     "success_text": [
-    "When the two patrols get closer to each other the patrol leaders share a quick nod of acknowledgement. The patrols refocus on their tasks without stopping for a conversation, but a feeling of mutual respect has been fostered.",
-    "p_l approaches the other Clan patrol, striking up a conversation about the weather. After talking for a short time, the two patrols part ways. p_l remarks on the o_c_n cats' kindness to the leader once the patrol has returned to camp.",
-    "Once the patrols cross paths, s_c is quick to break the awkward atmosphere with a friendly greeting and easy conversation. They remember some of the news that o_c_n shared at a recent Gathering and bring it up, impressing the other patrol with their polite interest.",
+    "When the two patrols get closer to each other the patrol leaders share a quick nod of acknowledgment. The patrols refocus on their tasks without stopping for a conversation, but a feeling of mutual respect has been fostered.",
+    "p_l approaches the other patrol, striking up a conversation about the weather. After talking for a short time, the two patrols part ways. p_l remarks on the o_c_n bot's kindness to the leader once the patrol has returned to camp.",
+    "Once the patrols cross paths, s_c is quick to break the awkward atmosphere with a friendly greeting and easy conversation. They remember some of the news that o_c_n recently shared with them and bring it up, impressing the other patrol with their polite interest.",
     "Once the patrols cross paths, s_c is quick to break the awkward atmosphere with a friendly greeting. The patrols pause to converse for a little while, s_c bringing up a story that, while slightly embarrassing for s_c, is entertaining and lighthearted. The patrols part in good spirits."
     ],
     "fail_text": [
@@ -52,9 +54,10 @@
     "fail_trait": ["vengeful", "bloodthirsty", "righteous", "vengeful", "cold"],
     "min_cats": 2,
     "max_cats": 6,
-    "antagonize_text": "Your patrol stands tall and approaches the o_c_n cats with insults and threats. They need to be sure that o_c_n knows how strong c_n cats are. r_c spits and hisses until the other patrol leaves the area, intimidated by how your patrol is acting.",
-    "antagonize_fail_text": "Your patrol stands tall and approaches the o_c_n cats with insults and threats. They need to be sure that o_c_n knows how strong c_n cats are. r_c spits and hisses until the other patrol leaves the area, annoyed and unimpressed by your patrol's posturing."
-    
+    "antagonize_text": "Your patrol stands tall and approaches the o_c_n bot with insults and threats. They need to be sure that o_c_n knows how strong c_n soldiers are. r_c jeers and smirks as the other patrol leaves the area, intimidated by how your patrol is acting.",
+    "antagonize_fail_text": "Your patrol stands tall and approaches the o_c_n bots with insults and threats. They need to be sure that o_c_n knows how strong c_n is. r_c jeers and laughs as the other patrol leaves the area, annoyed and unimpressed by your patrol's posturing.",
+    "history_text": [
+    ]
 },
 {
     "patrol_id": "gen_bord_otherclan3",
@@ -63,7 +66,7 @@
     "tags": ["otherclan_nochangesuccess","border", "other_clan", "hunting", "scar", "LEGBITE", "battle_injury", "small_prey"],
     "intro_text": "r_c spies a fat rabbit on the other side of the o_c_n border. A tempting opportunity to be sure, but it may not be wise to hunt on a different Clan's territory.",
     "decline_text": "Your patrol decides that one rabbit isn't worth making an enemy.",
-    "chance_of_success": 50,
+    "chance_of_success": 60,
     "exp": 10,
     "success_text": [
     "r_c pounces without hesitation! They glance around, rabbit hanging from their muzzle, but it seems there aren't any o_c_n cats nearby. r_c trots back over the border, their prize in tow and transgression unnoticed.",
@@ -84,9 +87,9 @@
     "max_cats": 6,
     "antagonize_text": "A tempting opportunity. And also a perfect one. r_c pounces and swiftly kills the rabbit, intentionally leaving evidence of their deed behind. That will show those o_c_n cats just how confident c_n is in their own power.",
     "antagonize_fail_text": "r_c leaps for the rabbit! And promptly trips over a rock. The rabbit hops away and r_c sheepishly picks themselves up before noticing the o_c_n cat watching them from the other side of the border. The other cat laughs at the pathetic display and turns to walk deeper into their own territory. They seem to be unfazed and unimpressed by the sad attempt.",
-    "history_text": {
-        "scar": "r_c disrespected the border lines and was scarred by an enemy warrior for it."
-    }
+    "history_text": [
+    "r_c disrespected the border lines and was scarred by an enemy warrior for it."
+    ]
     },
     {
     "patrol_id": "gen_bord_otherclan4",
@@ -95,7 +98,7 @@
     "tags": ["border", "leader", "other_clan"],
     "intro_text": "While walking along the border, your patrol notices a o_c_n patrol renewing their scent marks up ahead.",
     "decline_text": "Your patrol decides to avoid the other Clan cats.",
-    "chance_of_success": 50,
+    "chance_of_success": 60,
     "exp": 10,
     "success_text": [
     "When the two patrols get closer to each other the patrol leader from o_c_n gives p_l a respectful nod, which they return. The patrols refocus on their tasks without stopping for a conversation, but a feeling of mutual respect has been fostered.",
@@ -107,14 +110,16 @@
     "The patrols eventually cross paths and an awkward tension fills the air. No one is quite sure what to say to break the silence and eventually everyone involved slowly shuffles away to continue their respective patrols.",
     "s_c bounds ahead to the other patrol, not bothering to greet them or exchange pleasantries before remarking on the funny smell of the other Clan cats. Offended, the other patrol stalks away, their tails whipping and ears pinned."
     ],
+    "other_clan": null,
     "win_skills": ["good speaker", "great speaker", "excellent speaker"],
     "win_trait": ["altruistic", "calm", "charismatic", "confident", "wise"],
     "fail_trait": ["troublesome", "strange", "playful", "daring", "childish"],
     "min_cats": 2,
     "max_cats": 6,
     "antagonize_text": "Your patrol stands tall and approaches the o_c_n cats with insults and threats. They need to be sure that o_c_n knows how strong c_n cats are. r_c spits and hisses until the other patrol leaves the area, intimidated by how your patrol is acting.",
-    "antagonize_fail_text": "Your patrol stands tall and approaches the o_c_n cats with insults and threats. They need to be sure that o_c_n knows how strong c_n cats are. r_c spits and hisses until the other patrol leaves the area, annoyed and unimpressed by your patrol's posturing."
-    
+    "antagonize_fail_text": "Your patrol stands tall and approaches the o_c_n cats with insults and threats. They need to be sure that o_c_n knows how strong c_n cats are. r_c spits and hisses until the other patrol leaves the area, annoyed and unimpressed by your patrol's posturing.",
+    "history_text": [
+    ]
 },
 {
     "patrol_id": "gen_bord_otherclan5",
@@ -123,7 +128,7 @@
     "tags": ["border", "leader", "other_clan"],
     "intro_text": "While walking along the border, your patrol notices a o_c_n patrol renewing their scent marks up ahead.",
     "decline_text": "Your patrol decides to avoid the other Clan cats.",
-    "chance_of_success": 50,
+    "chance_of_success": 60,
     "exp": 10,
     "success_text": [
     "When the two patrols get closer to each other the patrol leader from o_c_n gives p_l a respectful nod, which they return. The patrols refocus on their tasks without stopping for a conversation, but a feeling of mutual respect has been fostered.",
@@ -135,14 +140,16 @@
     "The patrols eventually cross paths and an awkward tension fills the air. No one is quite sure what to say to break the silence and eventually everyone involved slowly shuffles away to continue their respective patrols.",
     "s_c pins their ears at the sight of the o_c_n cats. As the patrols cross paths, s_c's aggression is obvious and the other patrol definitely notices. While they don't remark on the hostility, your patrol gets the sense that the rude behavior has been noted."
     ],
+    "other_clan": null,
     "win_skills": ["smart", "very smart", "extremely smart"],
     "win_trait": ["adventurous", "bold", "daring", "shameless", "troublesome", "playful", "childish"],
     "fail_trait": ["vengeful", "bloodthirsty", "righteous", "vengeful", "cold"],
     "min_cats": 2,
     "max_cats": 6,
     "antagonize_text": "Your patrol stands tall and approaches the o_c_n cats with insults and threats. They need to be sure that o_c_n knows how strong c_n cats are. r_c spits and hisses until the other patrol leaves the area, intimidated by how your patrol is acting.",
-    "antagonize_fail_text": "Your patrol stands tall and approaches the o_c_n cats with insults and threats. They need to be sure that o_c_n knows how strong c_n cats are. r_c spits and hisses until the other patrol leaves the area, annoyed and unimpressed by your patrol's posturing."
-    
+    "antagonize_fail_text": "Your patrol stands tall and approaches the o_c_n cats with insults and threats. They need to be sure that o_c_n knows how strong c_n cats are. r_c spits and hisses until the other patrol leaves the area, annoyed and unimpressed by your patrol's posturing.",
+    "history_text": [
+    ]
 },    
 {
     "patrol_id": "gen_med_borderherb2",
@@ -164,13 +171,12 @@
     null,
     "p_l starts to step over the border but a hiss stops them in their tracks. A o_c_n patrol is running their way. They force their fur to lie flat as the patrol approaches and swiftly blurt out that they're a medicine cat. The warriors either don't hear them or don't care and they get in a good scratch before the medicine cat can retreat."
     ],
-    "history_text": {
-        "scar": "p_l was scarred when a o_c_n patrol attacked them.",
-        "reg_death": "p_l died from their wounds after a o_c_n patrol attacked them."
-    },
     "win_skills": ["good mediator", "great mediator", "excellent mediator"],
+
     "min_cats": 1,
-    "max_cats": 1
+    "max_cats": 1,
+    "antagonize_text": null,
+    "antagonize_fail_text": null
 },
 {
     "patrol_id": "gen_bord_scent1",
@@ -179,7 +185,7 @@
     "tags": ["border", "other_clan", "death", "bite-wound", "torn pelt", "injury", "scar", "NORIGHTEAR", "no_leader"],
     "intro_text": "As your patrol is checking the border lines, they notice that a o_c_n scent has strayed into their territory.",
     "decline_text": "p_l decides that it isn't important.  Maybe an apprentice simply lost their way.",
-    "chance_of_success": 50,
+    "chance_of_success": 60,
     "exp": 10,
     "success_text": [
     "After poking around a bit, your patrol discovers a o_c_n apprentice wandering nearby, hopelessly lost. The apprentice is distraught upon discovering they're on the wrong side of the border and while p_l understands it was an honest mistake, they still lecture the apprentice on the importance of respecting border lines.",
@@ -200,11 +206,11 @@
     "max_cats": 6,
     "antagonize_text": "This is a trespass that will not be tolerated and, frankly, should be reciprocated. Your patrol blatantly spreads their own scent on o_c_n's territory, ruining the clearly marked border lines.",
     "antagonize_fail_text": "How dare they trespass! Your patrol bounds after the scent, hoping to find the source of it, eventually finding that it leads to the c_n camp. Inside they find the o_c_n deputy conversing with your leader. They tell the patrol off for so hastily jumping to conclusions. The o_c_n deputy was only delivering some news.",
-    "history_text": {
-        "scar": "r_c followed the scent of a trespassing cat and was scarred by a dog.",
-        "reg_death": "r_c followed the scent of a trespassing cat and was killed by a dog.",
-        "lead_death": "followed the scent of a trespassing cat and were killed by a dog"
-    }
+    "history_text": [
+    "r_c followed the scent of a trespassing cat and was scarred by a dog.",
+    "r_c followed the scent of a trespassing cat and was killed by a dog.",
+        "followed the scent of a trespassing cat and were killed by a dog"
+    ]
 },
 {
     "patrol_id": "gen_bord_scent2",
@@ -233,11 +239,11 @@
     "max_cats": 1,
     "antagonize_text": "This is a trespass that will not be tolerated and, frankly, should be reciprocated. p_l blatantly spreads their own scent on o_c_n's territory, ruining the clearly marked border lines.",
     "antagonize_fail_text": "How dare they trespass! p_l bounds after the scent, hoping to find the source of it, eventually finding that it leads to the c_n camp.  Inside they find the o_c_n deputy conversing with your leader.  They tell p_l off for so hastily jumping to conclusions. The o_c_n deputy was only delivering some news.",
-    "history_text": {
-        "scar": "r_c followed the scent of a trespassing cat and was scarred by a dog.",
-        "reg_death": "r_c followed the scent of a trespassing cat and was killed by a dog.",
-        "lead_death": "followed the scent of a trespassing cat and were killed by a dog"
-    }
+    "history_text": [
+    "r_c followed the scent of a trespassing cat and was scarred by a dog.",
+    "r_c followed the scent of a trespassing cat and was killed by a dog.",
+        "followed the scent of a trespassing cat and were killed by a dog"
+    ]
 },
 {
     "patrol_id": "bch_bord_soloneutral1",
@@ -265,9 +271,11 @@
     "fail_trait": ["ambitious", "bloodthirsty", "cold", "fierce", "shameless", "strict", "troublesome", "vengeful"],
     "min_cats": 1,
     "max_cats": 1,
-    "history_text": {
-        "scar": "r_c was injured by an enemy patrol while marking the border."
-    }
+    "antagonize_text": null,
+    "antagonize_fail_text": null,
+    "history_text": [
+    "r_c was injured by an enemy patrol while marking the border."
+    ]
 },
 {
     "patrol_id": "bch_bord_soloneutral2",
@@ -295,11 +303,13 @@
     "fail_trait": ["ambitious", "bloodthirsty", "cold", "fierce", "shameless", "strict", "troublesome", "vengeful"],
     "min_cats": 1,
     "max_cats": 1,
-    "history_text": {
-        "scar": "r_c was injured by an enemy patrol while marking the border.",
-        "reg_death": "r_c lost their life in an ambush on the border.",
-        "lead_death": "were killed in a border ambush"
-    }
+    "antagonize_text": null,
+    "antagonize_fail_text": null,
+    "history_text": [
+    "r_c was injured by an enemy patrol while marking the border.",
+    "r_c lost their life in an ambush on the border.",
+        "were killed in a border ambush"
+    ]
 },
 {
     "patrol_id": "bch_bord_soloneutral3",
@@ -327,11 +337,13 @@
     "fail_trait": ["ambitious", "bloodthirsty", "cold", "fierce", "shameless", "strict", "troublesome", "vengeful"],
     "min_cats": 1,
     "max_cats": 1,
-    "history_text": {
-        "scar": "r_c was injured by an enemy patrol while marking the border.",
-        "reg_death": "r_c lost a life in an ambush on the border.",
-        "lead_death": "were killed in a border ambush"
-    }
+    "antagonize_text": null,
+    "antagonize_fail_text": null,
+    "history_text": [
+    "r_c was injured by an enemy patrol while marking the border.",
+    "r_c lost a life in an ambush on the border.",
+        "were killed in a border ambush"
+    ]
 },
 {
     "patrol_id": "bch_bord_soloneutral4",
@@ -358,9 +370,11 @@
     "win_trait": ["altruistic", "compassionate", "empathetic", "faithful", "loving", "patient", "responsible", "thoughtful", "wise"],
     "min_cats": 1,
     "max_cats": 1,
-    "history_text": {
-        "scar": "r_c was injured by an enemy patrol while marking the border."
-    }
+    "antagonize_text": null,
+    "antagonize_fail_text": null,
+    "history_text": [
+    "r_c was injured by an enemy patrol while marking the border."
+    ]
 },
 {
     "patrol_id": "bch_bord_soloneutral5",
@@ -387,9 +401,11 @@
     "win_trait": ["altruistic", "compassionate", "empathetic", "faithful", "loving", "patient", "responsible", "thoughtful", "wise"],
     "min_cats": 1,
     "max_cats": 1,
-    "history_text": {
-        "scar": "r_c was injured by an enemy patrol while marking the border."
-    }
+    "antagonize_text": null,
+    "antagonize_fail_text": null,
+    "history_text": [
+    "r_c was injured by an enemy patrol while marking the border."
+    ]
 },
 {
     "patrol_id": "dst_bord_soloneutral1",
@@ -416,7 +432,10 @@
     "win_trait": ["altruistic", "compassionate", "empathetic", "faithful", "loving", "patient", "responsible", "thoughtful", "wise"],
     "fail_trait": ["ambitious", "bloodthirsty", "cold", "fierce", "shameless", "strict", "troublesome", "vengeful"],
     "min_cats": 1,
-    "max_cats": 1
+    "max_cats": 1,
+    "antagonize_text": null,
+    "antagonize_fail_text": null
+
 },
 {
     "patrol_id": "dst_bord_soloneutral2",
@@ -444,9 +463,11 @@
     "fail_trait": ["ambitious", "bloodthirsty", "cold", "fierce", "shameless", "strict", "troublesome", "vengeful"],
     "min_cats": 1,
     "max_cats": 1,
-    "history_text": {
-        "scar": "r_c got injured patrolling on the border."
-    }
+    "antagonize_text": null,
+    "antagonize_fail_text": null,
+    "history_text": [
+            "r_c got injured patrolling on the border."
+    ]
 },
 {
     "patrol_id": "dst_bord_soloneutral3",
@@ -474,9 +495,11 @@
     "fail_trait": ["ambitious", "bloodthirsty", "cold", "fierce", "shameless", "strict", "troublesome", "vengeful"],
     "min_cats": 1,
     "max_cats": 1,
-    "history_text": {
-        "scar": "r_c got injured patrolling on the border."
-    }
+    "antagonize_text": null,
+    "antagonize_fail_text": null,
+    "history_text": [
+            "r_c got injured patrolling on the border."
+    ]
 },
 {
     "patrol_id": "dst_bord_soloneutral4",
@@ -502,7 +525,9 @@
     "win_skills": ["good speaker", "great speaker", "excellent speaker"],
     "win_trait": ["altruistic", "compassionate", "empathetic", "faithful", "loving", "patient", "responsible", "thoughtful", "wise"],
     "min_cats": 1,
-    "max_cats": 1
+    "max_cats": 1,
+    "antagonize_text": null,
+    "antagonize_fail_text": null
 },
 {
     "patrol_id": "dst_bord_soloneutral5",
@@ -528,7 +553,9 @@
     "win_skills": ["good speaker", "great speaker", "excellent speaker"],
     "win_trait": ["altruistic", "compassionate", "empathetic", "faithful", "loving", "patient", "responsible", "thoughtful", "wise"],
     "min_cats": 1,
-    "max_cats": 1
+    "max_cats": 1,
+    "antagonize_text": null,
+    "antagonize_fail_text": null
 },
 {
     "patrol_id": "fst_bord_soloneutral1",
@@ -556,9 +583,11 @@
     "fail_trait": ["ambitious", "bloodthirsty", "cold", "fierce", "shameless", "strict", "troublesome", "vengeful"],
     "min_cats": 1,
     "max_cats": 1,
-    "history_text": {
-        "scar": "r_c got injured patrolling on the border."
-    }
+    "antagonize_text": null,
+    "antagonize_fail_text": null,
+    "history_text": [
+    "r_c got injured patrolling on the border."
+    ]
 },
 {
     "patrol_id": "fst_bord_soloneutral2",
@@ -586,11 +615,13 @@
     "fail_trait": ["ambitious", "bloodthirsty", "cold", "fierce", "shameless", "strict", "troublesome", "vengeful"],
     "min_cats": 1,
     "max_cats": 1,
-    "history_text": {
-        "scar": "r_c got injured patrolling on the border.",
-        "reg_death": "r_c lost their life in an ambush on the border.",
-        "lead_death": "were killed in a border ambush"
-    }
+    "antagonize_text": null,
+    "antagonize_fail_text": null,
+    "history_text": [
+    "r_c got injured patrolling on the border.",
+    "r_c lost their life in an ambush on the border.",
+        "were killed in a border ambush"
+]
 },
 {
     "patrol_id": "fst_bord_soloneutral3",
@@ -618,11 +649,13 @@
     "fail_trait": ["ambitious", "bloodthirsty", "cold", "fierce", "shameless", "strict", "troublesome", "vengeful"],
     "min_cats": 1,
     "max_cats": 1,
-    "history_text": {
-        "scar": "r_c got injured patrolling on the border.",
-        "reg_death": "r_c lost a life in an ambush on the border.",
-        "lead_death": "were killed in a border ambush"
-    }
+    "antagonize_text": null,
+    "antagonize_fail_text": null,
+    "history_text": [
+    "r_c got injured patrolling on the border.",
+    "r_c lost a life in an ambush on the border.",
+        "were killed in a border ambush"
+    ]
 },
 {
     "patrol_id": "fst_bord_soloneutral4",
@@ -649,9 +682,11 @@
     "win_trait": ["altruistic", "compassionate", "empathetic", "faithful", "loving", "patient", "responsible", "thoughtful", "wise"],
     "min_cats": 1,
     "max_cats": 1,
-    "history_text": {
-        "scar": "r_c got injured patrolling on the border."
-    }
+    "antagonize_text": null,
+    "antagonize_fail_text": null,
+    "history_text": [
+    "r_c got injured patrolling on the border."
+    ]
 },
 {
     "patrol_id": "fst_bord_soloneutral5",
@@ -678,9 +713,11 @@
     "win_trait": ["altruistic", "compassionate", "empathetic", "faithful", "loving", "patient", "responsible", "thoughtful", "wise"],
     "min_cats": 1,
     "max_cats": 1,
-    "history_text": {
-        "scar": "r_c got injured patrolling on the border."
-    }
+    "antagonize_text": null,
+    "antagonize_fail_text": null,
+    "history_text": [
+    "r_c got injured patrolling on the border."
+    ]
 },
 {
     "patrol_id": "mtn_bord_soloneutral1",
@@ -708,9 +745,11 @@
     "fail_trait": ["ambitious", "bloodthirsty", "cold", "fierce", "shameless", "strict", "troublesome", "vengeful"],
     "min_cats": 1,
     "max_cats": 1,
-    "history_text": {
-        "scar": "r_c got injured patrolling on the border."
-    }
+    "antagonize_text": null,
+    "antagonize_fail_text": null,
+    "history_text": [
+    "r_c got injured patrolling on the border."
+    ]
 },
 {
     "patrol_id": "mtn_bord_soloneutral2",
@@ -738,9 +777,11 @@
     "fail_trait": ["ambitious", "bloodthirsty", "cold", "fierce", "shameless", "strict", "troublesome", "vengeful"],
     "min_cats": 1,
     "max_cats": 1,
-    "history_text": {
-        "scar": "r_c got injured patrolling on the border."
-    }
+    "antagonize_text": null,
+    "antagonize_fail_text": null,
+    "history_text": [
+    "r_c got injured patrolling on the border."
+    ]
 },
 {
     "patrol_id": "mtn_bord_soloneutral3",
@@ -768,9 +809,11 @@
     "fail_trait": ["ambitious", "bloodthirsty", "cold", "fierce", "shameless", "strict", "troublesome", "vengeful"],
     "min_cats": 1,
     "max_cats": 1,
-    "history_text": {
-        "scar": "r_c got injured patrolling on the border."
-    }
+    "antagonize_text": null,
+    "antagonize_fail_text": null,
+    "history_text": [
+    "r_c got injured patrolling on the border."
+    ]
 },
 {
     "patrol_id": "mtn_bord_soloneutral4",
@@ -793,7 +836,9 @@
     "win_skills": ["good speaker", "great speaker", "excellent speaker"],
     "win_trait": ["altruistic", "compassionate", "empathetic", "faithful", "loving", "patient", "responsible", "thoughtful", "wise"],
     "min_cats": 1,
-    "max_cats": 1
+    "max_cats": 1,
+    "antagonize_text": null,
+    "antagonize_fail_text": null
 },
 {
     "patrol_id": "mtn_bord_soloneutral5",
@@ -816,7 +861,9 @@
     "win_skills": ["good speaker", "great speaker", "excellent speaker"],
     "win_trait": ["altruistic", "compassionate", "empathetic", "faithful", "loving", "patient", "responsible", "thoughtful", "wise"],
     "min_cats": 1,
-    "max_cats": 1
+    "max_cats": 1,
+    "antagonize_text": null,
+    "antagonize_fail_text": null
 },
 {
     "patrol_id": "pln_bord_soloneutral1",
@@ -844,9 +891,11 @@
     "fail_trait": ["ambitious", "bloodthirsty", "cold", "fierce", "shameless", "strict", "troublesome", "vengeful"],
     "min_cats": 1,
     "max_cats": 1,
-    "history_text": {
-        "scar": "r_c got injured patrolling on the border."
-    }
+    "antagonize_text": null,
+    "antagonize_fail_text": null,
+    "history_text": [
+    "r_c got injured patrolling on the border."
+    ]
 },
 {
     "patrol_id": "pln_bord_soloneutral2",
@@ -874,11 +923,13 @@
     "fail_trait": ["ambitious", "bloodthirsty", "cold", "fierce", "shameless", "strict", "troublesome", "vengeful"],
     "min_cats": 1,
     "max_cats": 1,
-    "history_text": {
-        "scar": "r_c got injured patrolling on the border.",
-        "reg_death": "r_c lost their life in an ambush on the border.",
-        "lead_death": "were killed in a border ambush"
-    }
+    "antagonize_text": null,
+    "antagonize_fail_text": null,
+    "history_text": [
+    "r_c got injured patrolling on the border.",
+    "r_c lost their life in an ambush on the border.",
+        "were killed in a border ambush"
+    ]
 },
 {
     "patrol_id": "pln_bord_soloneutral3",
@@ -906,11 +957,13 @@
     "fail_trait": ["ambitious", "bloodthirsty", "cold", "fierce", "shameless", "strict", "troublesome", "vengeful"],
     "min_cats": 1,
     "max_cats": 1,
-    "history_text": {
-        "scar": "r_c got injured patrolling on the border.",
-        "reg_death": "r_c lost a life in an ambush on the border.",
-        "lead_death": "were killed in a border ambush"
-    }
+    "antagonize_text": null,
+    "antagonize_fail_text": null,
+    "history_text": [
+    "r_c got injured patrolling on the border.",
+    "r_c lost a life in an ambush on the border.",
+        "were killed in a border ambush"
+    ]
 },
 {
     "patrol_id": "pln_bord_soloneutral4",
@@ -937,9 +990,11 @@
     "win_trait": ["altruistic", "compassionate", "empathetic", "faithful", "loving", "patient", "responsible", "thoughtful", "wise"],
     "min_cats": 1,
     "max_cats": 1,
-    "history_text": {
-        "scar": "r_c got injured patrolling on the border."
-    }
+    "antagonize_text": null,
+    "antagonize_fail_text": null,
+    "history_text": [
+    "r_c got injured patrolling on the border."
+    ]
 },
 {
     "patrol_id": "pln_bord_soloneutral5",
@@ -966,8 +1021,10 @@
     "win_trait": ["altruistic", "compassionate", "empathetic", "faithful", "loving", "patient", "responsible", "thoughtful", "wise"],
     "min_cats": 1,
     "max_cats": 1,
-    "history_text": {
-        "scar": "r_c got injured patrolling on the border."
-    }
+    "antagonize_text": null,
+    "antagonize_fail_text": null,
+    "history_text": [
+    "r_c got injured patrolling on the border."
+    ]
 }
 ]

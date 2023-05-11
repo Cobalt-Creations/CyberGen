@@ -4,20 +4,20 @@
     "biome": "forest",
     "season": "newleaf",
     "tags": ["border", "disaster", "respect", "trust", "no_body"],
-    "intro_text": "There are dark clouds in the horizon and p_l wonders if they should continue.",
+    "intro_text": "There are dark clouds in the horizon and p_l wonders if they should continue. Alt mode driving is far more dangerous in the rain.",
     "decline_text": "Your patrol decides to head back early.",
     "chance_of_success": 40,
     "exp": 20,
     "success_text": [
         "While it's pretty gray up there, the promised rain never comes.",
-        "The cats become wet from the rain but otherwise the patrol is successful.",
-        "s_c makes a careful judgment, and the patrol keeps going, but they make sure to stay on the high ground as the rain pours down around them.",
+        "The bots become wet from the rain but otherwise the patrol is successful.",
+        "s_c makes a careful judgment, and the bots keep going, but they make sure to stay out of alt mode as they patrol.",
         "It's not worth the risk - s_c convinces the patrol to head for home."
     ],
     "fail_text": [
         null,
         null,
-        "There is a downpour and a sudden flood from the overflowing river sweeps all of the cats in the patrol away.",
+        "There is a downpour and a sudden flood from the overflowing river sweeps all of the bots in the patrol away battering their frames against the buildings around them.",
         null
     ],
     "win_skills": ["very smart", "extremely smart"],
@@ -26,10 +26,11 @@
     "max_cats": 6,
     "antagonize_text": null,
     "antagonize_fail_text": null,
-    "history_text": {
-        "reg_death": "This cat was drowned by floodwaters.",
-        "lead_death": "drowned in floodwaters"
-    }
+    "history_text": [
+        null,
+        "This bot died in a flood.",
+        "killed in sudden flood"
+    ]
 },
 {
     "patrol_id": "fst_bord_flashflood2",
@@ -58,10 +59,11 @@
     "max_cats": 6,
     "antagonize_text": null,
     "antagonize_fail_text": null,
-    "history_text": {
-        "reg_death": "This cat was drowned by floodwaters.",
-        "lead_death": "drowned in floodwaters"
-    }
+    "history_text": [
+        null,
+        "This cat was drowned by floodwaters.",
+        "drowned in floodwaters"
+    ]
 },
 {
     "patrol_id": "fst_bord_flashflood3",
@@ -90,10 +92,11 @@
     "max_cats": 6,
     "antagonize_text": null,
     "antagonize_fail_text": null,
-    "history_text": {
-        "reg_death": "This cat was drowned by floodwaters.",
-        "lead_death": "drowned in floodwaters"
-    }
+    "history_text": [
+        null,
+        "This cat was drowned by floodwaters.",
+        "drowned in floodwaters"
+    ]
 },
 {
     "patrol_id": "fst_bord_flashflood4",
@@ -122,10 +125,11 @@
     "max_cats": 1,
     "antagonize_text": null,
     "antagonize_fail_text": null,
-    "history_text": {
-        "reg_death": "r_c was drowned by floodwaters.",
-        "lead_death": "drowned in floodwaters"
-    }
+    "history_text": [
+        null,
+        "r_c was drowned by floodwaters.",
+        "drowned in floodwaters"
+    ]
 },
 {
     "patrol_id": "fst_bord_flashflood5",
@@ -154,10 +158,11 @@
     "max_cats": 1,
     "antagonize_text": null,
     "antagonize_fail_text": null,
-    "history_text": {
-        "reg_death": "r_c was drowned by floodwaters.",
-        "lead_death": "drowned in floodwaters"
-    }
+    "history_text": [
+        null,
+        "r_c was drowned by floodwaters.",
+        "drowned in floodwaters"
+    ]
 },
 {
     "patrol_id": "fst_bord_flashflood6",
@@ -186,10 +191,11 @@
     "max_cats": 1,
     "antagonize_text": null,
     "antagonize_fail_text": null,
-    "history_text": {
-        "reg_death": "r_c was drowned by floodwaters.",
-        "lead_death": "drowned in floodwaters"
-    }
+    "history_text": [
+            null,
+            "r_c was drowned by floodwaters.",
+        "drowned in floodwaters"
+    ]
 },
 {
     "patrol_id": "pln_bord_abandontwolegdis1",
@@ -201,7 +207,7 @@
     "chance_of_success": 70,
     "exp": 30,
     "success_text": [
-            "It's just an odd loner singing to themself. The patrol greets them, and as the loner isn't inside c_n territory, it's a polite interaction without any hostility.",
+            "It's just an odd loner singing to themselves. The patrol greets them, and as the loner isn't inside c_n territory, it's a polite interaction without any hostility.",
             null,
             "Your patrol walks into an ambush by a group of rogues. It's only by the grace of StarClan that s_c is there, fighting with the ferocity of LionClan, the strength of TigerClan, and the flexibility of LeopardClan. Shaken, but no more than bruised, the patrol manages to retreat to safety.",
             "s_c signals for the patrol to stop. Carefully, quietly, they explain their concerns about the unknown situation. And maybe they're being too cautious - but then p_l picks up on the scent of strange cats around the Twoleg den. Forewarned, the patrol retreats to safety."
@@ -218,10 +224,11 @@
     "max_cats": 6,
     "antagonize_text": null,
     "antagonize_fail_text": null,
-    "history_text": {
-        "reg_death": "This cat died from being ambushed by rogues.",
-        "lead_death": "were ambushed by rogues"
-    }
+    "history_text": [
+            null,
+            "This cat died from being ambushed by rogues.",
+        "were ambushed by rogues"
+    ]
 },
 {
     "patrol_id": "pln_bord_abandontwolegdis2",
@@ -233,8 +240,8 @@
     "chance_of_success": 30,
     "exp": 30,
     "success_text": [
-            "It's just an odd loner singing to themself. r_c greets them, and as the loner isn't inside c_n territory, it's a polite interaction without any hostility.",
-            "It's just an odd loner singing to themself. When they see the patrol they invite them to sing too. The patrol politely declines and continues on their patrol.",
+            "It's just an odd loner singing to themselves. r_c greets them, and as the loner isn't inside c_n territory, it's a polite interaction without any hostility.",
+            "It's just an odd loner singing to themselves. When they see the patrol they invite them to sing too. The patrol politely declines and continues on their patrol.",
             "s_c walks into an ambush by a group of rogues. It's only by the grace of StarClan that s_c has the fighting skill and confidence to escape, running for their life.",
             "s_c has a bad feeling about this. And maybe they're being too cautious - but then they pick up on the scent of strange cats around the Twoleg den. Forewarned, s_c retreats to safety."
     ],
@@ -250,10 +257,11 @@
     "max_cats": 1,
     "antagonize_text": null,
     "antagonize_fail_text": null,
-    "history_text": {
-        "reg_death": "This cat died from being ambushed by rogues.",
-        "lead_death": "were ambushed by rogues"
-    }
+    "history_text": [
+            null,
+            "This cat died from being ambushed by rogues.",
+        "were ambushed by rogues"
+    ]
 },
 {
     "patrol_id": "pln_bord_flashflood1",
@@ -282,10 +290,11 @@
     "max_cats": 6,
     "antagonize_text": null,
     "antagonize_fail_text": null,
-    "history_text": {
-        "reg_death": "This cat was drowned by floodwaters.",
-        "lead_death": "drowned by floodwaters"
-    }
+    "history_text": [
+            null,
+            "This cat was drowned by floodwaters.",
+            "drowned by floodwaters"
+    ]
 },
 {
     "patrol_id": "pln_bord_flashflood2",
@@ -314,10 +323,11 @@
     "max_cats": 6,
     "antagonize_text": null,
     "antagonize_fail_text": null,
-    "history_text": {
-        "reg_death": "This cat was drowned by floodwaters.",
-        "lead_death": "drowned by floodwaters"
-    }
+    "history_text": [
+            null,
+            "This cat was drowned by floodwaters.",
+        "drowned by floodwaters"
+    ]
 },
 {
     "patrol_id": "pln_bord_flashflood3",
@@ -346,10 +356,11 @@
     "max_cats": 6,
     "antagonize_text": null,
     "antagonize_fail_text": null,
-    "history_text": {
-        "reg_death": "This cat was drowned by floodwaters.",
-        "lead_death": "drowned by floodwaters"
-    }
+    "history_text": [
+            null,
+            "This cat was drowned by floodwaters.",
+        "drowned by floodwaters"
+    ]
 },
 {
     "patrol_id": "pln_bord_flashflood4",
@@ -378,10 +389,11 @@
     "max_cats": 1,
     "antagonize_text": null,
     "antagonize_fail_text": null,
-    "history_text": {
-        "reg_death": "r_c was drowned by floodwaters.",
-        "lead_death": "drowned by floodwaters"
-    }
+    "history_text": [
+            null,
+            "r_c was drowned by floodwaters.",
+            "drowned by floodwaters"
+    ]
 },
 {
     "patrol_id": "pln_bord_flashflood5",
@@ -410,10 +422,11 @@
     "max_cats": 1,
     "antagonize_text": null,
     "antagonize_fail_text": null,
-    "history_text": {
-        "reg_death": "r_c was drowned by floodwaters.",
-        "lead_death": "drowned by floodwaters"
-    }
+    "history_text": [
+            null,
+            "r_c was drowned by floodwaters.",
+            "drowned by floodwaters"
+    ]
 },
 {
     "patrol_id": "pln_bord_flashflood6",
@@ -442,10 +455,11 @@
     "max_cats": 1,
     "antagonize_text": null,
     "antagonize_fail_text": null,
-    "history_text": {
-        "reg_death": "r_c was drowned by floodwaters.",
-        "lead_death": "drowned by floodwaters"
-    }
+    "history_text": [
+            null,
+            "r_c was drowned by floodwaters.",
+            "drowned by floodwaters"
+    ]
 },
 {
     "patrol_id": "mtn_bord_flashflood1",
@@ -474,10 +488,11 @@
     "max_cats": 6,
     "antagonize_text": null,
     "antagonize_fail_text": null,
-    "history_text": {
-        "reg_death": "This cat was drowned by floodwaters.",
-        "lead_death": "drowned by floodwaters"
-    }
+    "history_text": [
+            null,
+            "This cat was drowned by floodwaters.",
+            "drowned by floodwaters"
+    ]
 },
 {
     "patrol_id": "mtn_bord_flashflood2",
@@ -506,10 +521,11 @@
     "max_cats": 6,
     "antagonize_text": null,
     "antagonize_fail_text": null,
-    "history_text": {
-        "reg_death": "This cat was drowned by floodwaters.",
-        "lead_death": "drowned by floodwaters"
-    }
+    "history_text": [
+            null,
+            "This cat was drowned by floodwaters.",
+            "drowned by floodwaters"
+    ]
 },
 {
     "patrol_id": "mtn_bord_flashflood3",
@@ -538,10 +554,11 @@
     "max_cats": 6,
     "antagonize_text": null,
     "antagonize_fail_text": null,
-    "history_text": {
-        "reg_death": "This cat was drowned by floodwaters.",
-        "lead_death": "drowned by floodwaters"
-    }
+    "history_text": [
+            null,
+            "This cat was drowned by floodwaters.",
+            "drowned by floodwaters"
+    ]
 },
 {
     "patrol_id": "mtn_bord_flashflood4",
@@ -570,10 +587,11 @@
     "max_cats": 1,
     "antagonize_text": null,
     "antagonize_fail_text": null,
-    "history_text": {
-        "reg_death": "r_c was drowned by floodwaters.",
-        "lead_death": "drowned by floodwaters"
-    }
+    "history_text": [
+            null,
+            "r_c was drowned by floodwaters.",
+            "drowned by floodwaters"
+    ]
 },
 {
     "patrol_id": "mtn_bord_flashflood5",
@@ -602,10 +620,11 @@
     "max_cats": 1,
     "antagonize_text": null,
     "antagonize_fail_text": null,
-    "history_text": {
-        "reg_death": "r_c was drowned by floodwaters.",
-        "lead_death": "drowned by floodwaters"
-    }
+    "history_text": [
+            null,
+            "r_c was drowned by floodwaters.",
+            "drowned by floodwaters"
+    ]
 },
 {
     "patrol_id": "mtn_bord_flashflood6",
@@ -634,10 +653,11 @@
     "max_cats": 1,
     "antagonize_text": null,
     "antagonize_fail_text": null,
-    "history_text": {
-        "reg_death": "r_c was drowned by floodwaters.",
-        "lead_death": "drowned by floodwaters"
-    }
+    "history_text": [
+            null,
+            "r_c was drowned by floodwaters.",
+            "drowned by floodwaters"
+    ]
 },
 {
     "patrol_id": "bch_bord_abandontwolegdis1",
@@ -649,8 +669,8 @@
     "chance_of_success": 40,
     "exp": 30,
     "success_text": [
-            "It's just an odd loner singing to themself. The patrol greets them, and as the loner isn't inside c_n territory, it's a polite interaction without any hostility.",
-            "It's just an odd loner singing to themself. When they see the patrol they invite them to sing, too. The patrol politely declines, but compliments the loner's songs.",
+            "It's just an odd loner singing to themselves. The patrol greets them, and as the loner isn't inside c_n territory, it's a polite interaction without any hostility.",
+            "It's just an odd loner singing to themselves. When they see the patrol they invite them to sing, too. The patrol politely declines, but compliments the loner's songs.",
             "Your patrol walks into an ambush by a group of rogues. It's only by the grace of StarClan that s_c is there, fighting with the ferocity of LionClan, the strength of TigerClan, and the flexibility of LeopardClan. Shaken, but no more than bruised, the patrol manages to retreat to safety.",
             "s_c signals for the patrol to stop. Carefully, quietly, they explain their concerns about the unknown situation. And maybe they're being too cautious - but then p_l picks up on the scent of strange cats around the Twoleg den. Forewarned, the patrol retreats to safety."
     ],
@@ -666,10 +686,11 @@
     "max_cats": 6,
     "antagonize_text": null,
     "antagonize_fail_text": null,
-    "history_text": {
-        "reg_death": "This cat died from being ambushed by rogues.",
-        "lead_death": "were ambushed by rogues"
-    }
+    "history_text": [
+            null,
+            "This cat died from being ambushed by rogues.",
+            "were ambushed by rogues"
+    ]
 },
 {
     "patrol_id": "bch_bord_abandontwolegdis2",
@@ -681,8 +702,8 @@
     "chance_of_success": 10,
     "exp": 30,
     "success_text": [
-            "It's just an odd loner singing to themself. r_c greets them, and as the loner isn't inside c_n territory, it's a polite interaction without any hostility.",
-            "It's just an odd loner singing to themself. When they see the patrol they invite them to sing, too. The patrol politely declines, but compliments the loner's songs.",
+            "It's just an odd loner singing to themselves. r_c greets them, and as the loner isn't inside c_n territory, it's a polite interaction without any hostility.",
+            "It's just an odd loner singing to themselves. When they see the patrol they invite them to sing, too. The patrol politely declines, but compliments the loner's songs.",
             "s_c walks into an ambush by a group of rogues. It's only by the grace of StarClan that s_c has the fighting skill and confidence to escape, running for their life.",
             "s_c has a bad feeling about this. And maybe they're being too cautious - but then they pick up on the scent of strange cats around the Twoleg den. Forewarned, s_c retreats to safety."
     ],
@@ -698,10 +719,11 @@
     "max_cats": 1,
     "antagonize_text": null,
     "antagonize_fail_text": null,
-    "history_text": {
-        "reg_death": "This cat died from being ambushed by rogues.",
-        "lead_death": "were ambushed by rogues"
-    }
+    "history_text": [
+            null,
+            "This cat died from being ambushed by rogues.",
+            "were ambushed by rogues"
+    ]
 },
 {
     "patrol_id": "bch_bord_flashflooddis1",
@@ -730,10 +752,11 @@
     "max_cats": 6,
     "antagonize_text": null,
     "antagonize_fail_text": null,
-    "history_text": {
-        "reg_death": "This cat was drowned by floodwaters.",
-        "lead_death": "drowned by floodwaters"
-    }
+    "history_text": [
+            null,
+            "This cat was drowned by floodwaters.",
+            "drowned by floodwaters"
+    ]
 },
 {
     "patrol_id": "bch_bord_flashflooddis2",
@@ -762,10 +785,11 @@
     "max_cats": 1,
     "antagonize_text": null,
     "antagonize_fail_text": null,
-    "history_text": {
-        "reg_death": "r_c was drowned by floodwaters.",
-        "lead_death": "drowned by floodwaters"
-    }
+    "history_text": [
+            null,
+            "r_c was drowned by floodwaters.",
+            "drowned by floodwaters"
+    ]
 },
 {
     "patrol_id": "bch_bord_flashflooddis3",
@@ -794,10 +818,11 @@
     "max_cats": 6,
     "antagonize_text": null,
     "antagonize_fail_text": null,
-    "history_text": {
-        "reg_death": "This cat was swept out to sea by a flood.",
-        "lead_death": "were swept out to sea by a flood"
-    }
+    "history_text": [
+            null,
+            "This cat was swept out to sea by a flood.",
+            "were swept out to sea by a flood"
+    ]
 },
 {
     "patrol_id": "wtlnd_bord_flashflooddis1",
@@ -838,9 +863,10 @@
     "max_cats": 6,
     "antagonize_text": null,
     "antagonize_fail_text": null,
-    "history_text": {
-        "reg_death": "This cat was drowned by floodwaters."
-    }
+    "history_text": [
+        null,
+        "This cat was drowned by floodwaters."
+    ]
 },
 {
     "patrol_id": "wtlnd_bord_flashflooddis2",
@@ -879,9 +905,10 @@
     "max_cats": 1,
     "antagonize_text": null,
     "antagonize_fail_text": null,
-    "history_text": {
-        "reg_death": "r_c was drowned by floodwaters."
-    }
+    "history_text": [
+        null,
+        "r_c was drowned by floodwaters."
+    ]
 },
 {
     "patrol_id": "wtlnd_bord_flashflooddis3",
@@ -923,9 +950,10 @@
     "max_cats": 6,
     "antagonize_text": null,
     "antagonize_fail_text": null,
-    "history_text": {
-        "reg_death": "This cat was killed by a flood."
-    }
+    "history_text": [
+        null,
+        "This cat was killed by a flood."
+    ]
 },
 {
     "patrol_id": "fst_bord_roguedis1",
@@ -954,11 +982,11 @@
     "max_cats": 3,
     "antagonize_text": null,
     "antagonize_fail_text": null,
-    "history_text": {
-        "scar": "This cat was badly scarred when rogues ambushed their patrol.",
-        "reg_death": "This cat was killed when rogues ambushed their patrol.",
-        "lead_death": "were killed in a rogue ambush"
-    }
+    "history_text": [
+        "This cat was badly scarred when rogues ambushed their patrol.",
+        "This cat was killed when rogues ambushed their patrol.",
+        "were killed in a rogue ambush"
+    ]
 },
 {
     "patrol_id": "mtn_bord_roguedis1",
@@ -987,11 +1015,11 @@
     "max_cats": 3,
     "antagonize_text": null,
     "antagonize_fail_text": null,
-    "history_text": {
-        "scar": "r_c was badly scarred when rogues ambushed their patrol.",
-        "reg_death": "This cat was killed when rogues ambushed their patrol.",
-        "lead_death": "were killed in a rogue ambush"
-    }
+    "history_text": [
+        "r_c was badly scarred when rogues ambushed their patrol.",
+        "This cat was killed when rogues ambushed their patrol.",
+        "were killed in a rogue ambush"
+    ]
 },
 {    
     "patrol_id": "pln_bord_roguedis1",
@@ -1020,32 +1048,32 @@
     "max_cats": 3,
     "antagonize_text": null,
     "antagonize_fail_text": null,
-    "history_text": {
-        "scar": "r_c was badly scarred when rogues ambushed their patrol.",
-        "reg_death": "This cat was killed when rogues ambushed their patrol.",
-        "lead_death": "were killed in a rogue ambush"
-    }
+    "history_text": [
+        "r_c was badly scarred when rogues ambushed their patrol.",
+        "This cat was killed when rogues ambushed their patrol.",
+        "were killed in a rogue ambush"
+    ]
 },
 {
     "patrol_id": "bch_bord_roguedis1",
     "biome": "beach",
     "season": "Any",
     "tags": ["border", "fighting", "scar", "THREE", "battle_injury", "reputation", "disaster"],
-    "intro_text": "As the patrol is marking the border lines, a gang of rogues bursts from the beach grass! An ambush!",
-    "decline_text": "The patrol turns tail and races away! The borders are left open for the rogues to muddy.",
+    "intro_text": "As the patrol is marking the border lines, a gang of seekers bursts from the beach grass! An ambush!",
+    "decline_text": "The patrol turns tail and races away! The energon in that area free for the seekers to take.",
     "chance_of_success": 40,
     "exp": 30,
     "success_text": [
-        "The patrol descends into battle without a second thought, eventually driving the rogues away.",
+        "The patrol descends into battle without a second thought, eventually driving the seekers away. They feel much better as the bots fly away.",
         null,
-        "s_c immediately leaps to protect their Clanmates, their ferocity in battle quickly terrifying the rogues. Realizing that they've sorely underestimated the Clan cats, the rogues turn tail and run.",
-        "s_c revels in the battle, leaping into the fray with their teeth bared and claws ready. The rogues are quickly driven away by the patrol."
+        "s_c immediately leaps to protect their teammates, their ferocity in battle quickly terrifying the seekers. Realizing that they've sorely underestimated the bots, they transform and fly off.",
+        "s_c revels in the battle, leaping into the fray with their weapon sharp and claws ready. The seekers are quickly driven away by the patrol. The patrol smiles to each other as they leave."
     ],
     "fail_text": [
         null,
         null,
-        "The rogues greatly outnumber the patrol and have no trouble defeating them. The fallen warriors' bodies are found the next day, covered in battle wounds and cold.",
-        "Taken by surprise, the patrol scatters and loses cohesion. The rogues are quick to take advantage of the confusion and r_c is badly wounded, forcing the patrol to retreat."
+        "The seekers greatly outnumber the patrol and have no trouble defeating them. The fallen soldiers' bodies are found the next day, covered in battle wounds and cold.",
+        "Taken by surprise, the patrol scatters and loses cohesion. The seekers are quick to take advantage of the confusion and r_c is badly wounded, forcing the patrol to retreat."
     ],
     "win_skills": ["excellent fighter"],
     "win_trait": ["bloodthirsty", "fierce", "vengeful"],
@@ -1053,10 +1081,10 @@
     "max_cats": 3,
     "antagonize_text": null,
     "antagonize_fail_text": null,
-    "history_text": {
-        "scar": "r_c was badly scarred when rogues ambushed their patrol.",
-        "reg_death": "This cat was killed when rogues ambushed their patrol.",
-        "lead_death": "were killed in a rogue ambush"
-    }
+    "history_text": [
+        "r_c was badly scarred when seekers ambushed their patrol.",
+        "This bot was killed when seekers ambushed their patrol.",
+        "were killed in an ambush"
+    ]
 }
 ]

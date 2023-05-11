@@ -2,23 +2,18 @@
     {
         "id": "leader_alive_kits",
         "thoughts": [
-            "Has recently picked up the scent of mischievous kits in their den...",
-            "Is pondering the next mentors for the kits of the Clan",
-            "Thinks about who should mentor new apprentices",
-            "Bats a mossball back to r_c when it hits them, chuckling at the wide-eyed kit"
+            "Has recently noticed the scene of mischievous sparklings in their den...",
+            "Is pondering the next mentors for the sparklings of the Clan"
         ],  
         "random_status_constraint": [
             "kitten"
-        ],
-        "random_living_status":[
-            "living"
         ]
     },
     {
         "id": "gen_leader",
         "thoughts": [
-            "Is hoping for a sign from StarClan",
-            "Is hoping that they are leading their Clan well",
+            "Is hoping for a sign from the Matrix",
+            "Is hoping that they are leading their bots well",
             "Is worried about Clan relations",
             "Is thinking about battle strategies",
             "Almost lost a life recently",
@@ -27,41 +22,33 @@
             "Is questioning their ability to lead",
             "Is dreading the Clan meeting they must call later today",
             "Is finding the responsibility of leadership to be quite the heavy burden",
-            "Is feeling blessed by StarClan this moon",
+            "Is feeling blessed by Primus this moon",
             "Is thinking about forming an alliance",
-            "Is making a solemn vow to protect their Clanmates",
-            "Called an important Clan meeting recently",
-            "Thinks they have been hearing the voices of StarClan cats...",
-            "Is pondering recent dreams they have had... perhaps from StarClan?",
-            "Recently called a Clan meeting, but forgot what to say"
+            "Is making a solemn vow to protect their teammates",
+            "Called an important meeting recently",
+            "Thinks they have been hearing the voice of Primus...",
+            "Is pondering recent dreams they have had... perhaps from the Matrix?",
+            "Recently called a meeting, but forgot what to say"
         ]
     },
     {
         "id": "leader_alive_apprentices",
         "thoughts": [
-            "Is assessing some apprentices",
-            "Is satisfied that r_c is doing well in their training"
+            "Thinks about who should mentor new apprentices",
+            "Is assessing some apprentices"
         ],
         "random_status_constraint": [
-            "apprentice"
-        ],
-        "random_living_status":[
-            "living"
+            "kitten"
         ]
     },
     {
         "id":"leader_alive_deputy",
         "thoughts":[
             "Tries to set a good example for the deputy",
-            "Has been letting their deputy call the shots recently, and is proud of their initiative",
-            "Needs to talk to r_c about something",
-            "Wants to go on patrol with r_c so they can have a chat"
+            "Has been letting their deputy call the shots recently, and is proud of their initiative"
         ],
         "random_status_constraint": [
             "deputy"
-        ],
-        "random_living_status":[
-            "living"
         ]
     },
     {
@@ -70,7 +57,7 @@
             "Thinks they have been hearing the voices of Dark Forest cats...",
             "Is pondering recent dreams they have had... perhaps from the Dark Forest?"
         ],
-        "random_living_status": [
+        "random_status_constraint": [
             "darkforest"
         ]
     },
@@ -89,23 +76,12 @@
         "id": "strange_leader",
         "thoughts": [
             "No thoughts, head empty",
-            "Insists that they received ten lives instead of nine",
+            "Insists they they received ten lives instead of nine",
             "Has a crazed look in their eyes",
             "Is wondering how many cats would agree to changing the Clan's name..."
         ],
         "main_trait_constraint": [
             "strange"
-        ]
-    }
-    ,
-    {
-        "id": "charismatic_leader",
-        "thoughts": [
-            "Gives a particularly rousing speech at a Clan meeting",
-            "Feels confident that the Clan admires {PRONOUN/m_c/object}"
-        ],
-        "main_trait_constraint": [
-            "charismatic"
         ]
     }
 ]

@@ -2,7 +2,7 @@
     {
         "id": "gen_newborn",
         "thoughts": [
-            "Mewls pitifully for milk",
+            "Beeps pitifully for fuel",
             "Tries to figure out all of the smells around them",
             "Snoozes peacefully",
             "Tries to open their eyes, but it's all blurry"
@@ -15,8 +15,8 @@
         "id": "gen_newborn_to_parent",
         "thoughts":[
             "Snuggles closer to r_c",
-            "Smells r_c and immediately perks up",
-            "Mews at r_c as they shift in the nest"
+            "Hears r_c and immediately perks up",
+            "Beeps at r_c as they shift in the nest"
         ],
         "main_age_constraint": [
             "newborn"

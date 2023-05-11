@@ -59,213 +59,6 @@
             "tool_tip_delay": "0"
         }
     },
-	"#arrow_mns_button": 
-    {
-        "prototype": "#image_button",
-		"images":
-        {
-            "normal_image":
-            {
-                "path": "resources/images/buttons/arrow_mns.png"
-            },
-			"hovered_image":
-            {
-                "path": "resources/images/buttons/arrow_mns_hover.png"
-            },
-			"selected_image":
-            {
-                "path": "resources/images/buttons/arrow_mns.png"
-            },
-            "disabled_image":
-            {
-                "path":"resources/images/buttons/arrow_mns_unavailable.png"
-            }
-        }
-    },
-	"#arrow_mns_closed_button": 
-    {
-        "prototype": "#image_button",
-		"images":
-        {
-            "normal_image":
-            {
-                "path": "resources/images/buttons/arrow_mns_closed.png"
-            },
-			"hovered_image":
-            {
-                "path": "resources/images/buttons/arrow_mns_closed_hover.png"
-            },
-			"selected_image":
-            {
-                "path": "resources/images/buttons/arrow_mns_closed.png"
-            },
-            "disabled_image":
-            {
-                "path":"resources/images/buttons/arrow_mns_closed_unavailable.png"
-            }
-        }
-    },
-	"#mns_bg": 
-    {
-        "prototype": "#image_button",
-		"images":
-        {
-            "normal_image":
-            {
-                "path": "resources/images/moons_n_seasons.png"
-            },
-			"hovered_image":
-            {
-                "path": "resources/images/moons_n_seasons.png"
-            },
-			"selected_image":
-            {
-                "path": "resources/images/moons_n_seasons.png"
-            },
-            "disabled_image":
-            {
-                "path":"resources/images/moons_n_seasons.png"
-            }
-        }
-    },
-	"#mns_bg_closed": 
-    {
-        "prototype": "#image_button",
-		"images":
-        {
-            "normal_image":
-            {
-                "path": "resources/images/moons_n_seasons_closed.png"
-            },
-			"hovered_image":
-            {
-                "path": "resources/images/moons_n_seasons_closed.png"
-            },
-			"selected_image":
-            {
-                "path": "resources/images/moons_n_seasons_closed.png"
-            },
-            "disabled_image":
-            {
-                "path":"resources/images/moons_n_seasons_closed.png"
-            }
-        }
-    },
-	"#mns_image_moon": 
-    {
-        "prototype": "#image_button",
-		"images":
-        {
-            "normal_image":
-            {
-                "path": "resources/images/icon_moon.png"
-            },
-			"hovered_image":
-            {
-                "path": "resources/images/icon_moon.png"
-            },
-			"selected_image":
-            {
-                "path": "resources/images/icon_moon.png"
-            },
-            "disabled_image":
-            {
-                "path":"resources/images/icon_moon.png"
-            }
-        }
-    },
-	"#mns_image_newleaf": 
-    {
-        "prototype": "#image_button",
-		"images":
-        {
-            "normal_image":
-            {
-                "path": "resources/images/icon_newleaf.png"
-            },
-			"hovered_image":
-            {
-                "path": "resources/images/icon_newleaf.png"
-            },
-			"selected_image":
-            {
-                "path": "resources/images/icon_newleaf.png"
-            },
-            "disabled_image":
-            {
-                "path":"resources/images/icon_newleaf.png"
-            }
-        }
-    },
-	"#mns_image_greenleaf": 
-    {
-        "prototype": "#image_button",
-		"images":
-        {
-            "normal_image":
-            {
-                "path": "resources/images/icon_greenleaf.png"
-            },
-			"hovered_image":
-            {
-                "path": "resources/images/icon_greenleaf.png"
-            },
-			"selected_image":
-            {
-                "path": "resources/images/icon_greenleaf.png"
-            },
-            "disabled_image":
-            {
-                "path":"resources/images/icon_greenleaf.png"
-            }
-        }
-    },
-	"#mns_image_leafbare": 
-    {
-        "prototype": "#image_button",
-		"images":
-        {
-            "normal_image":
-            {
-                "path": "resources/images/icon_leafbare.png"
-            },
-			"hovered_image":
-            {
-                "path": "resources/images/icon_leafbare.png"
-            },
-			"selected_image":
-            {
-                "path": "resources/images/icon_leafbare.png"
-            },
-            "disabled_image":
-            {
-                "path":"resources/images/icon_leafbare.png"
-            }
-        }
-    },
-	"#mns_image_leaffall": 
-    {
-        "prototype": "#image_button",
-		"images":
-        {
-            "normal_image":
-            {
-                "path": "resources/images/icon_leaffall.png"
-            },
-			"hovered_image":
-            {
-                "path": "resources/images/icon_leaffall.png"
-            },
-			"selected_image":
-            {
-                "path": "resources/images/icon_leaffall.png"
-            },
-            "disabled_image":
-            {
-                "path":"resources/images/icon_leaffall.png"
-            }
-        }
-    },
     "#continue_button": 
     {
         "prototype": "#image_button",
@@ -350,32 +143,6 @@
             }
         }
     },
-    "#update_button":
-	{
-        "prototype": "#image_button",
-		"images":
-        {
-            "normal_image":
-            {
-                "path": "resources/images/buttons/update_available.png"
-            },
-			"hovered_image":
-            {
-                "path": "resources/images/buttons/update_available_hover.png"
-            }
-		}
-    },
-	"#new_update_button":
-	{
-        "prototype": "#image_button",
-		"images":
-        {
-            "normal_image":
-            {
-                "path": "resources/images/new_update.png"
-            }
-		}
-    },
     "#done_button":
 	{
 		"prototype": "#image_button",
@@ -397,7 +164,7 @@
             {
 				"path": "resources/images/buttons/done_unavailable.png"
 			}
-
+			
 		}
     },
     "#back_button":
@@ -416,11 +183,7 @@
 			"selected_image":
             {
                 "path": "resources/images/buttons/back_hover.png"
-            },
-			"disabled_image":
-            {
-				"path": "resources/images/buttons/back_unavailable.png"
-			}
+            }
         }
     },
     "#exit_window_button":
@@ -2577,29 +2340,6 @@
             }
         }
     },
-    "#crystal_tab":
-    {
-        "prototype": "#image_button",
-		"images":
-        {
-            "normal_image":
-            {
-                "path": "resources/images/buttons/crystal_camp.png"
-            },
-            "hovered_image":
-            {
-                "path": "resources/images/buttons/crystal_camp_hover.png"
-            },
-			"selected_image":
-            {
-                "path": "resources/images/buttons/crystal_camp_hover.png"
-            },
-            "disabled_image":
-            {
-                "path":"resources/images/buttons/crystal_camp_unavailable.png"
-            }
-        }
-    },
     "#grasslands_tab": 
     {
         "prototype": "#image_button",
@@ -2742,20 +2482,20 @@
     {
         "colours":
         {
-            "normal_bg":"#ac9d72",
-            "hovered_bg":"#644d39",
-            "selected_bg":"#644d39",
-            "active_bg": "#644d39",
+            "normal_bg":"#72a7ac",
+            "hovered_bg":"#413964",
+            "selected_bg":"#413964",
+            "active_bg": "#413964",
             "normal_text":"#000000",
             "hovered_text":"#FFFFFF",
             "selected_text":"#FFFFFF",
             "disabled_text":"#FFFFFF",
             "text_shadow": "#00000000",
-            "normal_border": "#887b56",
-            "hovered_border": "#503825",
-            "disabled_border": "#503825",
-            "selected_border": "#503825",
-            "active_border": "#776045"
+            "normal_border": "#566688",
+            "hovered_border": "#322550",
+            "disabled_border": "#322550",
+            "selected_border": "#322550",
+            "active_border": "#455f77"
         },
         "font":
         {
@@ -3370,9 +3110,9 @@
   {
     "colours":
     {
-      "normal_border":  "#CEC2A8",
-      "filled_bar": "#796045",
-      "unfilled_bar": "#CEC2A8"
+      "normal_border":  "#a8cec7",
+      "filled_bar": "#4e4579",
+      "unfilled_bar": "#a8cec7"
     },
     "misc":
     {
@@ -3395,7 +3135,7 @@
     "prototype": "#relation_bar",
     "colours":
     {
-      "filled_bar": "#8CB250"
+      "filled_bar": "#50B28B"
     }
   },
   "#relation_bar_dark":
@@ -3403,8 +3143,8 @@
     "prototype": "#relation_bar",
     "colours":
     {
-      "normal_border":  "#2F2918",
-      "unfilled_bar": "#2F2918"
+      "normal_border":  "#18192F",
+      "unfilled_bar": "#18192F"
     }
   },
   "#relation_bar_neg_dark":
@@ -3420,7 +3160,7 @@
     "prototype": "#relation_bar_dark",
     "colours":
     {
-      "filled_bar": "#8CB250"
+      "filled_bar": "#50B28B"
     }
   },
   "#switch_focus_button":
@@ -3558,29 +3298,6 @@
             "disabled_image":
             {
                 "path":"resources/images/buttons/not_yet.png"
-            }
-        }
-    },
-    "#cancel_button":
-    {
-        "prototype": "#image_button",
-        "images":
-        {
-            "normal_image":
-            {
-                "path": "resources/images/buttons/cancel.png"
-            },
-            "hovered_image":
-            {
-                "path": "resources/images/buttons/cancel_hover.png"
-            },
-            "selected_image":
-            {
-                "path": "resources/images/buttons/cancel_hover.png"
-            },
-            "disabled_image":
-            {
-                "path":"resources/images/buttons/cancel_unavailable.png"
             }
         }
     },
@@ -4094,11 +3811,11 @@
     {
         "colours":
         {
-            "normal_bg":"#655934",
-            "hovered_bg":"#1E1809",
-            "selected_bg":"#1E1809",
-            "normal_text":"#EEE4CD",
-            "hovered_text":"#EFE5CE",
+            "normal_bg":"#344765",
+            "hovered_bg":"#09101e",
+            "selected_bg":"#09101e",
+            "normal_text":"#cdeeea",
+            "hovered_text":"#ceeeef",
             "text_shadow": "#00000000"
         },
         "font":
@@ -4743,99 +4460,7 @@
                 "path":"resources/images/buttons/siblings.png"
             }
         }
-  },
-  "#log_icon":
-    {
-        "prototype": "#image_button",
-        "images":
-        {
-            "normal_image":
-            {
-                "path": "resources/images/buttons/log_icon.png"
-            },
-            "hovered_image":
-            {
-                "path": "resources/images/buttons/log_icon_hover.png"
-            },
-            "selected_image":
-            {
-                "path": "resources/images/buttons/log_icon_hover.png"
-            },
-            "disabled_image":
-            {
-                "path":"resources/images/buttons/log_icon_unavailable.png"
-            }
-        }
-    },
-  "#tumblr_button":
-    {
-        "prototype": "#image_button",
-        "images":
-        {
-            "normal_image":
-            {
-                "path": "resources/images/buttons/tumblr.png"
-            },
-            "hovered_image":
-            {
-                "path": "resources/images/buttons/tumblr_hover.png"
-            },
-            "selected_image":
-            {
-                "path": "resources/images/buttons/tumblr_hover.png"
-            },
-            "disabled_image":
-            {
-                "path":"resources/images/buttons/tumblr_unavailable.png"
-            }
-        }
-    },
-  "#twitter_button":
-    {
-        "prototype": "#image_button",
-        "images":
-        {
-            "normal_image":
-            {
-                "path": "resources/images/buttons/twitter.png"
-            },
-            "hovered_image":
-            {
-                "path": "resources/images/buttons/twitter_hover.png"
-            },
-            "selected_image":
-            {
-                "path": "resources/images/buttons/twitter_hover.png"
-            },
-            "disabled_image":
-            {
-                "path":"resources/images/buttons/twitter_unavailable.png"
-            }
-        }
-    },
-  "#discord_button":
-    {
-        "prototype": "#image_button",
-        "images":
-        {
-            "normal_image":
-            {
-                "path": "resources/images/buttons/discord.png"
-            },
-            "hovered_image":
-            {
-                "path": "resources/images/buttons/discord_hover.png"
-            },
-            "selected_image":
-            {
-                "path": "resources/images/buttons/discord_hover.png"
-            },
-            "disabled_image":
-            {
-                "path":"resources/images/buttons/discord_unavailable.png"
-            }
-        }
-    }
+  }
 }
 
 

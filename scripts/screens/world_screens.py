@@ -15,7 +15,7 @@ class OutsideClanScreen(Screens):
     list_page = 1  # Holds the current page
     display_cats = []  # Holds the cat sprite objects
     cat_names = []  # Holds the cat name text-box objects
-    
+
     previous_search_text = ""
 
     def load_images(self):
@@ -118,13 +118,6 @@ class OutsideClanScreen(Screens):
                 self.change_screen('profile screen')
             else:
                 self.menu_button_pressed(event)
-        elif event.type == pygame.KEYDOWN and game.settings['keybinds']:
-            if self.search_bar.is_focused:
-                return
-            if event.key == pygame.K_LEFT:
-                self.change_screen("clan screen")
-            elif event.key == pygame.K_RIGHT:
-                self.change_screen('patrol screen')
 
     def get_living_cats(self):
         self.living_cats = []
@@ -133,8 +126,8 @@ class OutsideClanScreen(Screens):
                 self.living_cats.append(the_cat)
 
     def screen_switches(self):
-        
         # Determine the living, non-exiled cats.
+        cat_profiles()
         self.get_living_cats()
 
         self.search_bar = pygame_gui.elements.UITextEntryLine(scale(pygame.Rect((845, 278), (294, 55))),
@@ -152,7 +145,7 @@ class OutsideClanScreen(Screens):
                                                          manager=MANAGER)  # Text will be filled in later
 
         self.set_disabled_menu_buttons(["list_screen"])
-        self.update_heading_text('Outside The Clan')
+        self.update_heading_text('Outside The Team')
         self.show_menu_buttons()
         self.update_search_cats("")  # This will list all the cats, and create the button objects.
 
@@ -162,7 +155,7 @@ class OutsideClanScreen(Screens):
             scale(pygame.Rect((x_pos, y_pos), (196, 68))),
             "",
             object_id="#filter_by_closed_button",
-            tool_tip_text="By default, cats are sorted by rank.", manager=MANAGER
+            tool_tip_text="By default, bots are sorted by rank.", manager=MANAGER
         )
         self.filter_by_open = UIImageButton(
             scale(pygame.Rect((x_pos, y_pos), (196, 68))),
@@ -246,6 +239,7 @@ class OutsideClanScreen(Screens):
 
     def update_page(self):
         """Run this function when page changes."""
+
         # If the number of pages becomes smaller than the number of our current page, set
         #   the current page to the last page
         if self.list_page > self.all_pages:
@@ -301,7 +295,7 @@ class OutsideClanScreen(Screens):
                 self.display_cats.append(
                     UISpriteButton(scale(pygame.Rect
                                    ((260 + pos_x, 360 + pos_y), (100, 100))),
-                                   cat.sprite,
+                                   cat.big_sprite,
                                    cat.ID,
                                    starting_height=1, manager=MANAGER))
 
@@ -334,11 +328,6 @@ class UnknownResScreen(Screens):
     display_cats = []
     cat_names = []
     previous_search_text = ""
-    
-    if game.settings['moons and seasons']:
-        move_for_mns = 50
-    else:
-        move_for_mns = 0    
 
     def __init__(self, name=None):
         super().__init__(name)
@@ -440,15 +429,6 @@ class UnknownResScreen(Screens):
                 self.change_screen('profile screen')
             else:
                 self.menu_button_pressed(event)
-        
-        elif event.type == pygame.KEYDOWN and game.settings['keybinds']:
-            if self.search_bar.is_focused:
-                return
-            if event.key == pygame.K_LEFT:
-                self.change_screen("clan screen")
-            elif event.key == pygame.K_RIGHT:
-                self.change_screen('patrol screen')
-
 
     def exit_screen(self):
         self.hide_menu_buttons()
@@ -478,14 +458,17 @@ class UnknownResScreen(Screens):
     def get_dead_cats(self):
         self.dead_cats = []
         for the_cat in Cat.all_cats_list:
-            if the_cat.ID in game.clan.unknown_cats:
+            if the_cat.dead and the_cat.ID != game.clan.instructor.ID and not the_cat.faded \
+                    and (the_cat.outside or the_cat.exiled):
                 self.dead_cats.append(the_cat)
 
     def screen_switches(self):
         # Determine the dead, non-exiled cats.
+        
+        cat_profiles()
         self.get_dead_cats()
 
-        self.search_bar = pygame_gui.elements.UITextEntryLine(scale(pygame.Rect((845, 278), (294, 55))),
+        self.search_bar = pygame_gui.elements.UITextEntryLine(scale(pygame.Rect((845, 284), (294, 46))),
                                                               object_id="#search_entry_box", manager=MANAGER)
 
         self.starclan_button = UIImageButton(scale(pygame.Rect((230, 270), (68, 68))), "", object_id="#starclan_button")
@@ -502,7 +485,7 @@ class UnknownResScreen(Screens):
                                                          manager=MANAGER)  # Text will be filled in later
 
         self.set_disabled_menu_buttons(["starclan_screen"])
-        self.update_heading_text("Unknown Residence")
+        self.update_heading_text("Dead Universe")
         self.show_menu_buttons()
 
         self.update_search_cats("")  # This will list all the cats, and create the button objects.
@@ -513,7 +496,7 @@ class UnknownResScreen(Screens):
             scale(pygame.Rect((x_pos, y_pos), (196, 68))),
             "",
             object_id="#filter_by_closed_button",
-            tool_tip_text="By default, cats are sorted by rank.", manager=MANAGER
+            tool_tip_text="By default, bots are sorted by rank.", manager=MANAGER
         )
         self.filter_by_open = UIImageButton(
             scale(pygame.Rect((x_pos, y_pos), (196, 68))),
@@ -573,6 +556,7 @@ class UnknownResScreen(Screens):
 
     def update_page(self):
         """Run this function when page changes."""
+
         # If the number of pages becomes smaller than the number of our current page, set
         #   the current page to the last page
         if self.list_page > self.all_pages:
@@ -629,7 +613,7 @@ class UnknownResScreen(Screens):
                 self.display_cats.append(
                     UISpriteButton(scale(pygame.Rect
                                    ((260 + pos_x, 360 + pos_y), (100, 100))),
-                                   cat.sprite,
+                                   cat.big_sprite,
                                    cat.ID,
                                    starting_height=1, manager=MANAGER))
 

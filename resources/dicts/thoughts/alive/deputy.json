@@ -2,37 +2,34 @@
     {
         "id": "deputy_dead_deputy",
         "thoughts": [
-            "Wishes {PRONOUN/m_c/subject} could speak to r_c to learn how to assign patrols better"
+            "Wishes they could speak to r_c to learn how to assign patrols better"
         ],
         "random_status_constraint": [
             "deputy"
-        ],
-        "random_living_status": [
-            "starclan"
         ]
     },
     {
         "id": "gen_deputy",
         "thoughts": [
-            "Is assigning cats to a border patrol",
-            "Is assigning cats to a hunting patrol",
-            "Is wondering what it would be like to be a leader",
+            "Is assigning bots to a border patrol",
+            "Is assigning bots to search for fuel",
+            "Is wondering what it would be like to be a prime",
             "Is stressed about organizing patrols",
-            "Wonders who will give {PRONOUN/m_c/object} nine lives",
+            "Wonders what it's like to have a Matrix",
             "Feels overworked",
             "Is hoping for a break",
-            "Is assigning cats to the dawn patrol",
-            "Is assigning cats to the hunting patrol",
-            "Is assigning cats to patrol the borders",
-            "Can't believe {PRONOUN/m_c/subject} overslept today",
-            "Is unsure of what the rest of the Clan thinks of {PRONOUN/m_c/object} as deputy"
+            "Is assigning bots to the dawn patrol",
+            "Is assigning bots to hunt for fuel",
+            "Is assigning bots to protect the borders",
+            "Can't believe they overslept today",
+            "Is unsure of what the rest of the team thinks of them as deputy"
         ]
     },
     {
         "id": "deputy_alive_leader",
         "thoughts": [
-            "Is doing {PRONOUN/m_c/poss} best to honor {PRONOUN/m_c/poss} Clan and {PRONOUN/m_c/poss} leader",
-            "Must speak with the leader soon about something {PRONOUN/m_c/subject} found while out on patrol"
+            "Is doing their best to honor their team and their prime",
+            "Must speak with the leader soon about something they found while out on patrol"
         ],
         "random_status_constraint": [
             "leader"
@@ -41,7 +38,7 @@
     {
         "id": "deputy_alive_apprentices",
         "thoughts": [
-            "Is assessing the apprentices"
+            "Is assessing the cadets"
         ],
         "random_status_constraint": [
             "apprentice"
@@ -60,24 +57,13 @@
     {
         "id": "strange_deputy_to_gen",
         "thoughts": [
-            "Accidentally assigns the same cat to three patrols",
-            "Insists a hunting patrol to only bring back mice",
-            "Goes missing and comes back smelling like garlic",
+            "Accidentally assigns the same bot to three patrols",
+            "Insists a hunting patrol only bring back oil",
+            "Goes missing and comes back smelling like mud",
             "Is making odd noises"
         ],
         "main_trait_constraint": [
             "strange"
-        ]
-    },
-    {  
-        "id":"insecure_deputy",
-        "thoughts": [
-            "Keeps confirming with the leader that the patrols {PRONOUN/m_c/subject}{VERB/m_c/'s/'re} organizing sound right",
-            "Hopes {PRONOUN/m_c/subject}'ll make a decent leader someday",
-            "Wonders how {PRONOUN/m_c/subject} became deputy in the first place"
-        ],
-        "main_trait_constraint":[
-            "insecure"
         ]
     }
 ]

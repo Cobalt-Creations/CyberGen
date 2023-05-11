@@ -4,7 +4,6 @@ import pygame
 from math import ceil
 from random import choice
 import pygame_gui
-import traceback
 from copy import deepcopy
 
 from .base_screens import Screens, cat_profiles
@@ -16,7 +15,6 @@ from scripts.game_structure import image_cache
 from scripts.game_structure.game_essentials import game, screen, screen_x, screen_y, MANAGER
 from .cat_screens import ProfileScreen
 from ..conditions import get_amount_cat_for_one_medic, medical_cats_condition_fulfilled
-from scripts.game_structure.windows import SaveError
 
 
 class ClanScreen(Screens):
@@ -53,18 +51,14 @@ class ClanScreen(Screens):
             pass
         elif event.type == pygame_gui.UI_BUTTON_START_PRESS:
             if event.ui_element == self.save_button:
-                try:
-                    self.save_button_saving_state.show()
-                    self.save_button.disable()
-                    game.save_cats()
-                    game.clan.save_clan()
-                    game.clan.save_pregnancy(game.clan)
-                    game.save_settings()
-                    game.switches['saved_clan'] = True
-                    self.update_buttons_and_text()
-                except RuntimeError:
-                    SaveError(traceback.format_exc())
-                    self.change_screen("start screen")
+                self.save_button_saving_state.show()
+                self.save_button.disable()
+                game.save_cats()
+                game.clan.save_clan()
+                game.clan.save_pregnancy(game.clan)
+                game.save_settings()
+                game.switches['saved_clan'] = True
+                self.update_buttons_and_text()
             if event.ui_element in self.cat_buttons:
                 game.switches["cat"] = event.ui_element.return_cat_id()
                 self.change_screen('profile screen')
@@ -78,24 +72,9 @@ class ClanScreen(Screens):
                 self.change_screen('med den screen')
             else:
                 self.menu_button_pressed(event)
-        
-        elif event.type == pygame.KEYDOWN and game.settings['keybinds']:
-            if event.key == pygame.K_RIGHT:
-                self.change_screen('starclan screen')
-            elif event.key == pygame.K_LEFT:
-                self.change_screen('events screen')
-            elif event.key == pygame.K_SPACE:
-                self.save_button_saving_state.show()
-                self.save_button.disable()
-                game.save_cats()
-                game.clan.save_clan()
-                game.clan.save_pregnancy(game.clan)
-                game.save_settings()
-                game.switches['saved_clan'] = True
-                self.update_buttons_and_text()
-
 
     def screen_switches(self):
+        cat_profiles()
         self.update_camp_bg()
         game.switches['cat'] = None
         if game.clan.biome + game.clan.camp_bg in game.clan.layouts:
@@ -104,9 +83,9 @@ class ClanScreen(Screens):
             self.layout = game.clan.layouts["default"]
 
         self.choose_cat_positions()
-        
+
         self.set_disabled_menu_buttons(["clan_screen"])
-        self.update_heading_text(f'{game.clan.name}Clan')
+        self.update_heading_text(f'{game.clan.name}Bots')
         self.show_menu_buttons()
 
         # Creates and places the cat sprites.
@@ -126,13 +105,13 @@ class ClanScreen(Screens):
                 try:
                     self.cat_buttons.append(
                         UISpriteButton(scale(pygame.Rect(tuple(Cat.all_cats[x].placement), (100, 100))),
-                                       Cat.all_cats[x].sprite,
+                                       Cat.all_cats[x].big_sprite,
                                        cat_id=x,
                                        starting_height=i)
                     )
                 except:
                     print(f"ERROR: placing {Cat.all_cats[x].name}\'s sprite on Clan page")
-                    
+
         # Den Labels
         # Redo the locations, so that it uses layout on the clan page
         self.warrior_den_label = pygame_gui.elements.UIImage(
@@ -360,7 +339,6 @@ class ClanScreen(Screens):
             elif Cat.all_cats[x].status == "leader":
                 game.clan.leader.placement = self.choose_nonoverlapping_positions(first_choices, all_dens,
                                                                                   [1, 200, 1, 1, 1, 1, 1])
-                                                                                  
 
     def update_buttons_and_text(self):
         if game.switches['saved_clan']:
@@ -391,6 +369,7 @@ class ClanScreen(Screens):
             self.leader_den_label.hide()
             self.med_den_label.hide()
             self.elder_den_label.hide()
+
 
 class StarClanScreen(Screens):
     list_page = 1
@@ -495,15 +474,6 @@ class StarClanScreen(Screens):
                 self.change_screen('profile screen')
             else:
                 self.menu_button_pressed(event)
-        
-        elif event.type == pygame.KEYDOWN and game.settings['keybinds']:
-            if self.search_bar.is_focused:
-                return
-            if event.key == pygame.K_LEFT:
-                self.change_screen("clan screen")
-            elif event.key == pygame.K_RIGHT:
-                self.change_screen('patrol screen')
-
 
     def exit_screen(self):
         self.hide_menu_buttons()
@@ -533,12 +503,13 @@ class StarClanScreen(Screens):
     def get_dead_cats(self):
         self.dead_cats = [game.clan.instructor] if not game.clan.instructor.df else []
         for the_cat in Cat.all_cats_list:
-            if the_cat.dead and the_cat.ID != game.clan.instructor.ID and not the_cat.outside and not the_cat.df and\
-                    not the_cat.faded:
+            if the_cat.dead and the_cat.ID != game.clan.instructor.ID and not the_cat.outside and not the_cat.df and \
+                    not the_cat.faded and not the_cat.status in ['kittypet', 'loner', 'rogue', 'former Clancat']:
                 self.dead_cats.append(the_cat)
 
     def screen_switches(self):
         # Determine the dead, non-exiled cats.
+        cat_profiles()
         self.get_dead_cats()
 
         self.search_bar = pygame_gui.elements.UITextEntryLine(scale(pygame.Rect((845, 278), (294, 55))),
@@ -563,7 +534,7 @@ class StarClanScreen(Screens):
                                                          manager=MANAGER)  # Text will be filled in later
 
         self.set_disabled_menu_buttons(["starclan_screen"])
-        self.update_heading_text("StarClan")
+        self.update_heading_text("Allspark")
         self.show_menu_buttons()
 
         self.update_search_cats("")  # This will list all the cats, and create the button objects.
@@ -574,7 +545,7 @@ class StarClanScreen(Screens):
             scale(pygame.Rect((x_pos, y_pos), (196, 68))),
             "",
             object_id="#filter_by_closed_button",
-            tool_tip_text="By default, cats are sorted by rank.", manager=MANAGER
+            tool_tip_text="By default, bots are sorted by rank.", manager=MANAGER
         )
         self.filter_by_open = UIImageButton(
             scale(pygame.Rect((x_pos, y_pos), (196, 68))),
@@ -634,6 +605,7 @@ class StarClanScreen(Screens):
 
     def update_page(self):
         """Run this function when page changes."""
+
         # If the number of pages becomes smaller than the number of our current page, set
         #   the current page to the last page
         if self.list_page > self.all_pages:
@@ -690,7 +662,7 @@ class StarClanScreen(Screens):
                 self.display_cats.append(
                     UISpriteButton(scale(pygame.Rect
                                          ((260 + pos_x, 360 + pos_y), (100, 100))),
-                                   cat.sprite,
+                                   cat.big_sprite,
                                    cat.ID,
                                    starting_height=1, manager=MANAGER))
 
@@ -709,7 +681,6 @@ class StarClanScreen(Screens):
                     pos_y += 200
 
     def on_use(self):
-        # Check if window needs to be moved down for extra UI
         bg = self.starclan_bg
 
         # Only update the positions if the search text changes
@@ -719,7 +690,7 @@ class StarClanScreen(Screens):
 
         screen.blit(bg, (0, 0))
 
-        screen.blit(ListScreen.search_bar, (696 / 1600 * screen_x, 270/ 1400 * screen_y))
+        screen.blit(ListScreen.search_bar, (696 / 1600 * screen_x, 270 / 1400 * screen_y))
 
     def chunks(self, L, n):
         return [L[x: x + n] for x in range(0, len(L), n)]
@@ -752,7 +723,7 @@ class DFScreen(Screens):
             (screen_x, screen_y))
         self.search_bar_image = pygame.transform.scale(
             pygame.image.load("resources/images/search_bar.png").convert_alpha(), (int(456 / 1600 * screen_x),
-                                                                                   int(68 / 1400 * screen_y)))
+                                                                                   int(68 / 1400 * screen_x)))
         self.clan_name_bg = pygame.transform.scale(
             image_cache.load_image("resources/images/clan_name_bg.png").convert_alpha(), (int(380 / 1600 * screen_x),
                                                                                           int(68 / 1400 * screen_y)))
@@ -834,13 +805,6 @@ class DFScreen(Screens):
                 self.change_screen('profile screen')
             else:
                 self.menu_button_pressed(event)
-        elif event.type == pygame.KEYDOWN and game.settings['keybinds']:
-            if self.search_bar.is_focused:
-                return
-            if event.key == pygame.K_LEFT:
-                self.change_screen("clan screen")
-            elif event.key == pygame.K_RIGHT:
-                self.change_screen('patrol screen')
 
     def exit_screen(self):
         self.hide_menu_buttons()
@@ -871,12 +835,13 @@ class DFScreen(Screens):
         self.dead_cats = [game.clan.instructor] if game.clan.instructor.df else []
 
         for the_cat in Cat.all_cats_list:
-            if the_cat.dead and the_cat.ID != game.clan.instructor.ID and the_cat.df and \
+            if the_cat.dead and the_cat.ID != game.clan.instructor.ID and not the_cat.exiled and the_cat.df and \
                     not the_cat.faded:
                 self.dead_cats.append(the_cat)
 
     def screen_switches(self):
         # Determine the dead, non-exiled cats.
+        cat_profiles()
         self.get_dead_cats()
 
         self.search_bar = pygame_gui.elements.UITextEntryLine(scale(pygame.Rect((845, 278), (294, 55))),
@@ -900,7 +865,7 @@ class DFScreen(Screens):
                                                          manager=MANAGER)
 
         self.set_disabled_menu_buttons(["starclan_screen"])
-        self.update_heading_text("Dark Forest")
+        self.update_heading_text("The Pit")
         self.show_menu_buttons()
 
         self.update_search_cats("")  # This will list all the cats, and create the button objects.
@@ -971,6 +936,7 @@ class DFScreen(Screens):
 
     def update_page(self):
         """Run this function when page changes."""
+
         # If the number of pages becomes smaller than the number of our current page, set
         #   the current page to the last page
         if self.list_page > self.all_pages:
@@ -1027,7 +993,7 @@ class DFScreen(Screens):
                 self.display_cats.append(
                     UISpriteButton(scale(pygame.Rect
                                          ((260 + pos_x, 360 + pos_y), (100, 100))),
-                                   cat.sprite,
+                                   cat.big_sprite,
                                    cat.ID,
                                    starting_height=1))
 
@@ -1046,7 +1012,6 @@ class DFScreen(Screens):
                     pos_y += 200
 
     def on_use(self):
-        
         bg = self.df_bg
         screen.blit(bg, (0, 0))
 
@@ -1057,7 +1022,7 @@ class DFScreen(Screens):
 
         screen.blit(bg, (0, 0))
 
-        screen.blit(ListScreen.search_bar, (696 / 1600 * screen_x, 270/ 1400 * screen_y))
+        screen.blit(ListScreen.search_bar, (696 / 1600 * screen_x, 270 / 1400 * screen_y))
 
     def chunks(self, L, n):
         return [L[x: x + n] for x in range(0, len(L), n)]
@@ -1177,12 +1142,6 @@ class ListScreen(Screens):
                 self.change_screen('profile screen')
             else:
                 self.menu_button_pressed(event)
-        
-        elif event.type == pygame.KEYDOWN and game.settings['keybinds']:
-            if self.search_bar.is_focused:
-                return
-            if event.key == pygame.K_LEFT:
-                self.change_screen('patrol screen')
 
     def get_living_cats(self):
         self.living_cats = []
@@ -1192,6 +1151,7 @@ class ListScreen(Screens):
 
     def screen_switches(self):
         # Determine the living, non-exiled cats.
+        cat_profiles()
         self.get_living_cats()
 
         self.search_bar = pygame_gui.elements.UITextEntryLine(scale(pygame.Rect((845, 278), (294, 55))),
@@ -1228,7 +1188,7 @@ class ListScreen(Screens):
                                                          , manager=MANAGER)  # Text will be filled in later
 
         self.set_disabled_menu_buttons(["list_screen"])
-        self.update_heading_text(f'{game.clan.name}Clan')
+        self.update_heading_text(f'{game.clan.name}Bots')
         self.show_menu_buttons()
         self.update_search_cats("")  # This will list all the cats, and create the button objects.
 
@@ -1324,6 +1284,7 @@ class ListScreen(Screens):
 
     def update_page(self):
         """Run this function when page changes."""
+
         # If the number of pages becomes smaller than the number of our current page, set
         #   the current page to the last page
         if self.list_page > self.all_pages:
@@ -1380,7 +1341,7 @@ class ListScreen(Screens):
                 self.display_cats.append(
                     UISpriteButton(scale(pygame.Rect
                                          ((260 + pos_x, 360 + pos_y), (100, 100))),
-                                   cat.sprite,
+                                   cat.big_sprite,
                                    cat.ID,
                                    starting_height=1, manager=MANAGER))
 
@@ -1398,12 +1359,13 @@ class ListScreen(Screens):
                     pos_y += 200
 
     def on_use(self):
+
         # Only update the postions if the search text changes
         if self.search_bar.get_text() != self.previous_search_text:
             self.update_search_cats(self.search_bar.get_text())
         self.previous_search_text = self.search_bar.get_text()
 
-        screen.blit(ListScreen.search_bar, (696 / 1600 * screen_x, 270/ 1400 * screen_y))
+        screen.blit(ListScreen.search_bar, (696 / 1600 * screen_x, 270 / 1400 * screen_y))
 
     def chunks(self, L, n):
         return [L[x: x + n] for x in range(0, len(L), n)]
@@ -1422,18 +1384,18 @@ class AllegiancesScreen(Screens):
     def screen_switches(self):
         # Heading
         self.heading = pygame_gui.elements.UITextBox(f'{game.clan.name}Clan Allegiances',
-                                                     scale(pygame.Rect((390, 230), (800, 80))),
-                                                     object_id=get_text_box_theme("#text_box_34_horizcenter")
+                                                     scale(pygame.Rect((60, 220), (800, 80))),
+                                                     object_id=get_text_box_theme("#text_box_34_horizleft")
                                                      , manager=MANAGER)
 
         # Set Menu Buttons.
         self.show_menu_buttons()
         self.set_disabled_menu_buttons(["allegiances"])
-        self.update_heading_text(f'{game.clan.name}Clan')
+        self.update_heading_text(f'{game.clan.name}Bots')
         allegiance_list = self.get_allegiances_text()
 
 
-        self.scroll_container = pygame_gui.elements.UIScrollingContainer(scale(pygame.Rect((100, 330), (1430, 1000)))
+        self.scroll_container = pygame_gui.elements.UIScrollingContainer(scale(pygame.Rect((100, 300), (1430, 1000)))
                                                                          , manager=MANAGER)
         
         self.ranks_boxes = []
@@ -1478,7 +1440,7 @@ class AllegiancesScreen(Screens):
                     output += "\n      APPRENTICE: "
                 else:
                     output += "\n      APPRENTICES: "     
-                output += ", ".join([str(Cat.fetch_cat(i).name).upper() for i in cat.apprentice if Cat.fetch_cat(i)])
+                output += ", ".join([str(Cat.fetch_cat(i).name).upper() for i in cat.apprentice])
 
             return output
 
@@ -1511,7 +1473,7 @@ class AllegiancesScreen(Screens):
         for cat in living_kits.copy():
             parents = cat.get_parents()
             #Fetch parent object, only alive and not outside. 
-            parents = [Cat.fetch_cat(i) for i in parents if Cat.fetch_cat(i) and not(Cat.fetch_cat(i).dead or Cat.fetch_cat(i).outside)]
+            parents = [Cat.fetch_cat(i) for i in parents if not(Cat.fetch_cat(i).dead or Cat.fetch_cat(i).outside)]
             if not parents:
                 continue
             
@@ -1533,8 +1495,6 @@ class AllegiancesScreen(Screens):
         # Remove queens from warrior or elder lists, if they are there.  Let them stay on any other lists. 
         for q in queen_dict:
             queen = Cat.fetch_cat(q)
-            if not queen:
-                continue
             if queen in living_warriors:
                 living_warriors.remove(queen)
             elif queen in living_elders:
@@ -1609,8 +1569,6 @@ class AllegiancesScreen(Screens):
             all_entries = []
             for q in queen_dict:
                 queen = Cat.fetch_cat(q)
-                if not queen:
-                    continue
                 kittens = []
                 for k in queen_dict[q]:
                     kittens += [f"{k.name} - {k.describe_cat(short=True)}"]
@@ -1753,11 +1711,11 @@ class MedDenScreen(Screens):
                 (1450, 50), (68, 68))),
                 "",
                 object_id="#help_button", manager=MANAGER,
-                tool_tip_text="Your medicine cats will gather herbs over each timeskip and during any patrols you send "
-                              "them on. You can see what was gathered in the Log below! Your medicine cats will give"
-                              " these to any hurt or sick cats that need them, helping those cats to heal quicker."
+                tool_tip_text="Your medics will gather resources over each timeskip and during any patrols you send "
+                              "them on. You can see what was gathered in the Log below! Your medics will give"
+                              " these to any hurt or sick bots that need them, helping those bots to heal quicker."
                               "<br><br>"
-                              "Hover your mouse over the medicine den image to see what herbs your Clan has!",
+                              "Hover your mouse over the Medbay image to see what herbs your Team has!",
 
             )
             self.last_page = UIImageButton(scale(pygame.Rect((660, 1272), (68, 68))), "", object_id="#arrow_left_button"
@@ -1767,12 +1725,12 @@ class MedDenScreen(Screens):
                                            , manager=MANAGER)
 
             self.hurt_sick_title = pygame_gui.elements.UITextBox(
-                "Hurt & Sick Cats",
+                "Hurt & Sick Bots",
                 scale(pygame.Rect((281, 820), (400, 60))),
                 object_id=get_text_box_theme("#text_box_40_horizcenter"), manager=MANAGER
             )
             self.log_title = pygame_gui.elements.UITextBox(
-                "Medicine Den Log",
+                "Medbay Log",
                 scale(pygame.Rect((281, 820), (400, 60))),
                 object_id=get_text_box_theme("#text_box_40_horizcenter"), manager=MANAGER
             )
@@ -1892,47 +1850,47 @@ class MedDenScreen(Screens):
             number = medical_cats_condition_fulfilled(Cat.all_cats.values(), amount_per_med,
                                                       give_clanmembers_covered=True)
             if len(self.meds) == 1:
-                insert = 'medicine cat'
+                insert = 'medic'
             else:
-                insert = 'medicine cats'
-            meds_cover = f"Your {insert} can care for a Clan of up to {number} members, including themselves."
+                insert = 'medics'
+            meds_cover = f"Your {insert} can care for a Team of up to {number} members, including themselves."
 
             if len(self.meds) >= 1 and number == 0:
-                meds_cover = f"You have no medicine cats who are able to work. Your clan will be at a higher risk of death and disease."
+                meds_cover = f"You have no medics who are able to work. Your team will be at a higher risk of death and disease."
 
             herb_amount = sum(game.clan.herbs.values())
             med_concern = f"This should not appear."
             if herb_amount == 0:
-                med_concern = f"The herb stores are empty and bare, this does not bode well."
+                med_concern = f"The medical stores are empty and bare, this does not bode well."
             elif 0 < herb_amount <= 8:
                 if len(self.meds) == 1:
-                    med_concern = f"The medicine cat worries over the herb stores, they don't have nearly enough for the Clan."
+                    med_concern = f"The medic worries over the medical stores, they don't have nearly enough for the team."
                 else:
-                    med_concern = f"The medicine cats worry over the herb stores, they don't have nearly enough for the Clan."
+                    med_concern = f"The medics worry over the medical stores, they don't have nearly enough for the team."
             elif 8 < herb_amount <= 20:
-                med_concern = f"The herb stores are small, but it's enough for now."
+                med_concern = f"The medical stores are small, but it's enough for now."
             elif 20 < herb_amount <= 30:
                 if len(self.meds) == 1:
-                    med_concern = f"The medicine cat is content with how many herbs they have stocked up."
+                    med_concern = f"The medic is content with how many resources they have stocked up."
                 else:
-                    med_concern = f"The medicine cats are content with how many herbs they have stocked up."
+                    med_concern = f"The medics are content with how many resources they have stocked up."
             elif 30 < herb_amount <= 50:
                 if len(self.meds) == 1:
-                    med_concern = f"The herb stores are overflowing and the medicine cat has little worry."
+                    med_concern = f"The medical stores are overflowing and the medic has little worry."
                 else:
-                    med_concern = f"The herb stores are overflowing and the medicine cats have little worry."
+                    med_concern = f"The medical stores are overflowing and the medics have little worry."
             elif 50 < herb_amount:
                 if len(self.meds) == 1:
-                    med_concern = f"StarClan has blessed them with plentiful herbs and the medicine cat sends their thanks to Silverpelt."
+                    med_concern = f"The Allspark has blessed them with plentiful resources and the medic sends their thanks to it."
                 else:
-                    med_concern = f"StarClan has blessed them with plentiful herbs and the medicine cats send their thanks to Silverpelt."
+                    med_concern = f"The Allspark has blessed them with plentiful resources and the medics send their thanks to it."
 
             med_messages.append(meds_cover)
             med_messages.append(med_concern)
             self.meds_messages.set_text("<br>".join(med_messages))
 
         else:
-            meds_cover = f"You have no medicine cats, your clan will be at higher risk of death and sickness."
+            meds_cover = f"You have no medics, your team will be at higher risk of death and sickness."
             self.meds_messages.set_text(meds_cover)
 
     def handle_tab_toggles(self):
@@ -2013,7 +1971,7 @@ class MedDenScreen(Screens):
         for cat in self.display_med:
             self.med_cat = UISpriteButton(scale(pygame.Rect
                                                 ((870, 330), (300, 300))),
-                                          cat.sprite,
+                                          cat.large_sprite,
                                           cat_object=cat, manager=MANAGER)
             name = str(cat.name)
             if len(name) >= 20:
@@ -2036,9 +1994,9 @@ class MedDenScreen(Screens):
             if cat.not_working():
                 med_working = False
             if med_working is True:
-                work_status = "This cat can work"
+                work_status = "This bot can work"
             else:
-                work_status = "This cat isn't able to work"
+                work_status = "This bot isn't able to work"
             info_list = [med_skill, med_exp, work_status]
             self.med_info.set_text("<br>".join(info_list))
 
@@ -2100,7 +2058,7 @@ class MedDenScreen(Screens):
 
             self.cat_buttons["able_cat" + str(i)] = UISpriteButton(scale(pygame.Rect
                                                                          ((pos_x, pos_y), (100, 100))),
-                                                                   cat.sprite,
+                                                                   cat.big_sprite,
                                                                    cat_object=cat,
                                                                    manager=MANAGER,
                                                                    tool_tip_text=conditions)

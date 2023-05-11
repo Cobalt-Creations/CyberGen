@@ -1,5 +1,8 @@
 import os
-import ujson
+try:
+    import ujson
+except ImportError:
+    import json as ujson
 
 class Single_Interaction():
 
@@ -182,12 +185,10 @@ def rel_fulfill_rel_constraints(relationship, constraint, interaction_id) -> boo
     if "siblings" in constraint and not relationship.cat_from.is_sibling(relationship.cat_to):
         return False
 
-    if "mates" in constraint and (relationship.cat_from.ID not in relationship.cat_to.mate or\
-                                  relationship.cat_to.ID not in relationship.cat_from.mate ):
+    if "mates" in constraint and not relationship.mates:
         return False
 
-    if "not_mates" in constraint and (relationship.cat_from.ID in relationship.cat_to.mate or\
-                                      relationship.cat_to.ID in relationship.cat_from.mate):
+    if "not_mates" in constraint and relationship.mates:
         return False
 
     if "parent/child" in constraint and not relationship.cat_from.is_parent(relationship.cat_to):

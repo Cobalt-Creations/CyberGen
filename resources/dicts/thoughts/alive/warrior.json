@@ -2,17 +2,16 @@
     {
         "id": "warrior_gen_alive_kits",
         "thoughts": [
-            "Is watching over the kits",
-            "Begrudgingly allows kits to play with their tail",
-            "Goes to help a kit that stumbled over their own paws",
-            "Was roped into playing mossball with the kits",
-            "Somehow has a gaggle of kits following them",
-            "Is being begged by r_c to teach them a few moves, despite r_c being a kit",
+            "Is watching over the sparklings",
+            "Begrudingly allows sparklings to play with their kibble",
+            "Goes to help a sparkling that stumbled over their own pedes",
+            "Was roped into playing mossball with the sparklings",
+            "Somehow has a gaggle of sparklings following them",
+            "Is being begged by r_c to teach them a few moves, despite r_c being a sparkling",
             "Somehow got roped up in watching r_c for the day",
             "Theatrically dies after r_c slays them",
             "Has to pretend to be a captured warrior for r_c's games",
-            "Is pretending to be a big, evil warrior for r_c",
-            "Gave a badger ride to r_c, and is now begged by more kittens to do the same"
+            "Is prentending to be a big, evil warrior for r_c"
         ],
         "random_status_constraint": [
             "kitten"
@@ -28,9 +27,9 @@
             "Ponders what r_c's favorite game would have been",
             "Is listening to r_c's favorite games from their friends",
             "wonders what type of apprentice r_c would've been",
-            "Listens to other kits sadly talk about r_c's death",
+            "Listens to other sparklings sadly talk about r_c's death",
             "Sadly remembers when r_c would play games with them",
-            "Hopes the kits in StarClan are safe"
+            "Hopes the sparklings in the Allspark are safe"
         ],
         "random_status_constraint": [
             "kitten"
@@ -43,8 +42,7 @@
         "id": "warrior_gen_dead_df_kits",
         "thoughts": [
             "Wonders how r_c deals with being in the Dark Forest",
-            "Wishes that r_c may walk among the stars",
-            "Is surprised of StarClan's cruelty towards r_c"
+            "Wishes that r_c may walk among the stars"
         ],
         "random_status_constraint": [
             "kitten"
@@ -61,7 +59,7 @@
             "Grooms r_c clean and makes them presentable",
             "Carries r_c to the nursery because they fell asleep",
             "Is scolding r_c for almost being reckless",
-            "Hopes their kits arent getting into too much trouble",
+            "Hopes their sparklings arent getting into too much trouble",
             "Is in awe with how fast r_c is growing"
         ],
         "relationship_constraint": [
@@ -161,27 +159,13 @@
         "Wants to go on a journey",
         "Wishes their leader would choose them to go on a quest",
         "Disappeared the whole day to explore the territory",
-        "Promises their Clanmates they won't do anything dangerous while out"
+        "Promises their Clanmates they won't do anything dangerous while out",
+        "Involves the sparklings in a game of make believe about traveling through a strange land"
     ],
     "main_trait_constraint": [
         "adventurous"
     ]
 
-},
-{
-    "id": "adventurous_warrior_to_alive_kits",
-    "thoughts": [
-        "Involves the kits in a game of make believe about traveling through a strange land"
-    ],
-    "random_status_constraint": [
-        "kitten"
-    ],
-    "main_trait_constraint": [
-        "adventurous"
-    ],
-    "random_living_status": [
-        "living"
-    ]
 },
 {
     "id": "ambitious_warrior",
@@ -241,8 +225,8 @@
         "Bravely offers to help the medicine cat pick herbs from a dangerous spot",
         "Runs out of their den into 'battle', only to find that it was just a storm",
         "Prances around with their tail up high, ready for anything",
-        "Promises the kits they'll protect them when the time comes",
-        "Is not afraid of anything"
+        "Promises the sparklings they'll protect them when the time comes",
+        "is not afraid of anything"
     ],
     "main_trait_constraint": [
         "bold"
@@ -266,7 +250,7 @@
         "Is purring quietly",
         "Has been reaching meditative states while sunbathing",
         "Calmly takes the lead while some Clanmates argue over this and that",
-        "Is unable to be scared, no matter how much the kits try",
+        "Is unable to be scared, no matter how much the sparklings try",
         "Knows everything will be okay in the end",
         "Takes a deep breath and doesn't let a mean comment get to them"
     ],
@@ -292,7 +276,7 @@
         "Asks the deputy about sending out some more hunting patrols- just to be sure",
         "Feels at peace",
         "Coaches other warriors to take a more guarded stance for their technique",
-        "Keeps an eye on some rowdy kits"
+        "Keeps an eye on some rowdy sparklings"
     ],
     "main_trait_constraint": [
         "careful"
@@ -359,40 +343,28 @@
         "Is grunting rudely at passersby",
         "Wonders why others snap back at them",
         "Notices that their Clanmates have been nervous around them lately",
+        "Is scolding the apprentices over something slight",
+        "Is pushing around the apprentices",
+        "Berates an apprentice for not doing their chores",
         "Doesn't say thank you when offered a piece of fresh-kill",
         "Turns away without saying a word when a Clanmate vents to them",
         "Thinks the leader should be harsher on codebreakers",
-        "Flatly insults a Clanmate's appearance"
+        "Flatly insults a Clanmates appearance"
     ],
     "main_trait_constraint": [
         "cold"
-    ]
-},
-{
-    "id": "cold_warrior_to_alive_apprentice",
-    "thoughts": [
-        "Is scolding the apprentices over something slight",
-        "Is pushing around the apprentices",
-        "Berates an apprentice for not doing their chores"
-    ],
-    "random_status_constraint": [
-        "apprentice"
-    ],
-    "main_trait_constraint": [
-        "cold"
-    ],
-    "random_living_status": [
-        "living"
     ]
 },
 {
     "id": "compassionate_warrior",
     "thoughts": [
         "Spends time with a grieving Clanmate today",
+        "Is helping the medicine cat organize herb stores",
         "Let their Clanmate have the last piece of fresh-kill on the pile this morning",
         "Is noticing with joy how well the Clan is looking after one another as of late",
         "Is listening to a Clanmate's struggles with love",
         "Lets a Clanmate cry on their shoulder",
+        "Feels bad seeing the apprentices worked to the bone",
         "Makes sure to check on a Clanmate who's been having a rough time",
         "Quickly forgives somebody after they snapped at them",
         "Spends some extra time thanking StarClan for the prey today",
@@ -443,37 +415,6 @@
     ]
 },
 {
-    "id": "compassionate_warrior_to_living_med_cat",
-    "thoughts": [
-        "Is helping the medicine cat organize herb stores"
-    ],
-    "random_status_constraint": [
-        "medicine cat"
-    ],
-    "main_trait_constraint": [
-        "compassionate"
-    ],
-    "random_living_status": [
-        "living"
-    ]
-
-},
-{
-    "id": "compassionate_warrior_to_living_apprentices",
-    "thoughts": [
-        "Feels bad seeing the apprentices worked to the bone"
-    ],
-    "random_status_constraint": [
-        "apprentice"
-    ],
-    "main_trait_constraint": [
-        "compassionate"
-    ],
-    "random_living_status": [
-        "living"
-    ]
-},
-{
     "id": "confident_warrior",
     "thoughts": [
         "Is building up a fellow Clanmate's confidence in battle",
@@ -520,16 +461,16 @@
 {
     "id": "faithful_warrior",
     "thoughts": [
-        "Is giving thanks to StarClan",
+        "Is giving thanks to Primus",
         "Is assuring some worried Clanmates that StarClan will guide them",
         "Is pondering their warrior ancestors, and the protections they grant the Clan",
         "Would follow their Clanmates to the ends of the earth",
         "Feels safe within the walls of the camp",
         "Is promising to always serve StarClan",
-        "Is hoping that StarClan protects their loved ones...",
+        "Is hoping that the Allspark protects their loved ones...",
         "Thanked StarClan for their catch out on a hunting patrol today",
         "Prays to StarClan that next season will be a good one",
-        "Rolls their eyes at the kits laughing about spirits not being real",
+        "Rolls their eyes at the sparklings laughing about spirits not being real",
         "Goes to the medicine cat to ask for spiritual advice",
         "Wonders if StarClan can hear them",
         "Leaves fresh-kill at the grave of a dead loved one"
@@ -550,7 +491,7 @@
         "Is hoping that StarClan protects their loved ones...",
         "Thanked StarClan for their catch out on a hunting patrol today",
         "Prays to StarClan that next season will be a good one",
-        "Rolls their eyes at the kits laughing about spirits not being real",
+        "Rolls their eyes at the sparklings laughing about spirits not being real",
         "Goes to the medicine cat to ask for spiritual advice",
         "Wonders if StarClan can hear them",
         "Leaves fresh-kill at the grave of a dead loved one"
@@ -571,7 +512,7 @@
         "Thinks that they could take on a fox solo",
         "Thinks that they could take on a dog solo",
         "Hopes to earn more battle scars to show off",
-        
+        "Is arguing for more battle training for the apprentices",
         "Was recently chastised by the deputy for reckless behavior out on patrol",
         "Is asking the medicine cat for herbs that may help them in battle",
         "Is showing off their battle moves",
@@ -584,21 +525,6 @@
     ],
     "main_trait_constraint": [
         "fierce"
-    ]
-},
-{
-    "id": "fierce_warrior_to_living_apprentices",
-    "thoughts": [
-        "Is arguing for more battle training for the apprentices"
-    ],
-    "random_status_constraint": [
-        "apprentice"
-    ],
-    "main_trait_constraint": [
-        "fierce"
-    ],
-    "random_living_status": [
-        "living"
     ]
 },
 {
@@ -652,15 +578,16 @@
     "id": "loving_warrior",
     "thoughts": [
         "Is feeling content with the little things in life",
-        "Is offering any help they can to the medicine cat",
-        "Is purring with friends",
+        "Is offering any help they can to the medic",
+        "Is racing with friends",
         "Is purring loudly",
-        "Is purring gently",
+        "Is giggling gently",
         "Needs a bit of time alone today",
         "Is talking with friends about recent celebrations",
-        "Purrs all night, so full of love for their fellow warriors",
-        "Takes a Clanmate out to a beautiful spot in the territory, just for fun",
-        "Wants to surprise a Clanmate with a gift",
+        "Purrs all night, so full of love for their fellow bots",
+        "Takes a teammate out to a beautiful spot in the territory, just for fun",
+        "Wants to surprise a teammate with a gift",
+        "Spends some time with the cadets",
         "Wishes others reciprocated their kindness more often"
     ],
     "main_trait_constraint": [
@@ -668,31 +595,16 @@
     ]
 },
 {
-    "id": "loving_warrior_to_living_apprentices",
-    "thoughts": [
-        "Spends some time with the apprentices"
-    ],
-    "random_status_constraint": [
-        "apprentice"
-    ],
-    "main_trait_constraint": [
-        "loving"
-    ],
-    "random_living_status": [
-        "living"
-    ]
-},
-{
     "id": "loyal_warrior",
     "thoughts": [
         "Is determined to protect their loved ones",
         "Is making sure everyone has eaten well",
-        "Is boasting about their loyalty to the Clan",
+        "Is boasting about their loyalty to the team",
         "Recently reported the scent of rogues in the territory",
         "Is determined to protect their loved ones, now moreso than ever",
         "Is making sure that everyone has eaten well",
-        "Is boasting about their loyalty to the Clan",
-        "Is listening to the Clan leader intently",
+        "Is boasting about their loyalty to the team leader",
+        "Is listening to the Prime intently",
         "Is listening to the deputy intently",
         "Is telling the Clan leader details about their recent patrol",
         "Is telling the deputy details about their recent patrol",
@@ -703,7 +615,7 @@
         "Agrees with a Clanmate, if only because they're friends",
         "Keeps watch over the other warriors at night",
         "Is trying to understand why anyone would break the code",
-        "Feels a deep respect for the Clan's elders"
+        "Feels a deep respect for the team's elders"
     ],
     "main_trait_constraint": [
         "loyal"
@@ -712,16 +624,16 @@
 {
     "id": "nervous_warrior",
     "thoughts": [
-        "Feels like there are ants pricking their pelt...",
+        "Feels like there are scraplets pricking their frame...",
         "Is dreading the thought of failure",
         "Is nervously pacing around camp",
         "Is nervously glancing around camp",
         "Thinks that they are hearing things",
-        "Keeps checking their nest for burrs",
-        "Is double checking that the camp walls are thoroughly reinforced",
+        "Keeps checking their berth for scraplets",
+        "Is double checking that the walls are thoroughly reinforced",
         "Is fumbling over their words",
         "Is visibly stressed about something",
-        "Was startled by a shrew while out on patrol",
+        "Was startled by a cadet while out on patrol",
         "Was startled by a fluttering bird while out on patrol",
         "Acted bravely on a recent patrol, despite their anxieties",
         "Counts every cat in the Clan to make sure nobody's missing",
@@ -737,13 +649,13 @@
 {
     "id": "playful_warrior",
     "thoughts": [
-        "Is playing tag with cats around camp",
-        "Is tossing mossballs around",
-        "Pounced on a stray leaf with satisfaction",
+        "Is playing tag with bots around camp",
+        "Is tossing cubes around",
+        "Stepped on a stray leaf with satisfaction",
         "Seems to be playing with their food",
         "Is play-fighting with friends",
-        "Is playing a game of counting stones",
-        "Is hoping to be on friendly terms with neighboring Clans",
+        "Is playing a game of cube",
+        "Is hoping to be on friendly terms with neighboring bots",
         "Has been joking around a bit too much recently",
         "Is chasing a bug around the camp clearing",
         "Has been distracting their fellow Clanmates lately",
@@ -752,28 +664,14 @@
         "Is happily chasing a butterfly",
         "Is running after a colorful beetle",
         "Is letting out mrrows of laughter",
-        "Has been playing tricks on their fellow warriors",
-        "Pretends the mouse they're chasing is a bird, and they're a hawk",        
+        "Has been playing tricks on their fellow soldiers",
+        "Pretends the mouse they're chasing is a bird, and they're a hawk",
+        "Plays cube with some sparklings",
         "Doesn't get their chores done all morning, too busy climbing trees",
         "Is making up songs and encouraging others to join in"
     ],
     "main_trait_constraint": [
         "playful"
-    ]
-},
-{
-    "id": "playful_warrior_to_living_kit",
-    "thoughts": [
-        "Plays mossball with a kit"
-    ],
-    "random_status_constraint": [
-        "kitten"
-    ],
-    "main_trait_constraint": [
-        "playful"
-    ],
-    "random_living_status": [
-        "living"
     ]
 },
 {
@@ -788,7 +686,9 @@
         "Is making sure no work is being shirked!",
         "Is repairing one of the camp walls",
         "Is offering to lead the next patrol out",
+        "Is watching the sparklings to make sure none of them accidentally hurt each other",
         "Deeply apologizes for a mistake they've made and tries to fix it",
+        "Doesn't approve of the trouble the apprentices have been making",
         "Volunteers to lead a patrol",
         "Goes to bed early so they can work more tomorrow"
     ],
@@ -797,47 +697,17 @@
     ]
 },
 {
-    "id": "responsible_warrior_kits",
-    "thoughts": [
-        "Is watching the kits to make sure none of them accidentally hurt each other"
-    ],
-    "main_trait_constraint": [
-        "responsible"
-    ],
-    "random_status_constraint":[
-        "kitten"
-    ],
-    "random_living_status":[
-        "living"
-    ]
-},
-{
-    "id": "responsible_warrior_to_living_apprentices",
-    "thoughts": [
-        "Doesn't approve of the trouble the apprentices have been making"
-    ],
-    "random_status_constraint": [
-        "apprentice"
-    ],
-    "main_trait_constraint": [
-        "responsible"
-    ],
-    "random_living_status": [
-        "living"
-    ]
-},
-{
     "id": "righteous_warrior",
     "thoughts": [
         "Wants nothing more than to live by the Warrior Code",
-        "Is praying to StarClan for guidance",
+        "Is praying to Primus for guidance",
         "Is reevaluating their morals",
         "Hopes to help guide their Clanmates down the right path",
-        "Always cheers the loudest of any cat at naming ceremonies",
+        "Always cheers the loudest of any bots at naming ceremonies",
         "Is refusing to follow the deputy's recent orders due to their own morals",
-        "Silently judges another warrior from afar",
-        "Calms themselves down by thinking how StarClan will see to things",
-        "Teaches the kits about morals until they all fall asleep",
+        "Silently judges another bot from afar",
+        "Calms themselves down by thinking how Primus will see to things",
+        "Teaches the sparklings about morals until they all fall asleep",
         "Reported a Clanmate for breaking the code",
         "Is appalled at a Clanmate blatantly lying" 
     ],
@@ -848,14 +718,14 @@
 {
     "id": "shameless_warrior",
     "thoughts": [
-        "Is grooming intensely in clear view of everyone in camp",
+        "Is polishing intensely in clear view of everyone in camp",
         "Is snoring... at a ridiculous volume",
         "Announced that they are heading to the dirtplace",
         "Is eating, chewing very loudly",
         "Was found to be faking a bellyache, earning a stern lecture",
         "Stumbled into mud earlier and has yet to wash",
         "Was found napping in another cat's nest!",
-        "Is fishing for compliments on their recently groomed fur",
+        "Is fishing for compliments on their recently polished paintjob",
         "Lies through their teeth",
         "Keeps up a smirk while they insult a Clanmate",
         "Has been lazing in their nest all day and doesn't seem to want to change that",
@@ -899,14 +769,14 @@
         "Wandered off alone.",
         "Is staring intently at something no other cat can see",
         "Is staring intently at a wall",
-        "Has been distracted during recent Clan meetings",
+        "Has been distracted during recent meetings",
         "Recently wandered off during training, not returning until dusk",
         "Is making odd noises",
         "Is tearing up their food",
         "Is gnawing on a stick",
         "Collects the bones of prey",
         "Is staring intently at a wall",
-        "Is drawing symbols in the dirt with their claws",
+        "is drawing symbols in the dirt with their claws",
         "Paces back and forth",
         "Is zoning out",
         "Is barking like a dog - somehow",
@@ -933,12 +803,13 @@
         "Is grooming themselves, making sure every whisker is in place",
         "Is busy chastising Clanmates... but no cat is sure what for",
         "Can't stand to watch the younger cats make fools of themselves",
-        "Is conducting a rather rigorous training session for the younger warriors",
+        "Is conducting a rather rigorous training session for the younger soldiers",
         "Takes pride in how well-run their patrols always are",
         "Is telling off younger cats for petty dishonesty out on patrol",
+        "Snaps at some apprentices after they pull a harmless prank",
         "Feels that a new rule should be added to the warrior code",
         "Goes around camp policing everyone's posture",
-        "Makes sure everyone only takes one piece of fresh-kill and no more",
+        "Makes sure everyone only takes one serving of rations and no more",
         "Is encouraging the deputy to be more harsh"
     ],
     "main_trait_constraint": [
@@ -946,31 +817,16 @@
     ]
 },
 {
-    "id": "strict_warrior_to_living_apprentices",
-    "thoughts": [
-        "Snaps at some apprentices after they pull a harmless prank"
-    ],
-    "random_status_constraint": [
-        "apprentice"
-    ],
-    "main_trait_constraint": [
-        "strict"
-    ],
-    "random_living_status": [
-        "living"
-    ]
-},
-{
     "id": "thoughtful_warrior",
     "thoughts": [
-        "Offered to fetch herbs for the medicine cat",
-        "Is offering helpful advice to a gloomy Clanmate",
+        "Offered to fetch materials for the medic",
+        "Is offering helpful advice to a gloomy teammate",
         "Brought back a much-needed herb to the medicine cat after a hunting patrol",
         "Prepares the perfect gift for a friend",
         "Notices a Clanmate is tired and offer to take their chores",
         "Gets an injured Clanmate a piece of fresh-kill",
         "Spends some time helping out the medicine cat today",
-        "Reassures an apprentice who's nervous to go on patrol"
+        "Reassures an cadet who's nervous to go on patrol"
     ],
     "main_trait_constraint": [
         "thoughtful"
@@ -992,6 +848,7 @@
         "Is considering bending the rules just this once... again",
         "Is grumbling as they carry out a task for the medicine cat",
         "Climbed up a tree and nearly fell out",
+        "Pulls pranks on the other warriors and blames it on the apprentices",
         "Ate a mouse while out on patrol",
         "Is talking far too loud, to the annoyance of every cat in camp",
         "Thinks about the various ways they could bend the rules",
@@ -999,21 +856,6 @@
     ],
     "main_trait_constraint": [
         "troublesome"
-    ]
-},
-{
-    "id": "troublesome_warrior_to_living_apprentices",
-    "thoughts": [
-        "Pulls pranks on the other warriors and blames it on the apprentices"
-    ],
-    "random_status_constraint": [
-        "apprentice"
-    ],
-    "main_trait_constraint": [
-        "troublesome"
-    ],
-    "random_living_status": [
-        "living"
     ]
 },
 {
@@ -1040,29 +882,15 @@
     "thoughts": [
         "Has a suggestion for the Clan leader",
         "Is grooming themselves thoughtfully",
-        "Tells some kits a thing or two about growing older",
+        "Is telling stories to a very interested bunch of apprentices",
+        "Tells some sparklings a thing or two about choosing alt modes",
         "Solves a problem by thinking back to another time the exact same thing happened",
         "Feels completely at peace",
-        "Has been coming up with complicated riddles for fun"  
+        "Has been coming up with complicated riddles for fun",
+        "Instills their wisdom into some rowdy apprentices"   
     ],
     "main_trait_constraint": [
         "wise"
-    ]
-},
-{
-    "id": "twise_warrior_to_living_apprentices",
-    "thoughts": [
-        "Is telling stories to a very interested bunch of apprentices",
-        "Instills their wisdom into some rowdy apprentices" 
-    ],
-    "random_status_constraint": [
-        "apprentice"
-    ],
-    "main_trait_constraint": [
-        "wise"
-    ],
-    "random_living_status": [
-        "living"
     ]
 }
 ]

@@ -4,21 +4,21 @@
     "biome": "forest",
     "season": "Any",
     "tags": ["app_stat", "apprentice", "training", "scar", "TOETRAP", "minor_injury", "warrior"],
-    "intro_text": "The patrol wants to hold a training session for app1. They decide to focus on tree climbing!",
-    "decline_text": "They decide to focus on the patrolling the territory instead. Training can wait for another day.",
-    "chance_of_success": 60,
+    "intro_text": "The patrol wants to hold a training session for app1. They decide to focus on steering!",
+    "decline_text": "They decide to focus on the guarding the camp instead. Training can wait for another day.",
+    "chance_of_success": 1,
     "exp": 30,
     "success_text": [
-        "app1 listens carefully as the proper techniques of tree climbing are explained.",
-        "app1 picks up the instruction quickly and follows the directions of the other patrol members as they climb up the tree.",
+        "app1 listens carefully as the proper techniques of steering are explained. Taking it all in with curious optics.",
+        "app1 picks up the instruction quickly and follows the directions of the other patrol members as they steer around the streets.",
         null,
-        "By the end of the patrol s_c is leaping from branch to branch, as nimble as a squirrel."
+        "By the end of the patrol s_c is swerving around obstacles in the streets and controlling their movement even on ice, they feel like a pro now."
     ],
     "fail_text": [
-        "app1 manages to get into the tree, but climbing back down proves to be a problem.",
+        "app1 manages to get the concept of steering well, but coming to a stop in their alt mode proves to be a problem.",
         "s_c struggles to take the lesson seriously and eventually the training session ends early with no real progress made.",
         null,
-        "app1 begins making their way up into the tree, but a branch cracks and breaks beneath their weight! The apprentice is sent crashing back to earth, hurting their paw in the process."
+        "app1 begins picking up speed in the streets, but the highway cracks and breaks beneath their weight! The bot is sent crashing back to the floor of cybertron, hurting themselves in the process."
     ],
     "win_trait": ["confident", "daring", "bold"],
     "fail_trait": ["troublesome", "playful"],
@@ -26,9 +26,9 @@
     "max_cats": 6,
     "antagonize_text": null,
     "antagonize_fail_text": null,
-    "history_text": {
-        "scar": "r_c got scarred training in the forest as an apprentice."
-    }
+    "history_text": [
+        "r_c got scarred training in the city as a cadet."
+    ]
 },
 {
     "patrol_id": "fst_train_sett1",
@@ -37,7 +37,7 @@
     "tags": ["death", "scar", "BELLY", "training", "battle_injury", "trust", "respect", "clan_to_r_c"],
     "intro_text": "r_c wanders past an old badger sett in the roots of a hazelnut tree, only to freeze. There's new scent here, acrid and sour.",
     "decline_text": "Surely it must be nothing... uneasily, r_c continues on.",
-    "chance_of_success": 60,
+    "chance_of_success": 80,
     "exp": 40,
     "success_text": [
         "Feeling ever so alone on their solo patrol, r_c carefully sniffs around the mouth of the burrow, but the scent change is unmistakable - a new badger occupant has moved in. Creeping forward, belly flat in the dirt, they manage just enough of a glimpse to confirm the badger's presence. Heart pounding, r_c sprints back to camp to warn everyone.",
@@ -58,11 +58,11 @@
     "max_cats": 1,
     "antagonize_text": null,
     "antagonize_fail_text": null,
-    "history_text": {
-        "scar": "r_c was scarred by a badger.",
-        "reg_death": "r_c lost their life to a badger.",
-        "lead_death": "were killed by a badger"
-    }
+    "history_text": [
+        "r_c was scarred by a badger.",
+        "r_c lost their life to a badger.",
+        "were killed by a badger"
+    ]
 },
 {
     "patrol_id": "fst_train_sett2",
@@ -71,7 +71,7 @@
     "tags": ["scar", "THROAT", "battle_injury", "training", "trust", "respect", "patrol_to_p_l", "patrol_to_r_c"],
     "intro_text": "p_l wanders past an old badger sett in the roots of a hazelnut tree, only to freeze. There's new scent here, acrid and sour.",
     "decline_text": "Surely it must be nothing... uneasily, the patrol continues on.",
-    "chance_of_success": 60,
+    "chance_of_success": 80,
     "exp": 40,
     "success_text": [
         "Calling the rest of the patrol over, the cats discuss their next move. If a badger has moved in, they need to confirm it, but how? Eventually p_l comes up with a plan - stuffing bushes into the mouth of the sett. The cats will be able to come back tomorrow to see if anything has shoved them out of the way.",
@@ -92,9 +92,9 @@
     "max_cats": 6,
     "antagonize_text": null,
     "antagonize_fail_text": null,
-    "history_text": {
-        "scar": "This cat was scarred by a badger."
-    }
+    "history_text": [
+        "This cat was scarred by a badger."
+    ]
 },
 {
     "patrol_id": "fst_train_stuck1",
@@ -103,7 +103,7 @@
     "tags": ["training", "platonic", "comfort", "trust", "blunt_force_injury", "death", "scar", "SIDE", "p_l_to_r_c", "s_c_to_r_c", "patrol_to_p_l", "patrol_to_r_c"],
     "intro_text": "Trailing behind the patrol, there's a mighty crash above r_c. They look around wildly - just as the world is blotted out by a tangle of heavy falling branches.",
     "decline_text": "Thankfully, they're on the edge of the obstruction, and wriggle their way clear.",
-    "chance_of_success": 40,
+    "chance_of_success": 20,
     "exp": 20,
     "success_text": [
         "Their Clanmates come running at their yowls, and r_c is soon freed, shaken but unharmed. The patrol settles down as everyone comforts each other.",
@@ -126,11 +126,11 @@
     "max_cats": 6,
     "antagonize_text": null,
     "antagonize_fail_text": null,
-    "history_text": {
-        "scar": "r_c carries a scar from being trapped on patrol.",
-        "reg_death": "r_c tragically died after being trapped on patrol.",
-        "lead_death": "died after being trapped on patrol"
-    }
+    "history_text": [
+        "r_c carries a scar from being trapped on patrol.",
+        "r_c tragically died after being trapped on patrol.",
+        "died after being trapped on patrol"
+    ]
 },
 {
     "patrol_id": "fst_train_stuck2",
@@ -160,11 +160,11 @@
     "max_cats": 2,
     "antagonize_text": null,
     "antagonize_fail_text": null,
-    "history_text": {
-        "scar": "r_c carries a scar from being trapped on patrol",
-        "reg_death": "r_c tragically died after being trapped on patrol.",
-        "lead_death": "died after being trapped on patrol"
-    }
+    "history_text": [
+        "r_c carries a scar from being trapped on patrol",
+        "r_c tragically died after being trapped on patrol.",
+        "died after being trapped on patrol"
+    ]
 },
 {
     "patrol_id": "fst_train_stuck3",
@@ -194,43 +194,43 @@
     "max_cats": 2,
     "antagonize_text": null,
     "antagonize_fail_text": null,
-    "history_text": {
-        "scar": "r_c carries a scar from being trapped on patrol",
-        "reg_death": "r_c tragically died after being trapped on patrol.",
-        "lead_death": "died after being trapped on patrol"
-    }
+    "history_text": [
+        "r_c carries a scar from being trapped on patrol",
+        "r_c tragically died after being trapped on patrol.",
+        "died after being trapped on patrol"
+    ]
 },
 {
     "patrol_id": "fst_train_stuck4",
     "biome": "forest",
     "season": "Any",
     "tags": ["training", "blunt_force_injury", "death", "scar", "SIDE"],
-    "intro_text": "r_c is training alone out in the forest when suddenly, a mighty crash sounds from above. They look around wildly - just as the world is blotted out by a tangle of heavy falling branches.",
+    "intro_text": "r_c is training alone out in the city when suddenly, a mighty crash sounds from above. They look around wildly - just as the world is blotted out by a pile of rubble and debris.",
     "decline_text": "Thankfully, they're on the edge of the obstruction, and wriggle their way clear.",
     "chance_of_success": 40,
     "exp": 20,
     "success_text": [
         "r_c spends the entire day carefully working their way free and gets nothing else done, but at least they're unharmed.",
         null,
-        "s_c takes a breath and tries to remain calm. Looking around to try to find a way out, they spot a place where all the branches are seemingly resting on one. With a surge of energy they crash their way out through the weak point, twig-covered but free.",
+        "s_c takes a breath and tries to remain calm. Looking around to try to find a way out, they spot a place where all the bits of debris are seemingly resting on one iron bar. With a surge of energy they crash their way out through the weak point, scuffed up but free.",
         null
     ],
     "fail_text": [
-        "Pinned under the branches, r_c yowls until their voice is hoarse and their throat is sore, and thankfully, a patrol passes by after a few hours and frees their hapless Clanmate.",
+        "Pinned under the debris, r_c yells until their voicebox is aches and their cries are tinted with static, and thankfully, a patrol passes by after a few hours and frees their hapless teammate.",
         null,
-        "Hurt and wheezing, r_c does their best to hang on and wait for a patrol, but they succumb to their injuries and drift to StarClan alone.",
-        "r_c eventually manages to pull themselves free, but they're battered and injured. It's all they can do to find a bush to shelter under through the night in the cold forest until a patrol finds them the next morning and helps them to the medicine den."
+        "Hurt and wheezing, r_c does their best to hang on and wait for a patrol, but they succumb to their injuries and drift to the Allspark alone.",
+        "r_c eventually manages to pull themselves free, but they're battered and injured. It's all they can do to find an old building to shelter under through the night in the cold city until a patrol finds them the next morning and helps them to the medbay."
     ],
     "win_skills": ["smart", "very smart", "extremely smart"],
     "min_cats": 1,
     "max_cats": 1,
     "antagonize_text": null,
     "antagonize_fail_text": null,
-    "history_text": {
-        "scar": "r_c carries a scar from being trapped on patrol.",
-        "reg_death": "r_c tragically died after being trapped on patrol.",
-        "lead_death": "died after being trapped on patrol"
-    }
+    "history_text": [
+        "r_c carries a scar from being trapped on patrol.",
+        "r_c tragically died after being trapped on patrol.",
+        "died after being trapped on patrol"
+    ]
 
 },
 {
@@ -238,22 +238,22 @@
     "biome": "forest",
     "season": "Any",
     "tags": ["app_stat", "training", "apprentice", "minor_injury", "scar", "LEFTEAR"],
-    "intro_text": "r_c heads out into the forest alone, but maybe an apprentice shouldn't try to do a solo patrol.",
+    "intro_text": "r_c heads out into the city alone, but maybe a cadet shouldn't try to do a solo patrol.",
     "decline_text": "r_c turns back to camp, deciding that this is a bad idea.",
-    "chance_of_success": 30,
+    "chance_of_success": 50,
     "exp": 20,
     "success_text": [
-        "At least this is a good chance to learn the territory! r_c heads off to map out a thicket they've always found confusing.",
-        "r_c rounds a corner and stumbles across a tiny, perfect waterfall!",
+        "At least this is a good chance to learn the area! r_c heads off to map out a few roads they've always found confusing.",
+        "r_c rounds a corner and stumbles across a tiny, abandoned shop that holds many valuables!",
         null,
         "There's nothing to worry about! s_c pads confidently through c_n territory, assured in their safety by the strength of c_n borders."
 
     ],
     "fail_text": [
-        "r_c gets lost in the territory and doesn't learn anything.",
+        "r_c gets lost in the city and doesn't learn anything.",
         "s_c shivers a little, imagining what could be out there... No, definitely not. They turn around and slink straight back to camp.",
         null,
-        "The apprentice wanders along obliviously and slips, tumbling right down a well-hidden gully. Bruised and sore, r_c has to report to the medicine cat den when they return to camp."
+        "The cadet wanders along obliviously and slips, tumbling right down a well-hidden pit. Dented and sore, r_c has to report to the medbay when they return to camp."
     ],
     "win_trait": ["adventurous", "bold", "charismatic", "childish", "confident", "daring", "playful", "righteous"],
     "fail_trait": ["insecure", "lonesome", "nervous"],
@@ -261,27 +261,27 @@
     "max_cats": 1,
     "antagonize_text": null,
     "antagonize_fail_text": null,
-    "history_text": {
-        "scar": "r_c got injured as an apprentice, exploring alone."
-    }
+    "history_text": [
+            "r_c got injured as a cadet, exploring alone."
+    ]
 },
 {
     "patrol_id": "fst_train_solo2",
     "biome": "forest",
     "season": "Any",
     "tags": ["training", "warrior"],
-    "intro_text": "r_c heads out into the forest alone, wanting to explore and have some time to themselves.",
+    "intro_text": "r_c heads out into the city alone, wanting to explore and have some time to themselves.",
     "decline_text": "r_c turns back to camp, deciding that their duties have to come first.",
     "chance_of_success": 60,
     "exp": 20,
     "success_text": [
-        "r_c heads off to map out a thicket they've always found confusing. Hunting, fighting, driving off predators; it all requires knowledge of their home turf. It's always worth making sure their mental map is up to date.",
-        "r_c rounds a corner and stumbles across a tiny, perfect waterfall!",
-        "s_c rounds a corner and stumbles across a tiny, perfect waterfall! Further investigation shows that it emerges from an equally tiny spring, and s_c purrs. This reliable water source could be important during times of drought.",
-        "s_c pads confidently through c_n territory. There's a particular peace in exploring their beloved home, ears pricked up curiously whenever they spot how the seasons and weather have reshaped it since they last passed this way."
+        "r_c heads off to map out a town they've always found confusing. Foraging, fighting, driving off hostile bots; it all requires knowledge of their home turf. It's always worth making sure their mental map is up to date.",
+        "r_c rounds a corner and stumbles across a small cave ripe with energon!",
+        "s_c rounds a corner and stumbles across a tiny, unlooted shop! Further investigation shows that its contents are mostly in tact too, and s_c smiles. This reliable source of resources could be important during tough times.",
+        "s_c pads confidently through Cybertron. There's a particular peace in exploring their beloved home, audials pricked up curiously whenever they spot how the passing solar cycles and weather have reshaped it since they last passed this way."
     ],
     "fail_text": [
-        "r_c gets lost in the territory. Somehow.",
+        "r_c gets lost in the city. Somehow.",
         "s_c shivers a little, thinking of the dangers of solo patrols... No, definitely not. They turn around and slink straight back to camp."
     ],
     "win_skills": ["smart", "very smart", "extremely smart"],
@@ -297,9 +297,9 @@
     "biome": "forest",
     "season": "Any",
     "tags": ["training", "deputy"],
-    "intro_text": "r_c heads out into the forest alone, wanting to explore and have some time to themselves.",
+    "intro_text": "r_c heads out into the city alone, wanting to explore and have some time to themselves.",
     "decline_text": "r_c turns back to camp, deciding that their duties have to come first.",
-    "chance_of_success": 60,
+    "chance_of_success": 70,
     "exp": 20,
     "success_text": [
         "r_c heads off to map out a thicket they've always found confusing. Hunting, fighting, driving off predators; it all requires knowledge of their home turf. It's always worth making sure their mental map is up to date. It feels a little like more work though, and isn't exactly the peaceful break they hoped for.",
@@ -326,7 +326,7 @@
     "tags": ["training", "leader"],
     "intro_text": "r_c heads out into the forest alone, wanting to explore and have some time to themselves.",
     "decline_text": "r_c turns back to camp, deciding that their duties have to come first.",
-    "chance_of_success": 60,
+    "chance_of_success": 70,
     "exp": 20,
     "success_text": [
         "r_c heads off to map out a thicket they've always found confusing. Hunting, fighting, driving off predators; it all requires knowledge of their home turf. It's always worth making sure their mental map is up to date. It feels a little like more work though, and isn't exactly the peaceful break they hoped for.",
@@ -353,7 +353,7 @@
     "tags": ["adult_stat", "training", "apprentice", "trust", "comfort", "dislike", "warrior"],
     "intro_text": "p_l takes them both out to see a big porcupine a patrol spotted in one of the many glades of c_n's forest.",
     "decline_text": "When they get there, they can't find it, and the lesson fails.",
-    "chance_of_success": 60,
+    "chance_of_success": 80,
     "exp": 15,
     "success_text": [
             "app1 watches the big bushy lump of a creature with wide eyes, tail twitching with excitement. p_l points out the cascade of spines lying flat on its hairy back as the porcupine snuffles happily around the forest floor, sounding like a happy newborn kit in the nursery.",
@@ -377,7 +377,7 @@
     "tags": ["adult_stat", "training", "apprentice", "trust", "comfort", "dislike", "warrior"],
     "intro_text": "p_l takes them both out to see a big porcupine a patrol spotted in one of the many glades of c_n's forest.",
     "decline_text": "When they get there, they can't find it, and the lesson fails.",
-    "chance_of_success": 60,
+    "chance_of_success": 80,
     "exp": 15,
     "success_text": [
             "app1 watches the big bushy lump of a creature with wide eyes, tail twitching with excitement. p_l points out the cascade of spines lying flat on its hairy back as the porcupine snuffles happily around the forest floor, sounding like a happy newborn kit in the nursery.",
@@ -401,7 +401,7 @@
     "tags": ["adult_stat", "training", "apprentice", "trust", "comfort", "dislike", "two_apprentices", "warrior"],
     "intro_text": "p_l takes them out to see a big porcupine a patrol spotted in one of the many glades of c_n's forest.",
     "decline_text": "When they get there, they can't find it, and the lesson fails.",
-    "chance_of_success": 60,
+    "chance_of_success": 40,
     "exp": 20,
     "success_text": [
             "app1 and app2 watch the big bushy lump of a creature with wide eyes, tails twitching with excitement. p_l points out the cascade of spines lying flat on its hairy back as the porcupine snuffles happily around the forest floor, sounding like a happy newborn kit in the nursery.",
@@ -425,7 +425,7 @@
     "tags": ["adult_stat", "training", "apprentice", "trust", "comfort", "dislike", "two_apprentices", "warrior"],
     "intro_text": "p_l takes them out to see a big porcupine a patrol spotted in one of the many glades of c_n's forest.",
     "decline_text": "When they get there, they can't find it, and the lesson fails.",
-    "chance_of_success": 60,
+    "chance_of_success": 40,
     "exp": 15,
     "success_text": [
             "app1 and app2 watch the big bushy lump of a creature with wide eyes, tails twitching with excitement. p_l points out the cascade of spines lying flat on its hairy back as the porcupine snuffles happily around the forest floor, sounding like a happy newborn kit in the nursery.",
@@ -449,7 +449,7 @@
     "tags": ["adult_stat", "training", "apprentice", "two_apprentices", "rel_two_apps", "romantic", "platonic", "comfort"],
     "intro_text": "Off in the woods, app1 waits for app2 underneath the low hanging branches of a willow. The tip of their tail keeps twitching in excitement.",
     "decline_text": "Oh no! They both forgot that they were on elder nest change duty today!",
-    "chance_of_success": 60,
+    "chance_of_success": 70,
     "exp": 10,
     "success_text": [
             "app1 bursts out from cover, pouncing on app2 with claws sheathed and giggling. app2 rolls with the blow and kicks app1 off, bounding after them with promises of getting them back! On and on the chase goes, neither interested in winning it as they play under the dappled light of the canopy.",
@@ -475,7 +475,7 @@
     "tags": ["training", "warrior", "romantic", "platonic", "comfort", "no_app"],
     "intro_text": "r_c approaches p_l, asking if they wouldn't mind showing r_c their hunting techniques, and perhaps doing some training with them?",
     "decline_text": "r_c declines gently, explaining that they have too much work to do.",
-    "chance_of_success": 60,
+    "chance_of_success": 80,
     "exp": 10,
     "success_text": [
             "The cats go out together in the late of the day, as the shadows stretch long under the trees. p_l goes through their tricks, showing r_c how they shift their balance to make less noise on leaf litter, as r_c watches with eyes that p_l notices are a bit too admiring for what's just a little trick. They smirk, showing off a little.",
@@ -499,17 +499,17 @@
 	"biome": "forest",
 	"season": "Any",
 	"tags": ["adult_stat", "training", "apprentice", "trust", "comfort", "dislike", "platonic", "warrior"],
-	"intro_text": "Out in the forest, p_l asks app1 if they know why c_n chooses to live in the woods, under the canopy, rather than any other environment.",
+	"intro_text": "Out in the city, p_l asks app1 if they know why c_n chooses to live among these damaged buildings, rather than any other environment.",
 	"decline_text": "app1 seems distracted. p_l shrugs, and decides to focus on more active training today instead.",
 	"chance_of_success": 60,
 	"exp": 15,
 	"success_text": [
-        	"Their ancestors lived in a sheltered redwood grove, and it protected them from the elements and fed their prey and kept their kits dry, p_l explains. But one day, Twolegs destroyed their home with fire and monsters, and the cats of that Clan scattered. Some, after many trials, founded c_n, and chose a place that seemed familiar and safe.",
-        	"p_l shows app1 how the trees protect from wind and rain, how, like their ancestors have done for generations, c_n has learnt to jump between branches like the squirrels they hunt. app1 nods, talking about how the plains or beaches wouldn't have those advantages.",
-        	"c_n myths tell of the Clan their founders were descended from, who lived in a grove of redwood trees shielding them from the world. The Clan has taken lessons from it, about how to use the resources of the forest to keep themselves safe, and to this day they still live with tree trunks standing sentry around camp."
+        	"The bots have lived on cybertron since they were forged, and it protected them from the elements and was full of fuel and resources, p_l explains. But one day, the Decepticons and Autobots started a horrible war, and it ravaged their home planet. Now they have found a new way of life and c_n has proven this world is one bots can still thrive in.",
+        	"p_l shows app1 how these buildings protect from wind and rain, while allowing them to still see the beautiful sky of cybertron. How c_n has learnt to search the old buildings for relics and resources. app1 nods, talking about how the tunnels or beaches wouldn't have those advantages.",
+        	"Cybertronian myths tell of the bots their founders were descended from, who lived without transforming under the horrible aliens who had enslaved them. Their ability to transform allowed them to particularly travel through the city with ease, winning the war against those oppressors and to this day they still use those skills to survive in their world."
 	],
 	"fail_text": [
-        	"app1 launches into a speech about how c_n is awesome because they aren't kittypets, only for p_l to stop them. That wasn't the point of the lesson.",
+        	"app1 launches into a speech about how c_n is awesome because they didn't abandon their home, only for p_l to stop them. That wasn't the point of the lesson.",
         	"Churlish and grumpy, app1 storms past p_l, not interested in hearing their dumb lesson."
 	],
 	"win_skills": ["good speaker", "great speaker", "excellent speaker", "good teacher", "great teacher", "fantastic teacher"],

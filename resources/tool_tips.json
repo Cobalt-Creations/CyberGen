@@ -6,9 +6,9 @@
     },
     "tool_tip.text_box": {
         "colours": {
-            "normal_border": "#2F2918",
+            "normal_border": "#1F182F",
             "normal_text": "#000000",
-            "dark_bg": "#AC9D72"
+            "dark_bg": "#72A2AC"
         },
         "font": {
             "name": "notosans",
@@ -96,62 +96,6 @@
         "misc":
         {
             "rect_width": "300"
-        }
-    },
-    "#med_cat_den_hover.tool_tip":
-    {
-        "misc":
-        {
-            "rect_width": "280"
-        }
-    },
-    "#med_cat_den_hover_big.tool_tip":
-    {
-        "misc":
-        {
-            "rect_width": "460"
-        }
-    },
-    "#blank_button.tool_tip":
-    {
-        "misc":
-        {
-            "rect_width": "700"
-        }
-    },
-	"#mns_image_moon.tool_tip":
-    {
-        "misc":
-        {
-            "rect_width": "240"
-        }
-    },
-	"#mns_image_newleaf.tool_tip":
-    {
-        "misc":
-        {
-            "rect_width": "200"
-        }
-    },
-	"#mns_image_greenleaf.tool_tip":
-    {
-        "misc":
-        {
-            "rect_width": "200"
-        }
-    },
-	"#mns_image_leafbare.tool_tip":
-    {
-        "misc":
-        {
-            "rect_width": "200"
-        }
-    },
-	"#mns_image_leaffall.tool_tip":
-    {
-        "misc":
-        {
-            "rect_width": "200"
         }
     }
 }

@@ -1,5 +1,33 @@
 [
-
+{
+    "patrol_id": "fst_hunt_vole1",
+    "biome": "forest",
+    "season": "Any",
+    "tags": [
+        "hunting",
+        "medium_prey"
+    ],
+    "intro_text": "Your patrol comes across a vole nibbling at a seed.",
+    "success_text": [
+        "r_c drops into a crouch and lightly stalks towards the vole. They pause, waggling their haunches before pouncing. They catch the vole easily and deliver a killing bite to the back of its head.",
+        "r_c drops into a crouch and begins stalking forward. When they get close, the vole suddenly stops chewing and r_c takes the opportunity to pounce. They kill the prey quickly and lick the blood from their lips with satisfaction.",
+        "s_c drops into a crouch and has to consciously stop their tail from swaying in excitement as they stalk the prey. Once they think they're close enough, they give their haunches a little wiggle and leap. They catch the vole squarely between their paws and kill it quickly."
+    ],
+    "fail_text": [
+        "r_c drops into a crouch and begins to stalk forward. They're preparing to pounce when their paw lightly brushes a twig and the vole immediately takes off. They give chase, but the critter disappears into a burrow. Mousedung!"
+    ],
+    "decline_text": "Your patrol decides to look for other prey.",
+    "chance_of_success": 50,
+    "exp": 10,
+    "win_skills": [
+        "great hunter",
+        "fantastic hunter"
+    ],
+    "min_cats": 1,
+    "max_cats": 3,
+    "antagonize_text": null,
+    "antagonize_fail_text": null
+},
 {
     "patrol_id": "fst_hunt_porcupine1",
     "biome": "forest",
@@ -50,11 +78,11 @@
     ],
     "min_cats": 3,
     "max_cats": 6,
-    "history_text": {
-        "scar": "r_c was scarred by a porcupine while on patrol.",
-        "reg_death": "r_c was killed by an angry porcupine while on patrol.",
-        "lead_death": "killed by a porcupine"
-    },
+    "history_text": [
+        "r_c was scarred by a porcupine while on patrol.",
+        "r_c was killed by an angry porcupine while on patrol.",
+        "killed by a porcupine"
+    ],
     "antagonize_text": null,
     "antagonize_fail_text": null
 },
@@ -69,7 +97,8 @@
         "scar",
         "QUILLSCRATCH",
         "death",
-        "huge_prey2"
+        "huge_prey2",
+        "huge_prey3"
     ],
     "intro_text": "r_c encounters a porcupine, bristling with quills.",
     "decline_text": "The patrol steers clear of the porcupine, they don't have enough cats to confront this creature safely.",
@@ -102,11 +131,11 @@
     "max_cats": 2,
     "antagonize_text": null,
     "antagonize_fail_text": null,
-    "history_text": {
-        "scar": "r_c was scarred by a porcupine while on patrol.",
-        "reg_death": "r_c was killed by an angry porcupine while on patrol.",
-        "lead_death": "killed by a porcupine"
-    }
+    "history_text": [
+        "r_c was scarred by a porcupine while on patrol.",
+        "r_c was killed by an angry porcupine while on patrol.",
+        "killed by a porcupine"
+    ]
 },
 {
     "patrol_id": "fst_hunt_rabbitburrow1",
@@ -200,25 +229,25 @@
         "medium_prey1",
         "large_prey2"
     ],
-    "intro_text": "The patrol notices a commotion and finds two squirrels chasing each other across the forest floor.",
-    "decline_text": "The patrol decides there's probably easier prey to find elsewhere.",
+    "intro_text": "The patrol hears a commotion and finds two bots fighting over fuel, but just far enough away from it that they might be able to snag it for the team...",
+    "decline_text": "The patrol decides there's probably easier fuel to find somewhere else.",
     "chance_of_success": 50,
     "exp": 10,
     "success_text": [
-        "The squirrels are so distracted that the patrol is able to quickly catch them both.",
-        "The patrol springs onto the squirrels without a second thought, easily dispatching them.",
-        "s_c is quick on the jump! Though the squirrels notice the cats and begin scampering away, s_c easily cuts them off and kills both squirrels."
+        "The bots are so distracted that the patrol is able to quickly take the fuel and leave the scene before being spotted.",
+        "The patrol springs into action waiting for the fight to get particularly nasty before swooping in, easily taking the fuel and getting away with it.",
+        "s_c is quick to form a plan, playing the waiting game until they come onto the scene and challange the two bots for the food, it's an easy fight when the two bots have been pounding dents into each other for so long, getting the team some easy fuel."
     ],
     "fail_text": [
-        "The squirrels are far too excited and quick - they slip right out from between the patrol's claws.",
-        "s_c runs at the squirrels before anyone else can pounce, laughing at the prey's antics and playfully jumping into the middle of their game.  The squirrels scatter away at the disturbance and disappear into the canopy.",
+        "The bots are far too dangerous to challange - s_c tries to fight them for the fuel but has to flee soon after.",
+        "s_c runs at the bots before anyone else can pounce, laughing at the bot's argument and smugly calling them both fools. One of the other bots uses their ineffective taunts as a distraction and takes the fuel, running too far away for the patrol to catch them. Scrap!",
         null,
-        "r_c tries to climb up after them but slips and falls, twisting their paw."
+        "The bots see the patrol and quickly turn hostile and dangerous, the patrol runs but r_c slips and falls, twisting their foot."
     ],
     "win_skills": [
-        "good hunter",
-        "great hunter",
-        "fantastic hunter"
+        "very smart",
+        "extremely smart",
+        "excellent fighter"
     ],
     "fail_trait": [
         "troublesome",
@@ -227,9 +256,9 @@
     ],
     "min_cats": 1,
     "max_cats": 6,
-    "history_text": {
-        "scar": "r_c gained a scar after trying to chase some squirrels up a tree."
-    },
+    "history_text": [
+        "r_c gained a scar after trying to steal fuel from two arguing bots."
+    ],
     "antagonize_text": null,
     "antagonize_fail_text": null
 },
@@ -269,9 +298,9 @@
     "max_cats": 6,
     "antagonize_text": null,
     "antagonize_fail_text": null,
-    "history_text": {
-        "scar": "r_c was scarred after an unfortunate encounter with a wolverine."
-    }
+    "history_text": [
+        "r_c was scarred after an unfortunate encounter with a wolverine."
+    ]
 },
 {
     "patrol_id": "fst_hunt_burrow2",
@@ -306,10 +335,11 @@
     "max_cats": 1,
     "antagonize_text": null,
     "antagonize_fail_text": null,
-    "history_text": {
-        "reg_death": "r_c was killed after an unfortunate experience with a wolverine.",
-        "lead_death": "killed by a wolverine"
-    }
+    "history_text": [
+        null,
+        "r_c was killed after an unfortunate experience with a wolverine.",
+        "killed by a wolverine"
+    ]
 },
 {
     "patrol_id": "fst_hunt_howl1",
@@ -363,11 +393,11 @@
     "max_cats": 6,
     "antagonize_text": null,
     "antagonize_fail_text": null,
-    "history_text": {
-        "scar": "r_c was scarred by a coyote protecting its scavenged meal.",
-        "reg_death": "r_c was killed by a coyote protecting its scavenged meal.",
-        "lead_death": "killed by a coyote"
-    }
+    "history_text": [
+        "r_c was scarred by a coyote protecting its scavenged meal.",
+        "r_c was killed by a coyote protecting its scavenged meal.",
+        "killed by a coyote"
+    ]
 },
 {
     "patrol_id": "fst_hunt_howl2",
@@ -422,11 +452,11 @@
     "max_cats": 4,
     "antagonize_text": null,
     "antagonize_fail_text": null,
-    "history_text": {
-        "scar": "r_c was scarred by a coyote protecting its scavenged meal.",
-        "reg_death": "r_c was killed by a coyote protecting its scavenged meal.",
-        "lead_death": "killed by a coyote"
-    }
+    "history_text": [
+        "r_c was scarred by a coyote protecting its scavenged meal.",
+        "r_c was killed by a coyote protecting its scavenged meal.",
+        "killed by a coyote"
+    ]
 },
 {
     "patrol_id": "fst_hunt_howl3",
@@ -477,10 +507,11 @@
     "max_cats": 1,
     "antagonize_text": null,
     "antagonize_fail_text": null,
-    "history_text": {
-        "reg_death": "r_c was killed by a coyote protecting its scavenged meal.",
-        "lead_death": "killed by a coyote"
-    }
+    "history_text": [
+        null,
+        "r_c was killed by a coyote protecting its scavenged meal.",
+        "killed by a coyote"
+    ]
 },
 {
     "patrol_id": "fst_hunt_howl4",
@@ -535,11 +566,11 @@
     "max_cats": 6,
     "antagonize_text": null,
     "antagonize_fail_text": null,
-    "history_text": {
-        "scar": "r_c was scarred by a wolf protecting its scavenged meal.",
-        "reg_death": "r_c was killed by a wolf pack protecting its meal.",
-        "lead_death": "killed by a wolf pack"
-    }
+    "history_text": [
+        "r_c was scarred by a wolf protecting its scavenged meal.",
+        "r_c was killed by a wolf pack protecting its meal.",
+        "killed by a wolf pack"
+    ]
 },
 {
     "patrol_id": "fst_hunt_howl5",
@@ -590,10 +621,11 @@
     "max_cats": 4,
     "antagonize_text": null,
     "antagonize_fail_text": null,
-    "history_text": {
-        "reg_death": "r_c was killed by a wolf protecting its meal.",
-        "lead_death": "killed by a wolf"
-    }
+    "history_text": [
+        null,
+        "r_c was killed by a wolf protecting its meal.",
+        "killed by a wolf"
+    ]
 },
 {
     "patrol_id": "fst_hunt_howl6",
@@ -644,10 +676,11 @@
     "max_cats": 1,
     "antagonize_text": null,
     "antagonize_fail_text": null,
-    "history_text": {
-        "reg_death": "r_c was killed by a wolf protecting its meal.",
-        "lead_death": "killed by a wolf"
-    }
+    "history_text": [
+        null,
+        "r_c was killed by a wolf protecting its meal.",
+        "killed by a wolf"
+    ]
 },
 {
     "patrol_id": "fst_hunt_strange1",
@@ -736,24 +769,25 @@
         "LEFTEAR",
         "medium_prey0",
         "large_prey1",
+        "large_prey2",
         "large_prey3",
         "no_fail_prey"
     ],
-    "intro_text": "r_c's mentor assesses them by sending them on a solo hunt.",
+    "intro_text": "r_c's mentor assesses them by sending them on a solo hunt for fuel.",
     "decline_text": "r_c asks their mentor to do the assessment some other time.",
     "chance_of_success": 40,
     "exp": 20,
     "success_text": [
-        "r_c manages a skillful catch, and brings it back to the camp to show everyone!",
-        "r_c focuses completely on their test, slipping into a cleareyed, razor focused routine of catch and stash, catch and stash. Eventually they've caught enough to need their mentor's help carrying it back to camp, and the feeling seeing their prey stock the fresh-kill pile - they feel ready to burst with happiness!",
+        "r_c manages a skillful haul, and brings it back to the camp to show everyone!",
+        "r_c focuses completely on their test, slipping into a cleareyed, razor focused routine of grabbing fuel and hiding until they were sure it was safe to take more. Soon they've gathered enough to need their mentor's help taking it back to camp, and the feeling seeing their teammates enjoy the fuel they gathered - they feel ready to burst with happiness!",
         null,
-        "It's a terrible day for hunting, the prey running sparse and alert. But s_c takes their time and doesn't let the conditions discourage them, until eventually the perfect opportunity falls into place and they pull off a perfect catch!"
+        "It's a terrible day for foraging, the few mines they found were scarse, some even clearly having been looted already. But s_c takes their time and doesn't let the conditions discourage them, until eventually the perfect opportunity falls into place and they run from the scene, arms full of energon!"
     ],
     "fail_text": [
-        "Hunting is poor, and while r_c's mentor is disappointed, they don't expect r_c to be able to catch what isn't there.",
-        "s_c is too hasty, bouncing after first one prey, then another, and it ends with them empty pawed and exhausted. Their mentor is disappointed - they clearly need more training.",
+        "Foraging is poor, and while r_c's mentor is disappointed, they don't expect r_c to be able to find what isn't there.",
+        "s_c is too hasty, chasing after one source of fuel, then nearly being caught before moving to another, and it ends with them empty handed and exhausted. Their mentor is disappointed - they clearly need more training.",
         null,
-        "While on the hunt, r_c tumbles right down a steep slope while their attention is elsewhere. Bruised and sore, r_c has to report to the medicine cat den when they return to camp."
+        "While on the look out for fuel to take, r_c tumbles right down a steep slope while their attention is elsewhere. Bruised and sore, r_c has to report to the medbay when they return to camp."
     ],
     "win_trait": [
         "calm",
@@ -782,9 +816,9 @@
     "max_cats": 1,
     "antagonize_text": null,
     "antagonize_fail_text": null,
-    "history_text": {
-        "scar": "r_c got injured as an apprentice, exploring alone."
-    }
+    "history_text": [
+        "r_c got injured as young bot, exploring alone."
+    ]
 },
 {
     "patrol_id": "fst_hunt_solo2",
@@ -793,7 +827,7 @@
     "tags": [
         "hunting",
         "medium_prey0",
-        "large_prey1",
+        "medium_prey1",
         "large_prey2",
         "large_prey3",
         "no_fail_prey"
@@ -852,7 +886,7 @@
         "hunting",
         "deputy",
         "medium_prey0",
-        "large_prey1",
+        "medium_prey1",
         "large_prey2",
         "large_prey3",
         "no_fail_prey"
@@ -911,7 +945,7 @@
         "hunting",
         "leader",
         "medium_prey0",
-        "large_prey1",
+        "medium_prey1",
         "large_prey2",
         "large_prey3",
         "no_fail_prey"
@@ -972,6 +1006,7 @@
         "scar",
         "NECKBITE",
         "small_prey0",
+        "small_prey1",
         "medium_prey2"
     ],
     "intro_text": "As the patrol is checking the border lines, they hear an odd sound coming from a nearby bush.",
@@ -979,7 +1014,7 @@
     "chance_of_success": 20,
     "exp": 10,
     "success_text": [
-        "r_c drops down into a hunting crouch, certain that a mouse must be the source of the noise.  They find themselves to be correct when they pounce into the bush and return to the patrol with the tasty morsel dangling from their mouth. One more for the fresh-kill pile!",
+        "r_c drops down into a hunting crouch, certain that a mouse must be the source of the noise.  They find themselves to be correct when they pounce into the bush and return to the patrol with the tasty morsel dangling from their mouth.",
         null,
         "p_l pads towards the bush to check on the noise when a rabbit suddenly bursts out!  s_c is quick to react and manages to snag the rabbit before it can disappear."
     ],
@@ -1006,9 +1041,9 @@
     "max_cats": 6,
     "antagonize_text": null,
     "antagonize_fail_text": null,
-    "history_text": {
-        "scar": "r_c gained a scar from a fox."
-    }
+    "history_text": [
+        "r_c gained a scar from a fox."
+    ]
 },
 {
     "patrol_id": "fst_hunt_noise2",
@@ -1021,6 +1056,7 @@
         "NECKBITE",
         "death",
         "small_prey0",
+        "small_prey1",
         "medium_prey2"
     ],
     "intro_text": "As the patrol is checking the border lines, they hear an odd sound coming from a nearby bush.",
@@ -1055,11 +1091,11 @@
     "max_cats": 4,
     "antagonize_text": null,
     "antagonize_fail_text": null,
-    "history_text": {
-        "scar": "p_l gained a scar from a fox.",
-        "reg_death": "p_l was killed by a wolverine.",
-        "lead_death": "killed by a wolverine"
-    }
+    "history_text": [
+        "p_l gained a scar from a fox.",
+        "p_l was killed by a wolverine.",
+        "killed by a wolverine"
+    ]
 },
 {
     "patrol_id": "fst_hunt_gonetnr1",
@@ -1068,8 +1104,8 @@
     "tags": [
         "hunting",
         "gone",
-        "medium_prey0",
-        "medium_prey1"
+        "small_prey0",
+        "small_prey1"
     ],
     "intro_text": "Your patrol encounters a clearing where a lot of Twolegs linger.",
     "decline_text": "Your patrol decides to hunt elsewhere.",
@@ -1169,7 +1205,13 @@
         "wise"
     ],
     "min_cats": 4,
-    "max_cats": 6
+    "max_cats": 6,
+    "antagonize_text": null,
+    "antagonize_fail_text": null,
+    "history_text": [
+        null,
+        null
+    ]
 },
 {
     "patrol_id": "fst_hunt_gonetnr3",
@@ -1223,7 +1265,13 @@
         "wise"
     ],
     "min_cats": 4,
-    "max_cats": 6
+    "max_cats": 6,
+    "antagonize_text": null,
+    "antagonize_fail_text": null,
+    "history_text": [
+        null,
+        null
+    ]
 },
 {
     "patrol_id": "fst_hunt_gonetwolegden1",
@@ -1240,7 +1288,7 @@
     ],
     "intro_text": "r_c decides to hunt out near the Twoleg dens.",
     "decline_text": "On second thought, they decide to reline their nest today instead.",
-    "chance_of_success": 40,
+    "chance_of_success": 50,
     "exp": 20,
     "success_text": [
         "They're interrupted by Twolegs wandering through the woods a couple times, but it's a successful hunt.",
@@ -1281,7 +1329,13 @@
         "wise"
     ],
     "min_cats": 1,
-    "max_cats": 1
+    "max_cats": 1,
+    "antagonize_text": null,
+    "antagonize_fail_text": null,
+    "history_text": [
+        null,
+        null
+    ]
 },
 {
     "patrol_id": "fst_hunt_gonetwolegden2",
@@ -1298,7 +1352,7 @@
     ],
     "intro_text": "app1 decides to hunt out near the Twoleg dens.",
     "decline_text": "On second thought, they decide to reline their nest today instead.",
-    "chance_of_success": 40,
+    "chance_of_success": 50,
     "exp": 20,
     "success_text": [
         "They're interrupted by Twolegs wandering through the woods a couple times, so they miss a couple catches, but overall it works out.",
@@ -1334,7 +1388,13 @@
         "wise"
     ],
     "min_cats": 1,
-    "max_cats": 1
+    "max_cats": 1,
+    "antagonize_text": null,
+    "antagonize_fail_text": null,
+    "history_text": [
+        null,
+        null
+    ]
 },
 {
     "patrol_id": "fst_hunt_twolegdencatdare1",
@@ -1346,13 +1406,12 @@
         "small_prey",
         "romantic",
         "platonic",
-        "p_l_to_r_c",
         "no_app",
         "medium_prey0"
     ],
     "intro_text": "Boldly, eyes daring p_l to say no, r_c suggests hunting by the Twoleg dens.",
     "decline_text": "On second thought, they decide to reline their nests today instead.",
-    "chance_of_success": 40,
+    "chance_of_success": 50,
     "exp": 20,
     "success_text": [
         "They're interrupted by Twolegs wandering through the woods a couple times, but it's a successful hunt.",
@@ -1393,7 +1452,13 @@
         "wise"
     ],
     "min_cats": 2,
-    "max_cats": 2
+    "max_cats": 2,
+    "antagonize_text": null,
+    "antagonize_fail_text": null,
+    "history_text": [
+        null,
+        null
+    ]
 },
 {
     "patrol_id": "fst_hunt_twolegdenappdare1",
@@ -1407,12 +1472,11 @@
         "romantic",
         "platonic",
         "two_apprentices",
-        "rel_two_apps",
         "medium_prey0"
     ],
     "intro_text": "Boldly, eyes daring app1 to say no, app2 suggests hunting by the Twoleg dens. Where apprentices are definitely not allowed.",
     "decline_text": "On second thought, they decide to reline their nests today instead.",
-    "chance_of_success": 30,
+    "chance_of_success": 50,
     "exp": 20,
     "success_text": [
         "They're interrupted by Twolegs wandering through the woods a couple times, so they miss a couple catches, but overall it works out.",
@@ -1449,7 +1513,13 @@
         "wise"
     ],
     "min_cats": 2,
-    "max_cats": 2
+    "max_cats": 2,
+    "antagonize_text": null,
+    "antagonize_fail_text": null,
+    "history_text": [
+        null,
+        null
+    ]
 },
 {
     "patrol_id": "fst_hunt_gonetwolegtrap1",
@@ -1458,7 +1528,7 @@
     "tags": ["hunting", "gone"],
     "intro_text": "The smell of food lures r_c into what looks like a tunnel between some bushes.",
     "decline_text": "Turning their nose up at the temptation, they continue on their way.",
-    "chance_of_success": 40,
+    "chance_of_success": 50,
     "exp": 20,
     "success_text": [
         "Darting through quickly, they see that the lovely smell is Twoleg mush, and keep running.",
@@ -1476,7 +1546,13 @@
     "win_trait": ["calm", "careful", "insecure", "lonesome", "loyal", "nervous", "sneaky", "strange"],
     "fail_trait": ["adventurous", "bold", "confident", "daring", "playful"],
     "min_cats": 1,
-    "max_cats": 1
+    "max_cats": 1,
+    "antagonize_text": null,
+    "antagonize_fail_text": null,
+    "history_text": [
+        null,
+        null
+    ]
 },
 {
     "patrol_id": "fst_hunt_gonetwolegtrap2",
@@ -1488,7 +1564,7 @@
     ],
     "intro_text": "The smell of food lures r_c into what looks like a tunnel between some bushes.",
     "decline_text": "Turning their nose up at the temptation, the patrol continues on their way.",
-    "chance_of_success": 40,
+    "chance_of_success": 50,
     "exp": 20,
     "success_text": [
         "Darting through quickly, r_c sees that the lovely smell is Twoleg mush, and keeps running.",
@@ -1525,7 +1601,13 @@
         "playful"
     ],
     "min_cats": 2,
-    "max_cats": 6
+    "max_cats": 6,
+    "antagonize_text": null,
+    "antagonize_fail_text": null,
+    "history_text": [
+        null,
+        null
+    ]
 },
 {
     "patrol_id": "fst_hunt_thunderpath1",
@@ -1538,11 +1620,11 @@
         "retirement",
         "blunt_force_injury",
         "hunting",
-        "large_prey"
+        "medium_prey"
     ],
     "intro_text": "The patrol comes across a Thunderpath running through the forest.",
     "decline_text": "They decide it is better not to cross.",
-    "chance_of_success": 40,
+    "chance_of_success": 50,
     "exp": 10,
     "success_text": [
         "Your patrol crosses the Thunderpath and can hunt on the other side.",
@@ -1575,11 +1657,13 @@
     ],
     "min_cats": 1,
     "max_cats": 6,
-    "history_text": {
-        "scar": "r_c was heavily injured by a monster, and carries the scars from it.",
-        "reg_death": "r_c was hit by a monster and killed.",
-        "lead_death": "were hit by a monster"
-    }
+    "antagonize_text": null,
+    "antagonize_fail_text": null,
+    "history_text": [
+        "r_c was heavily injured by a monster, and carries the scars from it.",
+        "r_c was hit by a monster and killed.",
+        "were hit by a monster"
+    ]
 },
 {
     "patrol_id": "fst_hunt_thunderpath2",
@@ -1593,7 +1677,7 @@
         "blunt_force_injury",
         "hunting",
         "cruel_season",
-        "large_prey"
+        "medium_prey"
     ],
     "intro_text": "The patrol comes across a Thunderpath running through the forest.",
     "decline_text": "They decide it is better not to cross.",
@@ -1602,13 +1686,13 @@
     "success_text": [
         "Your patrol crosses the Thunderpath and can hunt on the other side.",
         "Your patrol finds a pipe running under the Thunderpath and uses it to cross. They end up with slightly damp paws, but a successful haul of prey.",
-        "Your patrol stops on the edge of the Thunderpath, and s_c organizes a thorough search that finds a flattened squirrel. It's a reminder of the danger of the Thunderpath, and a good source of scavenged meat.",
-        "s_c is patient enough to wait until the Thunderpath is completely clear, then trots across calmly to hunt on the other side."
+        "Your patrol stops on the edge of the Thunderpath, and s_c organizes a thorough search that finds a flattened squirrel. It's a reminder of the danger of the thunderpath, and a good source of scavenged meat.",
+        "s_c is patient enough to wait until the thunderpath is completely clear, then trots across calmly to hunt on the other side."
     ],
     "fail_text": [
         "r_c hears a monster thundering towards them, but it screeches to a halt just in time. That was close! Maybe it's best to go back to camp.",
         null,
-        "r_c is crossing the Thunderpath and hears a monster thundering towards them. They freeze, and the monster swerves to hit them deliberately, killing them instantly.",
+        "r_c is crossing the thunderpath and hears a monster thundering towards them. They freeze, and the monster swerves to hit them deliberately, killing them instantly.",
         "r_c is hit by a monster and seems quite injured, but miraculously still alive."
     ],
     "win_skills": [
@@ -1630,11 +1714,13 @@
     ],
     "min_cats": 1,
     "max_cats": 6,
-    "history_text": {
-        "scar": "r_c was heavily injured by a monster, and carries the scars from it.",
-        "reg_death": "r_c was hit by a monster and killed.",
-        "lead_death": "were hit by a monster"
-    }
+    "antagonize_text": null,
+    "antagonize_fail_text": null,
+    "history_text": [
+        "r_c was heavily injured by a monster, and carries the scars from it.",
+        "r_c was hit by a monster and killed.",
+        "were hit by a monster"
+    ]
 },
 {
     "patrol_id": "fst_hunt_thunderpath3",
@@ -1652,20 +1738,20 @@
         "large_prey2",
         "large_prey3"
     ],
-    "intro_text": "The patrol comes across a Thunderpath running through the forest.",
+    "intro_text": "The patrol comes across a thunderpath running through the forest.",
     "decline_text": "They decide it is better not to cross.",
     "chance_of_success": 10,
     "exp": 10,
     "success_text": [
-        "Your patrol crosses the Thunderpath and can hunt on the other side.",
-        "Your patrol finds a pipe running under the Thunderpath and uses it to cross. They end up with slightly damp paws, but a successful haul of lots of prey.",
-        "Your patrol stops on the edge of the Thunderpath, and s_c organizes a thorough search that finds several flattened pieces of roadkill. It's a reminder of the danger of the Thunderpath, and a good source of scavenged meat.",
-        "s_c is patient enough to wait until the Thunderpath is completely clear, then trots across calmly with the patrol to hunt on the other side."
+        "Your patrol crosses the thunderpath and can hunt on the other side.",
+        "Your patrol finds a pipe running under the thunderpath and uses it to cross. They end up with slightly damp paws, but a successful haul of lots of prey.",
+        "Your patrol stops on the edge of the thunderpath, and s_c organizes a thorough search that finds several flattened pieces of roadkill. It's a reminder of the danger of the thunderpath, and a good source of scavenged meat.",
+        "s_c is patient enough to wait until the thunderpath is completely clear, then trots across calmly with the patrol to hunt on the other side."
     ],
     "fail_text": [
         null,
         null,
-        "As the group crosses the Thunderpath, a speeding monster appears out of nowhere. The cats run panicked in all directions, and several of them get hit and die.",
+        "As the group crosses the thunderpath, a speeding monster appears out of nowhere. The cats run panicked in all directions, and several of them get hit and die.",
         "r_c is hit by a monster and seems quite injured, but miraculously still alive."
     ],
     "win_skills": [
@@ -1687,11 +1773,13 @@
     ],
     "min_cats": 5,
     "max_cats": 6,
-    "history_text": {
-        "scar": "r_c was heavily injured by a monster, and carries the scars from it.",
-        "reg_death": "This cat was hit by a monster and killed.",
-        "lead_death": "were hit by a monster"
-    }
+    "antagonize_text": null,
+    "antagonize_fail_text": null,
+    "history_text": [
+        "r_c was heavily injured by a monster, and carries the scars from it.",
+        "This cat was hit by a monster and killed.",
+        "were hit by a monster"
+    ]
 },
 {
     "patrol_id": "fst_hunt_thunderpath4",
@@ -1705,22 +1793,22 @@
         "blunt_force_injury",
         "hunting",
         "cruel_season",
-        "large_prey"
+        "medium_prey"
     ],
-    "intro_text": "The patrol comes across a Thunderpath running through the forest.",
+    "intro_text": "The patrol comes across a thunderpath running through the forest.",
     "decline_text": "They decide it is better not to cross.",
     "chance_of_success": 10,
     "exp": 10,
     "success_text": [
-        "Your patrol crosses the Thunderpath and can hunt on the other side.",
-        "Your patrol finds a pipe running under the Thunderpath and uses it to cross. They end up with slightly damp paws, but a successful haul of lots of prey.",
-        "Your patrol stops on the edge of the Thunderpath, and s_c organizes a thorough search that finds a flattened squirrel. It's a reminder of the danger of the Thunderpath, and a good source of scavenged meat.",
-        "s_c is patient enough to wait until the Thunderpath is completely clear, then trots across calmly with the patrol to hunt on the other side."
+        "Your patrol crosses the thunderpath and can hunt on the other side.",
+        "Your patrol finds a pipe running under the thunderpath and uses it to cross. They end up with slightly damp paws, but a successful haul of lots of prey.",
+        "Your patrol stops on the edge of the thunderpath, and s_c organizes a thorough search that finds a flattened squirrel. It's a reminder of the danger of the thunderpath, and a good source of scavenged meat.",
+        "s_c is patient enough to wait until the thunderpath is completely clear, then trots across calmly with the patrol to hunt on the other side."
     ],
     "fail_text": [
         "r_c hears a monster thundering towards them, but it screeches to a halt just in time. That was close! Maybe it's best to go back to camp.",
         null,
-        "As the group crosses the Thunderpath, a speeding monster appears out of nowhere. The cats run panicked in all directions, and several of them get hit as the monster swerves to hit them deliberately, killing them instantly.",
+        "As the group crosses the thunderpath, a speeding monster appears out of nowhere. The cats run panicked in all directions, and several of them get hit as the monster swerves to hit them deliberately, killing them instantly.",
         "r_c is hit by a monster and seems quite injured, but miraculously still alive."
     ],
     "win_skills": [
@@ -1742,11 +1830,13 @@
     ],
     "min_cats": 5,
     "max_cats": 6,
-    "history_text": {
-        "scar": "r_c was heavily injured by a monster, and carries the scars from it.",
-        "reg_death": "r_c was hit by a monster and killed.",
-        "lead_death": "were hit by a monster"
-    }
+    "antagonize_text": null,
+    "antagonize_fail_text": null,
+    "history_text": [
+        "r_c was heavily injured by a monster, and carries the scars from it.",
+        "r_c was hit by a monster and killed.",
+        "were hit by a monster"
+    ]
 },
 {
     "patrol_id": "fst_hunt_fun1",
@@ -1754,7 +1844,9 @@
     "season": "Any",
     "tags": [
         "hunting",
-        "medium_prey"
+        "small_prey0",
+        "small_prey1",
+        "medium_prey2"
     ],
     "intro_text": "As r_c tears through the forest, stretching their legs on a run, they spot movement out of the corner of their eye.",
     "decline_text": "They keep going, not wanting to slow down.",
@@ -1774,7 +1866,13 @@
         "fantastic hunter"
     ],
     "min_cats": 1,
-    "max_cats": 1
+    "max_cats": 1,
+    "antagonize_text": null,
+    "antagonize_fail_text": null,
+    "history_text": [
+        null,
+        null
+    ]
 },
 {
     "patrol_id": "fst_hunt_fun2",
@@ -1783,7 +1881,7 @@
     "tags": [
         "hunting",
         "apprentice",
-        "medium_prey"
+        "small_prey"
     ],
     "intro_text": "As app1 tears through the forest, stretching their legs on a run, they spot movement out of the corner of their eye.",
     "decline_text": "They keep going, not wanting to slow down.",
@@ -1797,7 +1895,13 @@
         "app1 darts to the side, but wherever made the flash of movement is long gone. How frustrating!"
     ],
     "min_cats": 1,
-    "max_cats": 1
+    "max_cats": 1,
+    "antagonize_text": null,
+    "antagonize_fail_text": null,
+    "history_text": [
+        null,
+        null
+    ]
 },
 {
     "patrol_id": "fst_hunt_fun3",
@@ -1809,7 +1913,9 @@
         "romantic",
         "platonic",
         "respect",
-        "medium_prey"
+        "small_prey0",
+        "small_prey1",
+        "medium_prey2"
     ],
     "intro_text": "As r_c tears through the forest with p_l, stretching their legs on a run, they spot movement out of the corner of their eye.",
     "decline_text": "They keep going, not wanting to slow down.",
@@ -1829,7 +1935,9 @@
         "fantastic hunter"
     ],
     "min_cats": 2,
-    "max_cats": 2
+    "max_cats": 2,
+    "antagonize_text": null,
+    "antagonize_fail_text": null
 },
 {
     "patrol_id": "fst_hunt_fun4",
@@ -1842,7 +1950,7 @@
         "platonic",
         "respect",
         "two_apprentices",
-        "medium_prey"
+        "small_prey"
     ],
     "intro_text": "As app1 tears through the forest with app2, stretching their legs on a run, they spot movement out of the corner of their eye.",
     "decline_text": "They keep going, not wanting to slow down.",
@@ -1856,7 +1964,9 @@
         "app1 skids to a halt and tries to sprint after it, but the bird they saw escapes their paws. They chatter angrily at it, and it tries to poop on them. Such is life. app2 snickers at them too, but in a lighthearted way, and soon both apprentices are giggling about it as they continue their run."
     ],
     "min_cats": 2,
-    "max_cats": 2
+    "max_cats": 2,
+    "antagonize_text": null,
+    "antagonize_fail_text": null
 },
 {
     "patrol_id": "fst_hunt_lillizard1",
@@ -1887,7 +1997,9 @@
         "fantastic hunter"
     ],
     "min_cats": 2,
-    "max_cats": 3
+    "max_cats": 3,
+    "antagonize_text": null,
+    "antagonize_fail_text": null
 },
 {
     "patrol_id": "fst_hunt_lillizard2",
@@ -1915,33 +2027,8 @@
         "The patrol is unable to catch the small reptile quick enough and the little lizard lives another day."
     ],
     "min_cats": 2,
-    "max_cats": 3
-},
-{
-    "patrol_id": "fst_hunt_vole1",
-    "biome": "forest",
-    "season": "Any",
-    "tags": [
-        "hunting",
-        "medium_prey"
-    ],
-    "intro_text": "Your patrol comes across a vole nibbling at a seed.",
-    "success_text": [
-        "r_c drops into a crouch and lightly stalks towards the vole. They pause, waggling their haunches before pouncing. They catch the vole easily and deliver a killing bite to the back of its head.",
-        "r_c drops into a crouch and begins stalking forward. When they get close, the vole suddenly stops chewing and r_c takes the opportunity to pounce. They kill the prey quickly and lick the blood from their lips with satisfaction.",
-        "s_c drops into a crouch and has to consciously stop their tail from swaying in excitement as they stalk the prey. Once they think they're close enough, they give their haunches a little wiggle and leap. They catch the vole squarely between their paws and kill it quickly."
-    ],
-    "fail_text": [
-        "r_c drops into a crouch and begins to stalk forward. They're preparing to pounce when their paw lightly brushes a twig and the vole immediately takes off. They give chase, but the critter disappears into a burrow. Mousedung!"
-    ],
-    "decline_text": "Your patrol decides to look for other prey.",
-    "chance_of_success": 50,
-    "exp": 10,
-    "win_skills": [
-        "great hunter",
-        "fantastic hunter"
-    ],
-    "min_cats": 1,
-    "max_cats": 3
+    "max_cats": 3,
+    "antagonize_text": null,
+    "antagonize_fail_text": null
 }
 ]

@@ -1,6 +1,9 @@
 import pygame
 import logging
-import ujson
+try:
+    import ujson as json
+except ImportError:
+    import json
 logger = logging.getLogger(__name__)
 
 
@@ -17,7 +20,7 @@ class _SoundManager():
 
         try:
             with open("resources/audio/sounds.json", "r") as f:
-                sound_data = ujson.load(f)
+                sound_data = json.load(f)
         except:
             logger.exception("Failed to load sound index")
             return

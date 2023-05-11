@@ -1,16 +1,13 @@
 # -*- mode: python ; coding: utf-8 -*-
 
-from os import getenv
 
-
-is_release = getenv('IS_RELEASE', '1') == '1'
 block_cipher = None
 
 a = Analysis(
     ['main.py'],
     pathex=[],
     binaries=[],
-    datas=[],
+    datas=[('commit.txt', '.')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
@@ -25,10 +22,8 @@ pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
 
 a.datas += Tree('./resources', prefix='resources')
 a.datas += Tree('./sprites', prefix='sprites')
-a.datas += [ ('version.ini', './version.ini', 'DATA') ]
-a.datas += [ ('changelog.txt', './changelog.txt', 'DATA') ]
 a.datas += [ ('OpenDataDirectory.bat', './bin/OpenDataDirectory.bat', 'DATA') ]
-a.datas += [ ('.itch.toml', './.itch.toml', 'DATA') ]
+
 
 exe = EXE(
     pyz,
@@ -40,7 +35,7 @@ exe = EXE(
     bootloader_ignore_signals=False,
     strip=False,
     upx=False,
-    console=False if is_release else True,
+    console=False,
     disable_windowed_traceback=False,
     argv_emulation=False,
     target_arch=None,
@@ -62,6 +57,5 @@ app = BUNDLE(
     coll,
     name='Clangen.app',
     icon='resources/images/icon.png',
-    bundle_identifier='com.sablesteel.clangen',
-    version='0.7.5' # imo we should give dev builds .5
+    bundle_identifier=None,
 )
