@@ -51,14 +51,19 @@ class ClanScreen(Screens):
             pass
         elif event.type == pygame_gui.UI_BUTTON_START_PRESS:
             if event.ui_element == self.save_button:
-                self.save_button_saving_state.show()
-                self.save_button.disable()
-                game.save_cats()
-                game.clan.save_clan()
-                game.clan.save_pregnancy(game.clan)
-                game.save_settings()
-                game.switches['saved_clan'] = True
-                self.update_buttons_and_text()
+                try:
+                    self.save_button_saving_state.show()
+                    self.save_button.disable()
+                    game.save_cats()
+                    game.clan.save_clan()
+                    game.clan.save_pregnancy(game.clan)
+                    game.save_events()
+                    game.save_settings()
+                    game.switches['saved_clan'] = True
+                    self.update_buttons_and_text()
+                except RuntimeError:
+                    SaveError(traceback.format_exc())
+                    self.change_screen("start screen")
             if event.ui_element in self.cat_buttons:
                 game.switches["cat"] = event.ui_element.return_cat_id()
                 self.change_screen('profile screen')
@@ -72,6 +77,22 @@ class ClanScreen(Screens):
                 self.change_screen('med den screen')
             else:
                 self.menu_button_pressed(event)
+        
+        elif event.type == pygame.KEYDOWN and game.settings['keybinds']:
+            if event.key == pygame.K_RIGHT:
+                self.change_screen('starclan screen')
+            elif event.key == pygame.K_LEFT:
+                self.change_screen('events screen')
+            elif event.key == pygame.K_SPACE:
+                self.save_button_saving_state.show()
+                self.save_button.disable()
+                game.save_cats()
+                game.clan.save_clan()
+                game.clan.save_pregnancy(game.clan)
+                game.save_events()
+                game.save_settings()
+                game.switches['saved_clan'] = True
+                self.update_buttons_and_text()
 
     def screen_switches(self):
         cat_profiles()

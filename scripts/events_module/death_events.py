@@ -33,8 +33,10 @@ class Death_Events():
             other_clan_name = f'{other_clan.name}Clan'
 
         possible_short_events = self.generate_events.possible_short_events(cat.status, cat.age, "death")
-        final_events = self.generate_events.filter_possible_short_events(possible_short_events, cat, other_cat, war, enemy_clan,
-                                                                         other_clan, alive_kits)
+        #print('death event', cat.ID)
+        final_events = self.generate_events.filter_possible_short_events(possible_short_events, cat, other_cat, war,
+                                                                         enemy_clan,
+                                                                         other_clan, alive_kits, murder=murder)
 
         # ---------------------------------------------------------------------------- #
         #                                  kill cats                                   #
@@ -44,6 +46,46 @@ class Death_Events():
         except IndexError:
             print('WARNING: no death events found for', cat.name)
             return
+        death_text = event_text_adjust(Cat, death_cause.event_text, cat, other_cat, other_clan_name)
+        #print(death_text)
+        additional_event_text = ""
+
+        # assign default history
+        if cat.status == 'leader':
+            death_history = death_cause.history_text.get("lead_death")
+        else:
+            death_history = death_cause.history_text.get("reg_death")
+
+        # handle murder
+        revealed = False
+        murder_unrevealed_history = None
+        if murder:
+            if "kit_manipulated" in death_cause.tags:
+                kit = Cat.fetch_cat(random.choice(get_alive_kits(Cat)))
+                involved_cats.append(kit.ID)
+                change_relationship_values([other_cat.ID],
+                                           [kit],
+                                           platonic_like=-20,
+                                           dislike=40,
+                                           admiration=-30,
+                                           comfortable=-30,
+                                           jealousy=0,
+                                           trust=-30)
+            if "revealed" in death_cause.tags:
+                revealed = True
+            else:
+                if cat.status == 'leader':
+                    death_history = death_cause.history_text.get("lead_death")
+                    murder_unrevealed_history = death_cause.history_text.get("lead_murder_unrevealed")
+                else:
+                    death_history = death_cause.history_text.get("reg_death")
+                    murder_unrevealed_history = death_cause.history_text.get("reg_murder_unrevealed")
+                revealed = False
+
+            death_history = history_text_adjust(death_history, other_clan_name, game.clan)
+            if murder_unrevealed_history:
+                murder_unrevealed_history = history_text_adjust(murder_unrevealed_history, other_clan_name, game.clan)
+            self.history.add_murders(cat, other_cat, revealed, death_history, murder_unrevealed_history)
 
         # check if the cat's body was retrievable
         if "no_body" in death_cause.tags:

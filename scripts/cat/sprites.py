@@ -32,7 +32,7 @@ class Sprites():
                 Sprites.white_patches_tints = ujson.loads(read_file.read())
         except:
             print("ERROR: Reading White Patches Tints")
-
+            
     def spritesheet(self, a_file, name):
         """
         Add spritesheet called name from a_file.

@@ -54,15 +54,21 @@ class ChooseMentorScreen(Screens):
             elif event.ui_element == self.back_button:
                 self.change_screen('profile screen')
             elif event.ui_element == self.next_cat_button:
-                game.switches['cat'] = self.next_cat
-                self.update_apprentice()
-                self.update_selected_cat()
-                self.update_buttons()
+                if isinstance(Cat.fetch_cat(self.next_cat), Cat):
+                    game.switches['cat'] = self.next_cat
+                    self.update_apprentice()
+                    self.update_selected_cat()
+                    self.update_buttons()
+                else:
+                    print("invalid next bot", self.next_cat)
             elif event.ui_element == self.previous_cat_button:
-                game.switches['cat'] = self.previous_cat
-                self.update_apprentice()
-                self.update_selected_cat()
-                self.update_buttons()
+                if isinstance(Cat.fetch_cat(self.previous_cat), Cat):
+                    game.switches['cat'] = self.previous_cat
+                    self.update_apprentice()
+                    self.update_selected_cat()
+                    self.update_buttons()
+                else:
+                    print("invalid previous bot", self.previous_cat)
             elif event.ui_element == self.next_page_button:
                 self.current_page += 1
                 self.update_cat_list()
@@ -212,7 +218,7 @@ class ChooseMentorScreen(Screens):
             manager=MANAGER)
 
         info = self.the_cat.age + "\n" + self.the_cat.status + "\n" + self.the_cat.genderalign + \
-               "\n" + self.the_cat.trait + "\n" + self.the_cat.skill
+               "\n" + self.the_cat.personality.trait + "\n" + self.the_cat.skill
         self.apprentice_details["apprentice_info"] = pygame_gui.elements.UITextBox(
             info,
             scale(pygame.Rect((980, 325), (210, 250))),
@@ -321,7 +327,7 @@ class ChooseMentorScreen(Screens):
                     (300, 300)), manager=MANAGER)
 
             info = self.selected_mentor.age + "\n" + self.selected_mentor.status + "\n" + \
-                   self.selected_mentor.genderalign + "\n" + self.selected_mentor.trait + "\n" + \
+                   self.selected_mentor.genderalign + "\n" + self.selected_mentor.personality.trait + "\n" + \
                    self.selected_mentor.skill
             if len(self.selected_mentor.former_apprentices) >= 1:
                 info += f"\n{len(self.selected_mentor.former_apprentices)} former app(s)"
@@ -491,15 +497,21 @@ class FamilyTreeScreen(Screens):
                 self.change_screen('profile screen')
                 game.switches['root_cat'] = None
             elif event.ui_element == self.previous_cat_button:
-                game.switches['cat'] = self.previous_cat
-                game.switches['root_cat'] = Cat.all_cats[self.previous_cat]
-                self.exit_screen()
-                self.screen_switches()
+                if isinstance(Cat.fetch_cat(self.previous_cat), Cat):
+                    game.switches['cat'] = self.previous_cat
+                    game.switches['root_cat'] = Cat.all_cats[self.previous_cat]
+                    self.exit_screen()
+                    self.screen_switches()
+                else:
+                    print("invalid previous bot", self.previous_cat)
             elif event.ui_element == self.next_cat_button:
-                game.switches['cat'] = self.next_cat
-                game.switches['root_cat'] = Cat.all_cats[self.next_cat]
-                self.exit_screen()
-                self.screen_switches()
+                if isinstance(Cat.fetch_cat(self.next_cat), Cat):
+                    game.switches['cat'] = self.next_cat
+                    game.switches['root_cat'] = Cat.all_cats[self.next_cat]
+                    self.exit_screen()
+                    self.screen_switches()
+                else:
+                    print("invalid next bot", self.next_cat)
             elif event.ui_element == self.parents_button:
                 self.current_group = self.parents
                 self.current_group_name = "parents"
@@ -1146,13 +1158,21 @@ class ChooseMateScreen(Screens):
                     self.update_choose_mate(breakup=True)
                 self.update_cat_list()
             elif event.ui_element == self.previous_cat_button:
-                game.switches["cat"] = self.previous_cat
-                self.update_current_cat_info()
-                self.update_buttons()
+                if isinstance(Cat.fetch_cat(self.previous_cat), Cat):
+                    game.switches["cat"] = self.previous_cat
+                    self.selected_mate_index = 0
+                    self.update_current_cat_info()
+                    self.update_buttons()
+                else:
+                    print("invalid previous bot", self.previous_cat)
             elif event.ui_element == self.next_cat_button:
-                game.switches["cat"] = self.next_cat
-                self.update_current_cat_info()
-                self.update_buttons()
+                if isinstance(Cat.fetch_cat(self.next_cat), Cat):
+                    game.switches["cat"] = self.next_cat
+                    self.selected_mate_index = 0
+                    self.update_current_cat_info()
+                    self.update_buttons()
+                else:
+                    print("invalid next bot", self.next_cat)
             elif event.ui_element == self.previous_page_button:
                 self.current_page -= 1
                 self.update_cat_list()
@@ -1279,7 +1299,7 @@ class ChooseMateScreen(Screens):
             object_id="#text_box_34_horizcenter")
 
         info = str(self.the_cat.moons) + " Solar cycles\n" + self.the_cat.status + "\n" + self.the_cat.genderalign + "\n" + \
-               self.the_cat.trait
+               self.the_cat.personality.trait
         self.current_cat_elements["info"] = pygame_gui.elements.UITextBox(info,
                                                                           scale(pygame.Rect((410, 380), (200, 200))),
                                                                           object_id="#text_box_22_horizcenter_spacing_95",
@@ -1337,7 +1357,7 @@ class ChooseMateScreen(Screens):
             object_id="#text_box_34_horizcenter")
 
         info = str(self.selected_cat.moons) + " solar cycles\n" + self.selected_cat.status + "\n" + \
-               self.selected_cat.genderalign + "\n" + self.selected_cat.trait
+               self.selected_cat.genderalign + "\n" + self.selected_cat.personality.trait
         self.mate_elements["info"] = pygame_gui.elements.UITextBox(info,
                                                                    scale(pygame.Rect((1000, 380), (200, 200))),
                                                                    object_id="#text_box_22_horizcenter_spacing_95",
@@ -1463,8 +1483,9 @@ class ChooseMateScreen(Screens):
                 name,
                 object_id="#text_box_34_horizcenter")
 
+
             info = str(self.selected_cat.moons) + " solar cycles\n" + self.selected_cat.status + "\n" + \
-                   self.selected_cat.genderalign + "\n" + self.selected_cat.trait
+                   self.selected_cat.genderalign + "\n" + self.selected_cat.personality.trait
             self.mate_elements["info"] = pygame_gui.elements.UITextBox(info,
                                                                        scale(pygame.Rect((1000, 380), (200, 200))),
                                                                        object_id="#text_box_22_horizcenter_spacing_95",
@@ -1702,11 +1723,17 @@ class RelationshipScreen(Screens):
                 game.switches["cat"] = self.inspect_cat.ID
                 self.change_screen('profile screen')
             elif event.ui_element == self.next_cat_button:
-                game.switches["cat"] = self.next_cat
-                self.update_focus_cat()
+                if isinstance(Cat.fetch_cat(self.next_cat), Cat):
+                    game.switches["cat"] = self.next_cat
+                    self.update_focus_cat()
+                else:
+                    print("invalid next bot", self.next_cat)
             elif event.ui_element == self.previous_cat_button:
-                game.switches["cat"] = self.previous_cat
-                self.update_focus_cat()
+                if isinstance(Cat.fetch_cat(self.previous_cat), Cat):
+                    game.switches["cat"] = self.previous_cat
+                    self.update_focus_cat()
+                else:
+                    print("invalid previous bot", self.previous_cat)
             elif event.ui_element == self.previous_page_button:
                 self.current_page -= 1
                 self.update_cat_page()
@@ -1902,8 +1929,9 @@ class RelationshipScreen(Screens):
                                                                           object_id=get_text_box_theme(
                                                                               "#text_box_34_horizleft"))
         self.focus_cat_elements["details"] = pygame_gui.elements.UITextBox(self.the_cat.genderalign + " - " + \
+
                                                                            str(self.the_cat.moons) + " solar cycles - " + \
-                                                                           self.the_cat.trait,
+                                                                           self.the_cat.personality.trait,
                                                                            scale(pygame.Rect((160, 210), (800, 60))),
                                                                            object_id=get_text_box_theme(
                                                                                "#text_box_22_horizleft"))
@@ -2602,7 +2630,7 @@ class MediationScreen(Screens):
                 name,
                 object_id=get_text_box_theme())
 
-            text = mediator.trait + "\n" + mediator.experience_level
+            text = mediator.personality.trait + "\n" + mediator.experience_level
 
             if mediator.not_working():
                 text += "\nThis bot isn't able to work"
@@ -2770,11 +2798,12 @@ class MediationScreen(Screens):
         if cat.moons == 1:
             col1 += " solar cycle"
         else:
+
             col1 += " solar cycles"
-        if len(cat.trait) > 15:
-            _t = cat.trait[:13] + ".."
+        if len(cat.personality.trait) > 15:
+            _t = cat.personality.trait[:13] + ".."
         else:
-            _t = cat.trait
+            _t = cat.personality.trait
         col1 += "\n" + _t
         self.selected_cat_elements["col1" + tag] = pygame_gui.elements.UITextBox(col1,
                                                                                  scale(pygame.Rect((x + 42, y + 252),

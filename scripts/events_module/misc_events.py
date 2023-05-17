@@ -39,8 +39,9 @@ class MiscEvents():
 
             acc_checked_events.append(event)
 
-        final_events = self.generate_events.filter_possible_short_events(acc_checked_events, cat, other_cat, war,
-                                                                   enemy_clan, other_clan,
+
+        #print('misc event', cat.ID)
+        final_events = self.generate_events.filter_possible_short_events(acc_checked_events, cat, other_cat, war, enemy_clan, other_clan,
                                                                    alive_kits)
 
         # ---------------------------------------------------------------------------- #

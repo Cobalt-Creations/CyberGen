@@ -5,19 +5,22 @@ from random import choice
 
 import pygame
 
-from ..datadir import get_save_dir
-from ..game_structure.windows import ChangeCatName, SpecifyCatGender
+
+from ..cat.history import History
+from ..housekeeping.datadir import get_save_dir
+from ..game_structure.windows import ChangeCatName, SpecifyCatGender, KillCat, SaveAsImage
 
 try:
     import ujson
 except ImportError:
     import json as ujson
 
-from scripts.utility import update_sprite, event_text_adjust, scale, ACC_DISPLAY
 
-from .base_screens import Screens, cat_profiles
+from scripts.utility import event_text_adjust, scale, ACC_DISPLAY, process_text
 
-from scripts.utility import get_text_box_theme
+from .base_screens import Screens
+
+from scripts.utility import get_text_box_theme, scale_dimentions, generate_sprite
 from scripts.cat.cats import Cat
 from scripts.cat.pelts import collars, wild_accessories
 from scripts.game_structure import image_cache
@@ -228,6 +231,9 @@ class ProfileScreen(Screens):
 
     def __init__(self, name=None):
         super().__init__(name)
+
+        self.show_moons = None
+        self.no_moons = None
         self.help_button = None
         self.open_sub_tab = None
         self.editing_notes = False
@@ -290,15 +296,24 @@ class ProfileScreen(Screens):
                 self.close_current_tab()
                 self.change_screen(game.last_screen_forProfile)
             elif event.ui_element == self.previous_cat_button:
-                self.clear_profile()
-                game.switches['cat'] = self.previous_cat
-                self.build_profile()
-                self.update_disabled_buttons_and_text()
+                if isinstance(Cat.fetch_cat(self.previous_cat), Cat):
+                    self.clear_profile()
+                    game.switches['cat'] = self.previous_cat
+                    self.build_profile()
+                    self.update_disabled_buttons_and_text()
+                else:
+                    print("invalid previous bot", self.previous_cat)
             elif event.ui_element == self.next_cat_button:
-                self.clear_profile()
-                game.switches['cat'] = self.next_cat
-                self.build_profile()
-                self.update_disabled_buttons_and_text()
+                if isinstance(Cat.fetch_cat(self.next_cat), Cat):
+                    self.clear_profile()
+                    game.switches['cat'] = self.next_cat
+                    self.build_profile()
+                    self.update_disabled_buttons_and_text()
+                else:
+                    print("invalid next bot", self.previous_cat)
+            elif event.ui_element == self.inspect_button:
+                self.close_current_tab()
+                self.change_screen("sprite inspect screen")
             elif event.ui_element == self.relations_tab_button:
                 self.toggle_relations_tab()
             elif event.ui_element == self.roles_tab_button:
@@ -479,6 +494,9 @@ class ProfileScreen(Screens):
                                                  , manager=MANAGER)
         self.back_button = UIImageButton(scale(pygame.Rect((50, 120), (210, 60))), "", object_id="#back_button"
                                          , manager=MANAGER)
+        self.inspect_button = UIImageButton(scale(pygame.Rect((1482, 120),(68,68))), "", 
+                                            object_id="#magnify_button",
+                                            manager=MANAGER)
         self.relations_tab_button = UIImageButton(scale(pygame.Rect((96, 840), (352, 60))), "",
                                                   object_id="#relations_tab_button", manager=MANAGER)
         self.roles_tab_button = UIImageButton(scale(pygame.Rect((448, 840), (352, 60))), "",
@@ -509,8 +527,7 @@ class ProfileScreen(Screens):
         self.build_profile()
 
         self.hide_menu_buttons()  # Menu buttons don't appear on the profile screen
-        cat_profiles()
-        self.update_platform()
+
         if game.last_screen_forProfile == 'med den screen':
             self.toggle_conditions_tab()
 
@@ -540,6 +557,7 @@ class ProfileScreen(Screens):
         self.conditions_tab_button.kill()
         self.placeholder_tab_3.kill()
         self.placeholder_tab_4.kill()
+        self.inspect_button.kill()
         self.close_current_tab()
 
     def build_profile(self):
@@ -605,28 +623,12 @@ class ProfileScreen(Screens):
                                                                      line_spacing=0.95, manager=MANAGER)
 
         # Set the cat backgrounds.
-        self.update_platform()
         if game.settings['backgrounds']:
-            if game.clan.current_season == 'Newleaf':
-                self.profile_elements["background"] = pygame_gui.elements.UIImage(
-                    scale(pygame.Rect((110, 400), (480, 420))),
-                    self.newleaf_plt, manager=MANAGER)
-                self.profile_elements["background"].disable()
-            elif game.clan.current_season == 'Greenleaf':
-                self.profile_elements["background"] = pygame_gui.elements.UIImage(
-                    scale(pygame.Rect((110, 400), (480, 420))),
-                    self.greenleaf_plt, manager=MANAGER)
-                self.profile_elements["background"].disable()
-            elif game.clan.current_season == 'Leaf-bare':
-                self.profile_elements["background"] = pygame_gui.elements.UIImage(
-                    scale(pygame.Rect((110, 400), (480, 420))),
-                    self.leafbare_plt, manager=MANAGER)
-                self.profile_elements["background"].disable()
-            elif game.clan.current_season == 'Leaf-fall':
-                self.profile_elements["background"] = pygame_gui.elements.UIImage(
-                    scale(pygame.Rect((110, 400), (480, 420))),
-                    self.leaffall_plt, manager=MANAGER)
-                self.profile_elements["background"].disable()
+            self.profile_elements["background"] = pygame_gui.elements.UIImage(
+                scale(pygame.Rect((110, 400), (480, 420))),
+                pygame.transform.scale(self.get_platform(), scale_dimentions((480, 420))), 
+                manager=MANAGER)
+            self.profile_elements["background"].disable()
 
         # Create cat image object
         self.profile_elements["cat_image"] = pygame_gui.elements.UIImage(scale(pygame.Rect((200, 400), (300, 300))),
@@ -969,7 +971,7 @@ class ProfileScreen(Screens):
             output += "\n"
 
         # CHARACTER TRAIT
-        output += the_cat.trait
+        output += the_cat.personality.trait
         # NEWLINE ----------
         output += "\n"
 
@@ -1201,11 +1203,28 @@ class ProfileScreen(Screens):
             adjust_text = str(bs_blurb).replace('This bot', str(self.the_cat.name))
             text = adjust_text
         else:
-            text = f"{self.the_cat.name} was born into the Clan where they currently reside."
+            text = str(self.the_cat.name) + " was born into the Clan where {PRONOUN/m_c/subject} currently reside."
+
+        beginning = History.get_beginning(self.the_cat)
+        if beginning:
+            if beginning['clan_born']:
+                text += " {PRONOUN/m_c/subject/CAP} were born on Solar Cycle " + str(beginning['moon']) + " during " + str(beginning['birth_season']) + "."
+            else:
+                text += " {PRONOUN/m_c/subject/CAP} joined the team on Solar Cycle " + str(beginning['moon']) + " at the age of " + str(beginning['age']) + " Solar Cycles."
+
+        text = process_text(text, cat_dict)
         return text
 
     def get_scar_text(self):
-        scar_history = None
+        """
+        returns the adjusted scar text
+        """
+        scar_text = []
+        scar_history = History.get_death_or_scars(self.the_cat, scar=True)
+        if game.switches['show_history_moons']:
+            moons = True
+        else:
+            moons = False
 
         if self.the_cat.scar_event:
             scar_text = self.the_cat.scar_event
@@ -1242,11 +1261,48 @@ class ProfileScreen(Screens):
         influence_history = None
         if self.the_cat.status in ['kittypet', 'loner', 'rogue', 'former Clancat']:
             return ""
-        # check if cat has any mentor influence, else assign None
-        if len(self.the_cat.mentor_influence) >= 1:
-            influenced_trait = str(self.the_cat.mentor_influence[0])
-            if len(self.the_cat.mentor_influence) >= 2:
-                influenced_skill = str(self.the_cat.mentor_influence[1])
+
+        mentor_influence = History.get_mentor_influence(self.the_cat)
+        influence_history = ""
+        
+        # First, do the facet/personality effect
+        trait_influence = []
+        if "trait" in mentor_influence and mentor_influence["trait"] != None:
+            for _mentor in mentor_influence["trait"]:
+                #If the strings are not set (empty list), continue. 
+                if not mentor_influence["trait"][_mentor].get("strings"):
+                    continue
+                
+                ment_obj = Cat.fetch_cat(_mentor)
+                #Continue of the mentor is invalid too.
+                if not isinstance(ment_obj, Cat):
+                    continue
+                
+                if len(mentor_influence["trait"][_mentor].get("strings")) > 1:
+                    string_snippet = ", ".join(mentor_influence["trait"][_mentor].get("strings")[:-1]) + \
+                        " and " + mentor_influence["trait"][_mentor].get("strings")[-1]
+                else:
+                    string_snippet = mentor_influence["trait"][_mentor].get("strings")[0]
+                    
+                
+                trait_influence.append(str(ment_obj.name) + ", as {PRONOUN/m_c/poss} mentor, " +  \
+                                       "influenced {PRONOUN/m_c/object} to be more likely to " + string_snippet + ".")
+
+        if trait_influence:
+            influence_history = " ".join(trait_influence)
+        else:
+            influence_history = ""
+            if self.the_cat.status in ['kitten', 'newborn']:
+                influence_history = 'This cat has not begun training.'
+            elif self.the_cat.status in ['apprentice', 'medicine cat apprentice', 'mediator apprentice']:
+                influence_history = 'This cat has not finished training.'
+            elif not self.the_cat.former_mentor:
+                influence_history = "This cat either did not have a mentor, or {PRONOUN/m_c/poss} mentor is unknown."
+        
+        #TODO: Write Skill History
+        """if mentor_influence:
+            if mentor_influence["mentor"] and Cat.fetch_cat(mentor_influence["mentor"]):
+                mentor = str(Cat.fetch_cat(mentor_influence["mentor"]).name)
             else:
                 influenced_skill = None
         else:
@@ -1287,49 +1343,161 @@ class ProfileScreen(Screens):
                             adjust_skill = adjust_skill.replace(' a ', ' an ')
                             break
                     influenced_skill = adjust_skill
-                    break
-        if self.the_cat.former_mentor:
-            former_mentor_ob = Cat.fetch_cat(self.the_cat.former_mentor[-1])
-            mentor = former_mentor_ob.name
-        else:
-            mentor = None
+                elif influenced_skill in Cat.skill_groups.get('star'):
+                    adjust_skill = f'grow a {influenced_skill}'
+                    influenced_skill = adjust_skill
+                elif influenced_skill in Cat.skill_groups.get('smart'):
+                    adjust_skill = f'become {influenced_skill}'
+                    influenced_skill = adjust_skill
+                else:
+                    # for loop to assign proper grammar to all these groups
+                    become_group = ['heal', 'teach', 'mediate', 'hunt', 'fight', 'speak']
+                    for x in become_group:
+                        if influenced_skill in Cat.skill_groups.get(x):
+                            adjust_skill = f'become a {influenced_skill}'
+                            for y in vowels:
+                                if influenced_skill.startswith(y):
+                                    adjust_skill = adjust_skill.replace(' a ', ' an ')
+                                    break
+                            influenced_skill = adjust_skill
+                            break"""
 
-        # append influence blurb to history
-        if mentor is None:
-            influence_history = "This bot either did not have a mentor, or their mentor is unknown."
-            if self.the_cat.status == 'kitten':
-                influence_history = 'This bot has not begun training.'
-            if self.the_cat.status in ['apprentice', 'medicine cat apprentice']:
-                influence_history = 'This bot has not finished training.'
-        elif influenced_skill is not None and influenced_trait is None:
-            influence_history = f"The influence of their mentor, {mentor}, caused this bot to {influenced_skill}."
-        elif influenced_skill is None and influenced_trait is not None:
-            if influenced_trait in ['Outgoing', 'Benevolent', 'Abrasive', 'Reserved']:
-                influence_history = f"The influence of their mentor, {mentor}, caused this bot to become more {influenced_trait.lower()}."
+        app_ceremony = History.get_app_ceremony(self.the_cat)
+        print(app_ceremony)
+
+        graduation_history = ""
+        if app_ceremony:
+            graduation_history = "When {PRONOUN/m_c/subject} graduated, {PRONOUN/m_c/subject} {VERB/m_c/were/was} honored for {PRONOUN/m_c/poss} " +  app_ceremony['honor'] + "."
+
+            grad_age = app_ceremony["graduation_age"]
+            if int(grad_age) < 11:
+                graduation_history += " {PRONOUN/m_c/poss/CAP} training went so well that {PRONOUN/m_c/subject} graduated early at " + str(grad_age) + " moons old."
+            elif int(grad_age) > 13:
+                graduation_history += " {PRONOUN/m_c/subject/CAP} graduated late at " + str(grad_age) + " moons old."
             else:
-                influence_history = f"This bot's mentor was {mentor}."
-        elif influenced_trait is not None and influenced_skill is not None:
-            influence_history = f"The influence of their mentor, {mentor}, caused this bot to become more {influenced_trait.lower()} as well as {influenced_skill}."
-        else:
-            influence_history = f"This bot's mentor was {mentor}."
+                graduation_history += " {PRONOUN/m_c/subject/CAP} graduated at " + str(grad_age) + " moons old."
 
-        return influence_history
+            if game.switches['show_history_moons']:
+                graduation_history += f" (Moon {app_ceremony['moon']})"
+        cat_dict = {
+            "m_c": (str(self.the_cat.name), choice(self.the_cat.pronouns))
+        }
+        apprenticeship_history = influence_history + " " + graduation_history
+        apprenticeship_history = process_text(apprenticeship_history, cat_dict)
+        return apprenticeship_history
 
     def get_death_text(self):
         text = None
-        if self.the_cat.died_by:
-            if self.the_cat.status == 'leader':
-                insert2 = f"lost their lives"
-                if len(self.the_cat.died_by) > 2:
-                    insert = f"{', '.join(self.the_cat.died_by[0:-1])}, and {self.the_cat.died_by[-1]}"
-                elif len(self.the_cat.died_by) == 2:
-                    insert = f"{self.the_cat.died_by[0]} and {self.the_cat.died_by[1]}"
+
+        death_history = History.get_death_or_scars(self.the_cat, death=True)
+        murder_history = History.get_murders(self.the_cat)
+        if game.switches['show_history_moons']:
+            moons = True
+        else:
+            moons = False
+
+        if death_history:
+            all_deaths = []
+            for death in death_history:
+                if murder_history:
+                    # TODO: this is gross, try to fix so it's not hella nested, seems like the only solution atm
+                    for event in murder_history["is_victim"]:
+                        if event["text"] == death["text"] and event["moon"] == death["moon"]:
+                            if event["revealed"] is True:
+                                text = event_text_adjust(Cat,
+                                                         event["text"],
+                                                         self.the_cat,
+                                                         Cat.fetch_cat(death["involved"]))
+                            else:
+                                text = event_text_adjust(Cat,
+                                                         event["unrevealed_text"],
+                                                         self.the_cat,
+                                                         Cat.fetch_cat(death["involved"]))
                 else:
-                    insert = f"{self.the_cat.died_by[0]}"
-                    if self.the_cat.dead:
-                        insert2 = f'lost all their lives'
-                    elif game.clan.leader_lives == 8:
-                        insert2 = f"lost a life"
+                    text = event_text_adjust(Cat,
+                                             death["text"],
+                                             self.the_cat,
+                                             Cat.fetch_cat(death["involved"]))
+                if moons:
+                    text += f" (Moon {death['moon']})"
+                all_deaths.append(text)
+
+            death_number = len(all_deaths)
+
+            if self.the_cat.status == 'leader' or death_number > 1:
+
+                if death_number > 2:
+                    deaths = f"{', '.join(all_deaths[0:-1])}, and {all_deaths[-1]}"
+                elif death_number == 2:
+                    deaths = " and ".join(all_deaths)
+                else:
+                    deaths = all_deaths[0]
+
+                if self.the_cat.dead:
+                    insert = ' lost all {PRONOUN/m_c/poss} lives'
+                elif game.clan.leader_lives == 8:
+                    insert = ' lost a life'
+                else:
+                    insert = ' lost {PRONOUN/m_c/poss} lives'
+
+                text = str(self.the_cat.name) + insert + " when {PRONOUN/m_c/subject} " + deaths + "."
+            else:
+                text = all_deaths[0]
+            cat_dict = {
+                "m_c": (str(self.the_cat.name), choice(self.the_cat.pronouns))
+            }
+            text = process_text(text, cat_dict)
+        return text
+
+    def get_murder_text(self):
+        """
+        returns adjusted murder history text
+
+        """
+        murder_history = History.get_murders(self.the_cat)
+        victim_text = ""
+        murdered_text = ""
+
+        if game.switches['show_history_moons']:
+            moons = True
+        else:
+            moons = False
+        if murder_history:
+            if 'is_murderer' in murder_history:
+                victims = murder_history["is_murderer"]
+            else:
+                victims = []
+
+            #if "is_victim" in murder_history:
+            #    murderers = murder_history["is_victim"]
+            #else:
+            #    murderers = []
+
+            if victims:
+                victim_names = {}
+                name_list = []
+
+                for victim in victims:
+                    if not Cat.fetch_cat(victim["victim"]):
+                        continue 
+                    name = str(Cat.fetch_cat(victim["victim"]).name)
+
+                    if victim["revealed"]:
+                        victim_names[name] = []
+                        if moons:
+                            victim_names[name].append(victim["moon"])
+
+                if victim_names:
+                    for name in victim_names:
+                        if not moons:
+                            name_list.append(name)
+                        else:
+                            name_list.append(name + f" (Moon {', '.join(victim_names[name])})")
+
+                    if len(name_list) == 1:
+                        victim_text = f"{self.the_cat.name} murdered {name_list[0]}."
+                    elif len(victim_names) == 2:
+                        victim_text = f"{self.the_cat.name} murdered {' and '.join(name_list)}."
                     else:
                         insert2 = f"lost lives"
                 text = f"{self.the_cat.name} {insert2} when they {insert}."
@@ -1959,7 +2127,7 @@ class ProfileScreen(Screens):
     # ---------------------------------------------------------------------------- #
     #                               cat platforms                                  #
     # ---------------------------------------------------------------------------- #
-    def update_platform(self):
+    def get_platform(self):
         the_cat = Cat.all_cats.get(game.switches['cat'],
                                    game.clan.instructor)
 
@@ -1980,26 +2148,44 @@ class ProfileScreen(Screens):
 
         biome = biome.lower()
 
-        all_platforms = []
-        if the_cat.df:
-            dead_platform = [f'{platform_base_dir}darkforestplatform_{light_dark}.png']
-            all_platforms = dead_platform * 4
-        elif the_cat.dead or game.clan.instructor.ID == the_cat.ID:
-            dead_platform = [f'{platform_base_dir}/starclanplatform_{light_dark}.png']
-            all_platforms = dead_platform * 4
-        else:
-            for leaf in leaves:
-                platform_dir = f'{platform_base_dir}/{biome}/{leaf}_{light_dark}.png'
-                all_platforms.append(platform_dir)
+        platformsheet = pygame.image.load('resources/images/platforms.png').convert_alpha()
+        
+        order = ['beach', 'forest', 'mountainous', 'nest', 'plains', 'SC/DF']
 
-        self.newleaf_plt = pygame.transform.scale(
-            pygame.image.load(all_platforms[0]).convert_alpha(), (240, 210))
-        self.greenleaf_plt = pygame.transform.scale(
-            pygame.image.load(all_platforms[1]).convert_alpha(), (240, 210))
-        self.leafbare_plt = pygame.transform.scale(
-            pygame.image.load(all_platforms[2]).convert_alpha(), (240, 210))
-        self.leaffall_plt = pygame.transform.scale(
-            pygame.image.load(all_platforms[3]).convert_alpha(), (240, 210))
+
+        biome_platforms = platformsheet.subsurface(pygame.Rect(0, order.index(biome) * 70, 640, 70)).convert_alpha()
+        
+        
+        biome_platforms = platformsheet.subsurface(pygame.Rect(0, order.index(biome) * 70, 640, 70)).convert_alpha()
+        
+        offset = 0
+        if light_dark == "light":
+            offset = 80
+        
+        season_subsurfaces = {
+            "greenleaf": 0 + offset,
+            "leafbare": 160 + offset,
+            "leaffall": 320 + offset,
+            "newleaf": 480 + offset
+        }
+        
+        if the_cat.df:
+            biome_platforms = platformsheet.subsurface(pygame.Rect(0, order.index('SC/DF') * 70, 640, 70))
+            return pygame.transform.scale(biome_platforms.subsurface(pygame.Rect(0 + offset, 0, 80, 70)), (240, 210))
+        elif the_cat.dead or game.clan.instructor.ID == the_cat.ID:
+            biome_platforms = platformsheet.subsurface(pygame.Rect(0, order.index('SC/DF') * 70, 640, 70))
+            return pygame.transform.scale(biome_platforms.subsurface(pygame.Rect(160 + offset, 0, 80, 70)), (240, 210))
+        else:
+            biome_platforms = platformsheet.subsurface(pygame.Rect(0, order.index(biome) * 70, 640, 70)).convert_alpha()
+            season_x = {
+                "greenleaf": 0 + offset,
+                "leafbare": 160 + offset,
+                "leaffall": 320 + offset,
+                "newleaf": 480 + offset
+            }
+            
+            return pygame.transform.scale(biome_platforms.subsurface(pygame.Rect(
+                season_x.get(game.clan.current_season.lower(), season_x["greenleaf"]), 0, 80, 70)), (240, 210))
 
     def on_use(self):
         pass
@@ -2009,6 +2195,16 @@ class ProfileScreen(Screens):
 #                           ceremony screen                                    #
 # ---------------------------------------------------------------------------- #
 class CeremonyScreen(Screens):
+
+
+    def __init__(self, name=None):
+        super().__init__(name)
+        self.back_button = None
+        self.text = None
+        self.scroll_container = None
+        self.life_text = None
+        self.header = None
+        self.the_cat = None
 
     def screen_switches(self):
         self.hide_menu_buttons()
@@ -2021,8 +2217,10 @@ class CeremonyScreen(Screens):
             self.header = pygame_gui.elements.UITextBox(str(self.the_cat.name) + ' has no ceremonies to view.',
                                                         scale(pygame.Rect((200, 180), (1200, -1))),
                                                         object_id=get_text_box_theme(), manager=MANAGER)
-        if (self.the_cat.status == 'leader' and not self.the_cat.dead):
-            self.life_text = self.handle_leadership_ceremony(self.the_cat)
+
+        if self.the_cat.status == 'leader' and not self.the_cat.dead:
+            self.life_text = History.get_lead_ceremony(self.the_cat)
+
         else:
             self.life_text = ""
         self.scroll_container = pygame_gui.elements.UIScrollingContainer(scale(pygame.Rect((100, 300), (1400, 1000))))
@@ -2344,6 +2542,9 @@ class CeremonyScreen(Screens):
         return
 
 
+# ---------------------------------------------------------------------------- #
+#                               Role Screen                                    #
+# ---------------------------------------------------------------------------- #
 class RoleScreen(Screens):
     the_cat = None
     selected_cat_elements = {}
@@ -2356,11 +2557,17 @@ class RoleScreen(Screens):
             if event.ui_element == self.back_button:
                 self.change_screen("profile screen")
             elif event.ui_element == self.next_cat_button:
-                game.switches["cat"] = self.next_cat
-                self.update_selected_cat()
+                if isinstance(Cat.fetch_cat(self.next_cat), Cat):
+                    game.switches["cat"] = self.next_cat
+                    self.update_selected_cat()
+                else:
+                    print("invalid next bot", self.next_cat)
             elif event.ui_element == self.previous_cat_button:
-                game.switches["cat"] = self.previous_cat
-                self.update_selected_cat()
+                if isinstance(Cat.fetch_cat(self.previous_cat), Cat):
+                    game.switches["cat"] = self.previous_cat
+                    self.update_selected_cat()
+                else:
+                    print("invalid previous bot", self.previous_cat)
             elif event.ui_element == self.promote_leader:
                 if self.the_cat == game.clan.deputy:
                     game.clan.deputy = None
@@ -2481,7 +2688,7 @@ class RoleScreen(Screens):
                                                                              name,
                                                                              object_id=get_text_box_theme())
 
-        text = f"<b>{self.the_cat.status}</b>\n{self.the_cat.trait}\n"
+        text = f"<b>{self.the_cat.status}</b>\n{self.the_cat.personality.trait}\n"
 
         text += f"{self.the_cat.moons} "
 
@@ -2891,3 +3098,484 @@ class RoleScreen(Screens):
         for ele in self.selected_cat_elements:
             self.selected_cat_elements[ele].kill()
         self.selected_cat_elements = {}
+
+# ---------------------------------------------------------------------------- #
+#                            SpriteInspectScreen                               #
+# ---------------------------------------------------------------------------- #
+
+class SpriteInspectScreen(Screens):
+    cat_life_stages = ["newborn", "kitten", "adolescent", "adult", "senior"]
+    
+    def __init__(self, name=None):
+        self.back_button = None
+        self.previous_cat_button = None
+        self.previous_cat = None
+        self.next_cat_button = None
+        self.next_cat = None
+        self.the_cat = None
+        self.cat_image = None
+        self.cat_elements = {}
+        self.checkboxes = {}
+        self.platform_shown_text = None
+        self.scars_shown = None
+        self.acc_shown_text = None
+        self.override_dead_lineart_text = None
+        self.override_not_working_text = None
+        self.save_image_button = None
+        
+        #Image Settings: 
+        self.platform_shown = None
+        self.displayed_lifestage = None
+        self.scars_shown = True
+        self.override_dead_lineart = False
+        self.acc_shown = True
+        self.override_not_working = False
+        
+        super().__init__(name)
+    
+    def handle_event(self, event):
+        # Don't handle the events if a window is open.     
+        if game.switches['window_open']:
+            return
+        
+        if event.type == pygame_gui.UI_BUTTON_START_PRESS:
+            if event.ui_element == self.back_button:
+                self.change_screen("profile screen")
+            elif event.ui_element == self.next_cat_button:
+                if isinstance(Cat.fetch_cat(self.next_cat), Cat):
+                    game.switches["cat"] = self.next_cat
+                    self.cat_setup()
+                else:
+                    print("invalid next cat", self.next_cat)
+            elif event.ui_element == self.previous_cat_button:
+                if isinstance(Cat.fetch_cat(self.previous_cat), Cat):
+                    game.switches["cat"] = self.previous_cat
+                    self.cat_setup()
+                else:
+                    print("invalid previous cat", self.previous_cat)
+            elif event.ui_element == self.next_life_stage:
+                self.displayed_life_stage = min(self.displayed_life_stage + 1, 
+                                                len(self.valid_life_stages) - 1)
+                self.update_disabled_buttons()
+                self.make_cat_image()
+            elif event.ui_element == self.save_image_button:
+                SaveAsImage(self.generate_image_to_save(), str(self.the_cat.name))
+            elif event.ui_element == self.previous_life_stage:
+                self.displayed_life_stage = max(self.displayed_life_stage - 1, 
+                                                0)
+                self.update_disabled_buttons()
+                self.make_cat_image()
+            elif event.ui_element == self.checkboxes["platform_shown"]:
+                if self.platform_shown:
+                    self.platform_shown = False
+                else:
+                    self.platform_shown = True
+                
+                self.set_background_visablity()
+                self.update_checkboxes()
+            elif event.ui_element == self.checkboxes["scars_shown"]:
+                if self.scars_shown:
+                    self.scars_shown = False
+                else:
+                    self.scars_shown = True
+                
+                self.make_cat_image()
+                self.update_checkboxes()
+            elif event.ui_element == self.checkboxes["acc_shown"]:
+                if self.acc_shown:
+                    self.acc_shown = False
+                else:
+                    self.acc_shown = True
+                
+                self.make_cat_image()
+                self.update_checkboxes()
+            elif event.ui_element == self.checkboxes["override_dead_lineart"]:
+                if self.override_dead_lineart:
+                    self.override_dead_lineart = False
+                else:
+                    self.override_dead_lineart = True
+                
+                self.make_cat_image()
+                self.update_checkboxes()
+            elif event.ui_element == self.checkboxes["override_not_working"]:
+                if self.override_not_working:
+                    self.override_not_working = False
+                else:
+                    self.override_not_working = True
+                
+                self.make_cat_image()
+                self.update_checkboxes()
+            elif event.ui_element == self.cat_elements["favourite_button"]:
+                self.the_cat.favourite = False
+                self.cat_elements["favourite_button"].hide()
+                self.cat_elements["not_favourite_button"].show()
+            elif event.ui_element == self.cat_elements["not_favourite_button"]:
+                self.the_cat.favourite = True
+                self.cat_elements["favourite_button"].show()
+                self.cat_elements["not_favourite_button"].hide()
+    
+        return super().handle_event(event)
+    
+    def screen_switches(self):        
+        self.next_cat_button = UIImageButton(scale(pygame.Rect((1244, 50), (306, 60))), "", object_id="#next_cat_button"
+                                             , manager=MANAGER)
+        self.previous_cat_button = UIImageButton(scale(pygame.Rect((50, 50), (306, 60))), "",
+                                                 object_id="#previous_cat_button"
+                                                 , manager=MANAGER)
+        self.back_button = UIImageButton(scale(pygame.Rect((50, 120), (210, 60))), "", object_id="#back_button"
+                                         , manager=MANAGER)
+        
+        self.previous_life_stage = UIImageButton(scale(pygame.Rect((150, 550), (76, 100))), "", object_id="#arrow_right_fancy",
+                                                 starting_height=2)
+        
+        self.next_life_stage = UIImageButton(scale(pygame.Rect((1374, 550), (76, 100))), "", object_id="#arrow_left_fancy",
+                                             starting_height=2)
+        
+        self.save_image_button = UIImageButton(scale(pygame.Rect((50, 190),(270, 60))), "", object_id="#save_image_button")
+        
+        # Toggle Text:
+        self.platform_shown_text = pygame_gui.elements.UITextBox("Show Platform", scale(pygame.Rect((310, 1160), (290, 100))),
+                                                                 object_id=get_text_box_theme(
+                                                                              "#text_box_34_horizcenter"), 
+                                                                 starting_height=2)
+        self.scars_shown_text = pygame_gui.elements.UITextBox("Show Scar(s)", scale(pygame.Rect((710, 1160), (290, 100))),
+                                                              object_id=get_text_box_theme(
+                                                                              "#text_box_34_horizcenter"), 
+                                                                 starting_height=2)
+        self.acc_shown_text = pygame_gui.elements.UITextBox("Show Accessory", scale(pygame.Rect((1100, 1160), (290, 100))),
+                                                            object_id=get_text_box_theme(
+                                                                              "#text_box_34_horizcenter"), 
+                                                            starting_height=2)
+        self.override_dead_lineart_text = pygame_gui.elements.UITextBox("Show as Living", scale(pygame.Rect((510, 1260), (290, 100))),
+                                                                        object_id=get_text_box_theme(
+                                                                              "#text_box_34_horizcenter"), 
+                                                                        starting_height=2)
+        self.override_not_working_text = pygame_gui.elements.UITextBox("Show as Healthy", scale(pygame.Rect((910, 1260), (290, 100))),
+                                                                 object_id=get_text_box_theme(
+                                                                              "#text_box_34_horizcenter"), 
+                                                                 starting_height=2)
+        
+        
+        if game.settings['backgrounds']:
+            self.platform_shown = True
+        else:
+            self.platform_shown = False
+        
+        self.cat_setup()
+        return super().screen_switches()
+
+    def cat_setup(self): 
+        """Sets up all the elements related to the cat """
+        for ele in self.cat_elements:
+            self.cat_elements[ele].kill()
+        self.cat_elements = {}
+        
+        self.the_cat = Cat.fetch_cat(game.switches['cat'])
+        
+        self.cat_elements["platform"] = pygame_gui.elements.UIImage(
+                scale(pygame.Rect((240, 200), (1120, 980))),
+                pygame.transform.scale(self.get_platform(), scale_dimentions((1120, 701))), 
+                manager=MANAGER)
+        self.set_background_visablity()
+        
+        # Gather list of current and previous life states
+        # "young adult", "adult", and "senior adult" all look the same: collape to adult
+        # This is not the best way to do it, so if we make them have difference apperences, this will
+        # need to be changed/removed. 
+        if self.the_cat.age in ["young adult", "adult", "senior adult"]:
+            current_life_stage = "adult"
+        else:
+            current_life_stage = self.the_cat.age
+        
+        self.valid_life_stages = []
+        for life_stage in SpriteInspectScreen.cat_life_stages:
+            self.valid_life_stages.append(life_stage)
+            if life_stage == current_life_stage:
+                break
+        
+        #Store the index of the currently displayed life stage. 
+        self.displayed_life_stage = len(self.valid_life_stages) - 1
+        
+        #Reset all the toggles
+        self.lifestage = None
+        self.scars_shown = True
+        self.override_dead_lineart = False
+        self.acc_shown = True
+        self.override_not_working = False
+        
+        # Make the cat image
+        self.make_cat_image()
+        
+        cat_name = str(self.the_cat.name)  # name
+        if len(cat_name) >= 40:
+            cat_name = f"{cat_name[0:39]}..."
+        if self.the_cat.dead:
+            cat_name += " (dead)"  # A dead cat will have the (dead) sign next to their name
+        
+        self.cat_elements["cat_name"] = pygame_gui.elements.UITextBox(cat_name,
+                                                                          scale(pygame.Rect((50, 120), (-1, 80))),
+                                                                          object_id=get_text_box_theme(
+                                                                              "#text_box_40_horizcenter"), manager=MANAGER)
+        name_text_size = self.cat_elements["cat_name"].get_relative_rect()
+
+        self.cat_elements["cat_name"].kill()
+
+        self.cat_elements["cat_name"] = pygame_gui.elements.UITextBox(cat_name,
+                                                                      scale(pygame.Rect(
+                                                                        (800 - name_text_size.width, 120),
+                                                                        (name_text_size.width * 2, 80))),
+                                                                       object_id=get_text_box_theme(
+                                                                        "#text_box_40_horizcenter"), manager=MANAGER)
+        
+        # Fullscreen
+        if game.settings['fullscreen']:
+            x_pos = 740 - int(name_text_size.width * 7 / 15)
+        else:
+            x_pos = 740 - name_text_size.width
+        # TODO: positioning is weird. closer to names on some, further on others
+        # this only happens on fullscreen :waaaaaaa:
+        self.cat_elements["favourite_button"] = UIImageButton(scale(pygame.Rect
+                                                                ((x_pos, 127), (56, 56))),
+                                                              "",
+                                                              object_id="#fav_cat",
+                                                              manager=MANAGER,
+                                                              tool_tip_text='Remove favorite status',
+                                                              starting_height=2)
+
+        self.cat_elements["not_favourite_button"] = UIImageButton(scale(pygame.Rect
+                                                                    ((x_pos, 127),
+                                                                        (56, 56))),
+                                                                 "",
+                                                                 object_id="#not_fav_cat",
+                                                                 manager=MANAGER,
+                                                                 tool_tip_text='Mark as favorite',
+                                                                 starting_height=2)  
+        if self.the_cat.favourite:
+            self.cat_elements["favourite_button"].show()
+            self.cat_elements["not_favourite_button"].hide()
+        else:
+            self.cat_elements["favourite_button"].hide()
+            self.cat_elements["not_favourite_button"].show()
+        
+        
+        # Write the checkboxes. The text is set up in switch_screens.  
+        self.update_checkboxes()
+        
+        
+        self.determine_previous_and_next_cat()
+        self.update_disabled_buttons()
+    
+    def update_checkboxes(self):
+        for ele in self.checkboxes:
+            self.checkboxes[ele].kill()
+        self.checkboxes = {}
+        
+        # "Show Platform"
+        self.make_one_checkbox((200, 1150), "platform_shown", self.platform_shown)
+        
+        # "Show Scars"
+        self.make_one_checkbox((600, 1150), "scars_shown", self.scars_shown, self.the_cat.scars)
+        
+        # "Show accessories"
+        self.make_one_checkbox((1000, 1150), "acc_shown", self.acc_shown, self.the_cat.accessory)
+        
+        # "Show as living"
+        self.make_one_checkbox((400, 1250), "override_dead_lineart", self.override_dead_lineart, self.the_cat.dead,
+                               disabled_object_id="#checked_checkbox")
+        
+        # "Show as healthy"
+        self.make_one_checkbox((800, 1250), "override_not_working", self.override_not_working, self.the_cat.not_working(),
+                               disabled_object_id="#checked_checkbox")
+        
+    def make_one_checkbox(self, location:tuple, name:str, stored_bool: bool, cat_value_to_allow=True,
+                          disabled_object_id = "#unchecked_checkbox"):
+        """Makes a single checkbox. So I don't have to copy and paste this 5 times. 
+            if cat_value_to_allow evalates to False, then the unchecked checkbox is always used the the checkbox 
+            is disabled"""
+        
+        if not cat_value_to_allow:
+            self.checkboxes[name] = UIImageButton(scale(pygame.Rect(location, (102, 102))), "" ,
+                                                            object_id = disabled_object_id,
+                                                            starting_height=2)
+            self.checkboxes[name].disable()
+        elif stored_bool:
+            self.checkboxes[name] = UIImageButton(scale(pygame.Rect(location, (102, 102))), "" ,
+                                                            object_id = "#checked_checkbox",
+                                                            starting_height=2)
+        else:
+            self.checkboxes[name] = UIImageButton(scale(pygame.Rect(location, (102, 102))), "" ,
+                                                            object_id = "#unchecked_checkbox",
+                                                            starting_height=2)
+    
+    def make_cat_image(self):
+        """Makes the cat image """
+        if "cat_image" in self.cat_elements:
+            self.cat_elements["cat_image"].kill()
+        
+        self.cat_image = generate_sprite(self.the_cat, life_state=self.valid_life_stages[self.displayed_life_stage], 
+                                         scars_hidden=not self.scars_shown,
+                                         acc_hidden=not self.acc_shown, always_living=self.override_dead_lineart, 
+                                         no_not_working=self.override_not_working)
+        
+        self.cat_elements["cat_image"] = pygame_gui.elements.UIImage(
+            scale(pygame.Rect((450, 200),(700, 700))),
+            pygame.transform.scale(self.cat_image, scale_dimentions((700, 700)))
+        )
+      
+    def determine_previous_and_next_cat(self):
+        """'Determines where the next and previous buttons point too."""
+
+        is_instructor = False
+        if self.the_cat.dead and game.clan.instructor.ID == self.the_cat.ID:
+            is_instructor = True
+
+        previous_cat = 0
+        next_cat = 0
+        if self.the_cat.dead and not is_instructor and self.the_cat.df == game.clan.instructor.df and \
+                not (self.the_cat.outside or self.the_cat.exiled):
+            previous_cat = game.clan.instructor.ID
+
+        if is_instructor:
+            next_cat = 1
+
+        for check_cat in Cat.all_cats_list:
+            if check_cat.ID == self.the_cat.ID:
+                next_cat = 1
+            else:
+                if next_cat == 0 and check_cat.ID != self.the_cat.ID and check_cat.dead == self.the_cat.dead \
+                        and check_cat.ID != game.clan.instructor.ID and check_cat.outside == self.the_cat.outside and \
+                        check_cat.df == self.the_cat.df and not check_cat.faded:
+                    previous_cat = check_cat.ID
+
+                elif next_cat == 1 and check_cat != self.the_cat.ID and check_cat.dead == self.the_cat.dead \
+                        and check_cat.ID != game.clan.instructor.ID and check_cat.outside == self.the_cat.outside and \
+                        check_cat.df == self.the_cat.df and not check_cat.faded:
+                    next_cat = check_cat.ID
+
+                elif int(next_cat) > 1:
+                    break
+
+        if next_cat == 1:
+            next_cat = 0
+
+        self.next_cat = next_cat
+        self.previous_cat = previous_cat
+    
+    def set_background_visablity(self):
+        if "platform" not in self.cat_elements:
+            return
+        
+        if self.platform_shown:
+            self.cat_elements["platform"].show()
+            self.cat_elements["platform"].disable()
+        else:
+            self.cat_elements["platform"].hide()
+    
+    def exit_screen(self):
+        self.back_button.kill()
+        self.back_button = None
+        self.previous_cat_button.kill()
+        self.previous_cat_button = None
+        self.next_cat_button.kill()
+        self.next_cat_button = None
+        self.previous_life_stage.kill()
+        self.previous_life_stage = None
+        self.next_life_stage.kill()
+        self.next_life_stage = None
+        self.save_image_button.kill()
+        self.save_image_button = None
+        self.platform_shown_text.kill()
+        self.platform_shown_text = None
+        self.scars_shown_text.kill()
+        self.scars_shown = None
+        self.acc_shown_text.kill()
+        self.acc_shown_text = None
+        self.override_dead_lineart_text.kill()
+        self.override_dead_lineart_text = None
+        self.override_not_working_text.kill()
+        self.override_not_working_text = None
+        
+        for ele in self.cat_elements:
+            self.cat_elements[ele].kill()
+        self.cat_elements = {}
+        for ele in self.checkboxes:
+            self.checkboxes[ele].kill()
+        self.checkboxes = {}
+        return super().exit_screen()
+    
+    def update_disabled_buttons(self):
+        # Previous and next cat button
+        if self.next_cat == 0:
+            self.next_cat_button.disable()
+        else:
+            self.next_cat_button.enable()
+
+        if self.previous_cat == 0:
+            self.previous_cat_button.disable()
+        else:
+            self.previous_cat_button.enable()
+            
+        if self.displayed_life_stage >= len(self.valid_life_stages) - 1:
+            self.next_life_stage.disable()
+        else:
+            self.next_life_stage.enable()
+            
+        if self.displayed_life_stage <= 0:
+            self.previous_life_stage.disable()
+        else:
+            self.previous_life_stage.enable()
+        
+        
+    def get_platform(self):
+        the_cat = Cat.all_cats.get(game.switches['cat'],
+                                   game.clan.instructor)
+
+        light_dark = "light"
+        if game.settings["dark mode"]:
+            light_dark = "dark"
+
+        available_biome = ['Forest', 'Mountainous', 'Plains', 'Beach']
+        biome = game.clan.biome
+
+        if biome not in available_biome:
+            biome = available_biome[0]
+        if the_cat.age == 'newborn' or the_cat.not_working():
+            biome = 'nest'
+
+        biome = biome.lower()
+
+        platformsheet = pygame.image.load('resources/images/platforms.png').convert_alpha()
+        
+        order = ['beach', 'forest', 'mountainous', 'nest', 'plains', 'SC/DF']
+        
+        offset = 0
+        if light_dark == "light":
+            offset = 80
+        
+        if the_cat.df:
+            biome_platforms = platformsheet.subsurface(pygame.Rect(0, order.index('SC/DF') * 70, 640, 70))
+            return biome_platforms.subsurface(pygame.Rect(0 + offset, 0, 80, 70))
+        elif the_cat.dead or game.clan.instructor.ID == the_cat.ID:
+            biome_platforms = platformsheet.subsurface(pygame.Rect(0, order.index('SC/DF') * 70, 640, 70))
+            return biome_platforms.subsurface(pygame.Rect(160 + offset, 0, 80, 70))
+        else:
+            biome_platforms = platformsheet.subsurface(pygame.Rect(0, order.index(biome) * 70, 640, 70)).convert_alpha()
+            season_x = {
+                "greenleaf": 0 + offset,
+                "leafbare": 160 + offset,
+                "leaffall": 320 + offset,
+                "newleaf": 480 + offset
+            }
+            
+            
+            return biome_platforms.subsurface(pygame.Rect(
+                season_x.get(game.clan.current_season.lower(), season_x["greenleaf"]), 0, 80, 70))
+            
+    def generate_image_to_save(self):
+        """Generates the image to save, with platform if needed. """
+        if self.platform_shown:
+            full_image = self.get_platform()
+            full_image.blit(self.cat_image, (15, 0))
+            return full_image
+        else:
+            return self.cat_image
